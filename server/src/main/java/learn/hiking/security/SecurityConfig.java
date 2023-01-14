@@ -18,6 +18,13 @@ public class SecurityConfig {
         http.cors();
 
         // change ant patterns pathing once database is fully up and running
+        // The method then uses the antMatchers() method to specify which requests
+        // should be allowed or denied based on the HTTP method and the request path.
+        // For example, GET requests to "/order" are permitted for all users,
+        // whereas POST requests to "/sighting" are only permitted for users with
+        // the authority "USER" or "ADMIN". Finally, the method sets the session
+        // creation policy to be stateless, meaning that the server will not maintain a session.
+        // The method returns the built HttpSecurity object.
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET,
                         "/order").permitAll()
