@@ -54,3 +54,5 @@ hike_date date not null,
 hike_difficulty varchar (250) not null,
 description varchar (255) not null
 	);
+
+	-- I think the hike entries have to have the foreign keys for the independent tables (added them)
