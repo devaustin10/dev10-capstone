@@ -1,4 +1,4 @@
-package learn.hiking.data;
+package learn.hiking.data.mappers;
 
 import learn.hiking.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;

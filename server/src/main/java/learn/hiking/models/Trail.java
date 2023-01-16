@@ -4,7 +4,7 @@ public class Trail {
     private int trailId;
     private String trailName;
     private int trailDistance;
-    private int trailDifficulty;
+    private String trailDifficulty;
     private int locationId;
 
     public Trail() {
@@ -34,11 +34,11 @@ public class Trail {
         this.trailDistance = trailDistance;
     }
 
-    public int getTrailDifficulty() {
+    public String getTrailDifficulty() {
         return trailDifficulty;
     }
 
-    public void setTrailDifficulty(int trailDifficulty) {
+    public void setTrailDifficulty(String trailDifficulty) {
         this.trailDifficulty = trailDifficulty;
     }
 

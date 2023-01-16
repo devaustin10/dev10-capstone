@@ -1,5 +1,6 @@
 package learn.hiking.data;
 
+import learn.hiking.data.mappers.AppUserMapper;
 import learn.hiking.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
