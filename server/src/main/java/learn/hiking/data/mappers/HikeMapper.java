@@ -18,6 +18,8 @@ public class HikeMapper implements RowMapper<Hike> {
         hike.setHikerId(resultSet.getInt("hiker_id"));
         hike.setTrailId(resultSet.getInt("trail_id"));
 
+        // might not need foreign keys for mappers
+
         return hike;
     }
 }

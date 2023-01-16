@@ -13,24 +13,6 @@ constraint fk_hiker_trail
 	foreign key (trail_id)
     references trail(trail_id)
     ); 
-    
-create table hiker_roles (
-hiker_id int not null,
-roles_id int not null,
-constraint pk_hiker_roles
-	primary key(hiker_id, roles_id),
-constraint fk_hiker_roles_hiker_id
-	foreign key (hiker_id)
-	references hiker(hiker_id),
-constraint fk_hiker_roles_roles_id
-	foreign key (roles_id)
-	references roles(roles_id)
-	);
-
-create table roles (
-roles_id int primary key auto_increment,
-`description` varchar (250) not null
-	);
 
 create table location (
 location_id int primary key auto_increment,
