@@ -29,7 +29,7 @@ constraint fk_hiker_roles_roles_id
 
 create table roles (
 roles_id int primary key auto_increment,
-description varchar (250) not null
+`description` varchar (250) not null
 	);
 
 create table location (
@@ -49,10 +49,19 @@ constraint fk_trail_location_id
 	references location(location_id)
 	);
 
-create table hike_entry (
+create table hike (
+hike_id int primary key auto_increment,
 hike_date date not null,
 hike_difficulty varchar (250) not null,
-description varchar (255) not null
+`description` varchar (255) not null,
+hiker_id int not null,
+trail_id int not null,
+constraint fk_hike_hiker_id
+	foreign key (hiker_id)
+	references hiker(hiker_id),
+constraint fk_hike_trail_id
+	foreign key (trail_id)
+	references trail(trail_id)
 	);
 
 	-- I think the hike entries have to have the foreign keys for the independent tables (added them)
