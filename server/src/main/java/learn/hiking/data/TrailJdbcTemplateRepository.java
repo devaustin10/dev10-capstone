@@ -12,4 +12,23 @@ public class TrailJdbcTemplateRepository implements TrailRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
+    public Trail findById(int trailId) {
+        return null;
+    }
+
+    @Override
+    public Trail add(Trail trail) {
+        return null;
+    }
+
+    @Override
+    public boolean update(Trail trail) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteById(int trailId) {
+        return false;
+    }
 }

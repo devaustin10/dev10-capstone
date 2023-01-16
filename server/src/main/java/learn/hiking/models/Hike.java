@@ -11,6 +11,16 @@ public class Hike {
     private int trailId;
 
     public Hike() {
+
+    }
+
+    public Hike(int hikeId, LocalDate hikeDate, String hikeDifficulty, String description, int hikerId, int trailId) {
+        this.hikeId = hikeId;
+        this.hikeDate = hikeDate;
+        this.hikeDifficulty = hikeDifficulty;
+        this.description = description;
+        this.hikerId = hikerId;
+        this.trailId = trailId;
     }
 
     public int getHikeId() {
