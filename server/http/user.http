@@ -69,3 +69,13 @@ Content-Type: application/json
 
 POST http://localhost:8080/refresh_token HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiYWRtaW4iLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjczODQ1NDc3fQ.D-hJX2I_RBJncmRXCbqdLY3D14w4ypaJdQkxuZpFu7s
+
+###
+
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "bob@jones.com",
+    "password": "P@ssw0rd!"
+}
