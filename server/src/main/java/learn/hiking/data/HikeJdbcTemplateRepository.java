@@ -33,10 +33,10 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
     }
 
     @Override
-    public Hike findById() {
+    public Hike findById(int hikeId) {
         final String sql = "select hiker_id, first_name, last_name, age, email from hike where hike_id = ?;";
         Hike hike = (Hike)this.jdbcTemplate.query("select hiker_id, first_name, last_name, age, email from hike where hike_id = ?;",
-                new HikeMapper(), new Object[]{hike.getHikeId()}).stream().findFirst().orElse((Object)null);
+                new HikeMapper(), new Object[]{hikeId}).stream().findFirst().orElse((Hike) null);
         if (hike != null) {
             this.add(hike);
         }
