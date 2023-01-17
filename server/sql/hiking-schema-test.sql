@@ -8,33 +8,19 @@ hiker_id int primary key auto_increment,
 first_name varchar(250) not null,
 last_name varchar(250) not null,
 age int null,
-email varchar(250) not null,
-constraint fk_hiker_trail
-	foreign key (trail_id)
-    references trail(trail_id)
-    );
-
-create table location (
-location_id int primary key auto_increment,
-city varchar (250) not null,
-state varchar (80) not null
-	);
-
+email varchar(250) not null
+); 
+    
 create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
 trail_distance int not null, -- might need to change to decimal later
-trail_difficulty varchar (250) null,
-location_id int not null,
-constraint fk_trail_location_id
-	foreign key (location_id)
-	references location(location_id)
-	);
+trail_difficulty varchar (250) null
+);
 
 create table hike (
 hike_id int primary key auto_increment,
 hike_date date not null,
-hike_difficulty varchar (250) not null,
 `description` varchar (255) not null,
 hiker_id int not null,
 trail_id int not null,
@@ -46,4 +32,31 @@ constraint fk_hike_trail_id
 	references trail(trail_id)
 	);
 
-	-- I think the hike entries have to have the foreign keys for the independent tables (added them)
+delimiter //
+create procedure set_known_good_state()
+begin
+
+    delete from trail;
+    alter table trail auto_increment = 1;
+	delete from hike;
+	alter table hike auto_increment = 1;
+    delete from hiker;
+    alter table hiker auto_increment = 1;
+
+    
+    insert into hiker(hiker_id, first_name, last_name, age, email) values
+        (1, 'John', 'Smith', 25, 'JohnSmith@gmail.com');
+        
+	insert into hike (hike_id, hike_date, hike_difficulty, hiker_id, trail_id)
+		values
+	(1, '01/11/2011', 1, 1);
+        
+	insert into trail
+		(trail_id, trail_name, trail_distance, trail_difficulty)
+	values
+		(1,'The Mountain', 1 , 'Easy');
+        
+end //
+-- 4. Change the statement terminator back to the original.
+delimiter ;
+
