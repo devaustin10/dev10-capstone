@@ -18,6 +18,7 @@ trail_distance int not null, -- might need to change to decimal later
 trail_difficulty_id int not null,
 city varchar (250) not null,
 state varchar (250) not null,
+
 constraint fk_trail_trail_difficulty_id
 	foreign key (trail_difficulty_id)
 	references trail_difficulty(trail_difficulty_id)
@@ -26,7 +27,7 @@ constraint fk_trail_trail_difficulty_id
 create table hike (
 hike_id int primary key auto_increment,
 hike_date date not null,
-hike_difficulty varchar (255) not null,
+hike_difficulty varchar (255) null,
 `description` varchar (255) null,
 hiker_id int not null,
 trail_id int not null,
