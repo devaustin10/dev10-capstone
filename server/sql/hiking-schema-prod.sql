@@ -15,7 +15,7 @@ create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
 trail_distance int not null, -- might need to change to decimal later
-trail_difficulty_id varchar (250) null,
+trail_difficulty_id int not null,
 city varchar (250) not null,
 state varchar (250) not null,
 constraint fk_trail_trail_difficulty_id

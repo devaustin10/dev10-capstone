@@ -15,7 +15,7 @@ create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
 trail_distance int not null, -- might need to change to decimal later
-trail_difficulty_id varchar (250) null,
+trail_difficulty_id int not null,
 constraint fk_trail_trail_difficulty_id
 	foreign key (trail_difficulty_id)
 	references trail_difficulty(trail_difficulty_id)
@@ -49,10 +49,10 @@ begin
     alter table trail_difficulty auto_increment = 1;
     delete from trail;
     alter table trail auto_increment = 1;
-	delete from hike;
-	alter table hike auto_increment = 1;
     delete from hiker;
     alter table hiker auto_increment = 1;
+	delete from hike;
+	alter table hike auto_increment = 1;
 
     
     insert into hiker
