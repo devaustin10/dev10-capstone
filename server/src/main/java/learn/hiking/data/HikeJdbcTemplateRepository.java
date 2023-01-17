@@ -78,7 +78,7 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
                 + "hike_date = ?, "
                 + "hike_difficulty = ?, "
                 + "`description` = ?, "
-                + "where hiker_id = ? and trail_id = ?;";
+                + "where hike_id = ?;";
 
         return jdbcTemplate.update(sql,
                 hike.getHikeId(),
