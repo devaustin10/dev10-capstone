@@ -17,7 +17,6 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
 
     @Override
     public List<Hiker> findAll() {
-
     }
 
     @Override
