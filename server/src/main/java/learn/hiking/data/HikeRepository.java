@@ -16,8 +16,7 @@ deleteById
 
 
     List<Hike> findAll();
-
-    Hike findById();
+    Hike findById(int hikeId);
 
     Hike add(Hike hike);
 
