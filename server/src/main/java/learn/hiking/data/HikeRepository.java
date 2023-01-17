@@ -6,13 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface HikeRepository {
-/*
-findAll
-findById
-add
-update
-deleteById
- */
 
 
     List<Hike> findAll();

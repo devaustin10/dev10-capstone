@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import learn.hiking.models.Hike;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -31,15 +32,16 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
 
     @Override
     public List<Hike> findAll() {
-        final String sql = "select hike_id, hike_date, hike_difficulty, hiker_id, trail_id "
+        final String sql = "select hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id "
                 + "from hike limit 1000;";
         return jdbcTemplate.query(sql, new HikeMapper());
     }
 
     @Override
+    @Transactional //if RTE => roles back change it made
     public Hike findById(int hikeId) {
-        final String sql = "select hike_id, hike_date, hike_difficulty, hiker_id, trail_id from hike where hike_id = ?;";
-        Hike hike = (Hike)this.jdbcTemplate.query("select hike_id, hike_date, hike_difficulty, hiker_id, trail_id from hike where hike_id = ?;",
+        final String sql = "select hike_id, hike_date, hike_difficulty,`description`, hiker_id, trail_id from hike where hike_id = ?;";
+        Hike hike = (Hike)this.jdbcTemplate.query("select hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id from hike where hike_id = ?;",
                 new HikeMapper(), new Object[]{hikeId}).stream().findFirst().orElse((Hike) null);
         if (hike != null) {
             this.add(hike);
@@ -49,14 +51,15 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
 
     @Override
     public Hike add(Hike hike) {
-        final String sql = "insert into hike (hike_date, hike_difficulty, hiker_id, trail_id) from hike values (?,?,?,?);";
+        final String sql = "insert into hike (hike_date, hike_difficulty, `description`, hiker_id, trail_id) from hike values (?,?,?,?);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = this.jdbcTemplate.update((connection) -> {
-            PreparedStatement ps = connection.prepareStatement("insert into hike (hike_date, hike_difficulty, hiker_id, trail_id) from hike values (?,?,?,?);", 1);
+            PreparedStatement ps = connection.prepareStatement("insert into hike (hike_date, hike_difficulty, `description` hiker_id, trail_id) from hike values (?,?,?,?,?);", 1);
             ps.setString(1, String.valueOf(hike.getHikeDate()));
             ps.setString(2, hike.getHikeDifficulty());
-            ps.setString(3, String.valueOf(hike.getHikerId()));
-            ps.setString(4, String.valueOf(hike.getTrailId()));
+            ps.setString(3, hike.getDescription());
+            ps.setString(4, String.valueOf(hike.getHikerId()));
+            ps.setString(5, String.valueOf(hike.getTrailId()));
             return ps;
         }, keyHolder);
         if (rowsAffected <= 0) {
@@ -88,7 +91,9 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
 
 
     @Override
+    @Transactional
     public boolean deleteById(int hikeId) {
-        return jdbcTemplate.update("delete from hike where hike_id = ?;", hikeId) > 0;
+        this.jdbcTemplate.update("delete from hike where hike_id = ?;", new Object[]{hikeId});
+        return this.jdbcTemplate.update("delete from hike where hike_id = ?;", new Object[]{hikeId}) > 0;
     }
 }
