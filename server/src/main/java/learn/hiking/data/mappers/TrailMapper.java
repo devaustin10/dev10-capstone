@@ -15,8 +15,8 @@ public class TrailMapper implements RowMapper<Trail> {
         trail.setTrailName(resultSet.getString("trail_name"));
         trail.setTrailDistance(resultSet.getInt("trail_distance"));
         trail.setTrailDifficulty(resultSet.getString("trail_difficulty"));
-        trail.setLocationId(resultSet.getInt("location_id"));
-
+        trail.setCity(resultSet.getString("city"));
+        trail.setState(resultSet.getString("state"));
         return trail;
     }
 }

@@ -5,7 +5,10 @@ public class Trail {
     private String trailName;
     private int trailDistance;
     private String trailDifficulty;
-    private int locationId;
+    private String city;
+    private String state;
+
+
 
     public Trail() {
     }
@@ -42,11 +45,20 @@ public class Trail {
         this.trailDifficulty = trailDifficulty;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public String getCity() {
+        return city;
     }
 
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
+    public void setCity(String city) {
+        this.city = city;
     }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
 }

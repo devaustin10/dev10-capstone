@@ -2,7 +2,11 @@ package learn.hiking.data;
 
 import learn.hiking.models.Trail;
 
+import java.util.List;
+
 public interface TrailRepository {
+
+    List<Trail> findAll();
 
     Trail findById(int trailId);
 

@@ -9,7 +9,7 @@ public interface HikerRepository {
 
     List<Hiker> findAll();
 
-    Hiker findById();
+    Hiker findById(int hikerId);
 
     Hiker add(Hiker hiker);
 
