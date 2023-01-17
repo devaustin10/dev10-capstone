@@ -33,6 +33,11 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
     }
 
     @Override
+    public Hike findById() {
+        return null;
+    }
+
+    @Override
     public Hike findById(int hikeId) {
         final String sql = "select hiker_id, first_name, last_name, age, email from hike where hike_id = ?;";
         Hike hike = (Hike)this.jdbcTemplate.query("select hiker_id, first_name, last_name, age, email from hike where hike_id = ?;",
