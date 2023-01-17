@@ -13,6 +13,14 @@ public class Result<T> {
         return status;
     }
 
+    public ResultType getType() {
+        return type;
+    }
+
+    public boolean isSuccess() {
+        return type == ResultType.SUCCESS;
+    }
+
     public T getPayload() {
         return payload;
     }
@@ -30,9 +38,6 @@ public class Result<T> {
         this.type = type;
     }
 
-    public boolean isSuccess() {
-        return messages.size() == 0;
-    }
 
 
 }

@@ -1,5 +1,6 @@
 package learn.hiking.data;
 
+import learn.hiking.data.mappers.HikeMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import learn.hiking.models.Hiker;
@@ -16,7 +17,7 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
 
     @Override
     public List<Hiker> findAll() {
-        return null;
+
     }
 
     @Override
