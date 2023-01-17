@@ -6,6 +6,7 @@ import java.util.List;
 public class Result<T> {
     private ActionStatus status = ActionStatus.SUCCESS;
     private ArrayList<String> messages = new ArrayList<>();
+    private ResultType type = ResultType.SUCCESS;
     private T payload;
 
     public ActionStatus getStatus() {
@@ -24,12 +25,14 @@ public class Result<T> {
         this.payload = payload;
     }
 
-    public void addMessage(ActionStatus status, String message) {
-        this.status = status;
-        messages.add(message);
+    public void addMessage(String message, ResultType type) {
+        this.messages.add(message);
+        this.type = type;
     }
 
     public boolean isSuccess() {
         return messages.size() == 0;
     }
+
+
 }

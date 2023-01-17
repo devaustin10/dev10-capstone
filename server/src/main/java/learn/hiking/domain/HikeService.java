@@ -16,9 +16,43 @@ public class HikeService {
 
     public List<Hike> findAll() { return repository.findAll();}
 
+    public Hike findById(int hikeId) { return this.repository.findById(hikeId);}
+
+
+    public Result<Hike> add(Hike hike) {
+        Result<Hike> result = validate(hike);
+        if (!result.isSuccess()) {
+            return result;
+        }
+    }
+
+
+    public Result<Hike> update(Hike hike) {
+        Result<Hike> result = this.validate(hike);
+        if (!result.isSuccess()) {
+            return result;
+        } else if (hike.getHikeId() <= 0) {
+            result.addMessage("hikeId must be set for update", ResultType.INVALID);
+            return result;
+        } else {
+            if (!this.repository.update(hike)) {
+                String message = String.format("hikeId: %s, not found", hike.getHikeId());
+                result.addMessage(message, ResultType.NOT_FOUND);
+            }
+            return result;
+        }
+    }
 
 
 
 
 
+    private Result<Hike> validate(Hike hike) {
+//        Result<Hike> result = new Result<>();
+//        if (hike == null) {
+//            result.addMessage("hike cannot be null", ResultType.INVALID);
+//        }
+
+        return null;
+    }
 }
