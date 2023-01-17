@@ -20,7 +20,7 @@ trail_difficulty_id int primary key auto_increment,
 create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
-trail_distance int not null, -- might need to change to decimal later
+trail_distance decimal not null, 
 trail_difficulty_id int not null,
 city varchar (250) not null,
 state varchar (250) not null,
