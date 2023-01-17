@@ -3,6 +3,14 @@ drop database if exists hiking;
 create database hiking;
 use hiking;
 
+create table hiker (
+hiker_id int primary key auto_increment,
+first_name varchar(250) not null,
+last_name varchar(250) not null,
+age int null,
+email varchar(250) not null
+); 
+    
 create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
