@@ -15,8 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class HikeJdbcTemplateRepositoryTest {
 
-    final static int NEXT_ID = 9;
-
     @Autowired
     HikeJdbcTemplateRepository repository;
 

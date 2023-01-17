@@ -26,7 +26,7 @@ constraint fk_trail_trail_difficulty_id
 create table hike (
 hike_id int primary key auto_increment,
 hike_date date not null,
-difficulty varchar (255) not null,
+hike_difficulty varchar (255) not null,
 `description` varchar (255) null,
 hiker_id int not null,
 trail_id int not null,

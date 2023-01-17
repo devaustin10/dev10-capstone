@@ -1,7 +1,7 @@
 drop database if exists hiking_test;
 
-create database hiking;
-use hiking;
+create database hiking_test;
+use hiking_test;
 
 create table hiker (
 hiker_id int primary key auto_increment,
@@ -24,7 +24,7 @@ constraint fk_trail_trail_difficulty_id
 create table hike (
 hike_id int primary key auto_increment,
 hike_date date not null,
-difficulty varchar (255) not null,
+hike_difficulty varchar (255) null,
 `description` varchar (255) null,
 hiker_id int not null,
 trail_id int not null,
@@ -63,19 +63,17 @@ begin
 	insert into hike 
 		(hike_id, hike_date, hike_difficulty, hiker_id, trail_id)
 	values
-		(1, '01/11/2011', 1, 1);
-        
-	insert into trail
-		(trail_id, trail_name, trail_distance, trail_difficulty)
-	values
-		(1,'The Mountain', 1 , 'Easy');
+		(1, '01/11/2011', 'Easy', 1, 1);
         
 	insert into trail_difficulty
 		(trail_difficulty_id, `description`)
 	values
-        (1, 'Easy');
+        (1, 'Easy');    
         
-		
+	insert into trail
+		(trail_id, trail_name, trail_distance)
+	values
+		(1,'The Mountain', 1);
         
 end //
 -- 4. Change the statement terminator back to the original.
