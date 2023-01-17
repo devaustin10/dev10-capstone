@@ -3,6 +3,7 @@ package learn.hiking.security;
 import learn.hiking.data.AppUserRepository;
 import learn.hiking.domain.ActionStatus;
 import learn.hiking.domain.Result;
+import learn.hiking.domain.ResultType;
 import learn.hiking.models.AppUser;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.User;
@@ -51,7 +52,7 @@ public class AppUserService implements UserDetailsService {
             appUser = repository.create(appUser);
             result.setPayload(appUser);
         } catch (DuplicateKeyException e) {
-            result.addMessage(ActionStatus.INVALID, "The provided username already exists");
+            result.addMessage("The provided username already exists", ResultType.INVALID);
         }
 
         return result;
@@ -60,23 +61,22 @@ public class AppUserService implements UserDetailsService {
     private Result<AppUser> validate(String username, String password) {
         Result<AppUser> result = new Result<>();
         if (username == null || username.isBlank()) {
-            result.addMessage(ActionStatus.INVALID, "username is required");
+            result.addMessage("username is required", ResultType.INVALID);
             return result;
         }
 
         if (password == null) {
-            result.addMessage(ActionStatus.INVALID, "password is required");
+            result.addMessage("password is required", ResultType.INVALID);
             return result;
         }
 
         if (username.length() > 50) {
-            result.addMessage(ActionStatus.INVALID, "username must be less than 50 characters");
+            result.addMessage("username must be less than 50 characters", ResultType.INVALID);
         }
 
         if (!isValidPassword(password)) {
-            result.addMessage(ActionStatus.INVALID,
-                    "password must be at least 8 character and contain a digit," +
-                            " a letter, and a non-digit/non-letter");
+            result.addMessage("password must be at least 8 character and contain a digit," +
+                            " a letter, and a non-digit/non-letter", ResultType.INVALID);
         }
 
         return result;
