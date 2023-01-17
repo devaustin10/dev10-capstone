@@ -16,6 +16,8 @@ trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
 trail_distance int not null, -- might need to change to decimal later
 trail_difficulty_id varchar (250) null,
+city varchar (250) not null,
+state varchar (250) not null,
 constraint fk_trail_trail_difficulty_id
 	foreign key (trail_difficulty_id)
 	references trail_difficulty(trail_difficulty_id)
