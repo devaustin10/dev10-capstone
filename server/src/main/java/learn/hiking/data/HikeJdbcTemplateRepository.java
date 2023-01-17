@@ -37,11 +37,6 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
     }
 
     @Override
-    public Hike findById() {
-        return null;
-    }
-
-    @Override
     public Hike findById(int hikeId) {
         final String sql = "select hike_id, hike_date, hike_difficulty, hiker_id, trail_id from hike where hike_id = ?;";
         Hike hike = (Hike)this.jdbcTemplate.query("select hike_id, hike_date, hike_difficulty, hiker_id, trail_id from hike where hike_id = ?;",
@@ -57,7 +52,7 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
         final String sql = "insert into hike (hike_date, hike_difficulty, hiker_id, trail_id) from hike values (?,?,?,?);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = this.jdbcTemplate.update((connection) -> {
-            PreparedStatement ps = connection.prepareStatement("insert into hike (hike_date, hike_difficulty, hiker_id, trail_id) from hike values (?,?,?,?);",1);
+            PreparedStatement ps = connection.prepareStatement("insert into hike (hike_date, hike_difficulty, hiker_id, trail_id) from hike values (?,?,?,?);", 1);
             ps.setString(1, String.valueOf(hike.getHikeDate()));
             ps.setString(2, hike.getHikeDifficulty());
             ps.setString(3, String.valueOf(hike.getHikerId()));
@@ -70,6 +65,7 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
             hike.setHikeId(keyHolder.getKey().intValue());
             return hike;
         }
+    }
 
     @Override
     public boolean update(Hike hike) {
