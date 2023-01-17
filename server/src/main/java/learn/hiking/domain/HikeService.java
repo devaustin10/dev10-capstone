@@ -23,6 +23,13 @@ public class HikeService {
         Result<Hike> result = validate(hike);
         if (!result.isSuccess()) {
             return result;
+        } else if (hike.getHikeId() != 0) {
+            result.addMessage("hikeId cannot be set for add", ResultType.INVALID);
+            return result;
+        } else {
+            hike = this.repository.add(hike);
+            result.setPayload(hike);
+            return result;
         }
     }
 
@@ -43,15 +50,19 @@ public class HikeService {
         }
     }
 
+    public boolean deleteById(int hikeId) {
+        return this.repository.deleteById(hikeId);
+    }
+
 
 
 
 
     private Result<Hike> validate(Hike hike) {
-//        Result<Hike> result = new Result<>();
-//        if (hike == null) {
-//            result.addMessage("hike cannot be null", ResultType.INVALID);
-//        }
+        Result<Hike> result = new Result<>();
+        if (hike == null) {
+            result.addMessage("hike cannot be null", ResultType.INVALID);
+        }
 
         return null;
     }
