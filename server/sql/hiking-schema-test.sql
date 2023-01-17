@@ -15,12 +15,16 @@ create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
 trail_distance int not null, -- might need to change to decimal later
-trail_difficulty varchar (250) null
+trail_difficulty_id varchar (250) null,
+constraint fk_trail_trail_difficulty_id
+	foreign key (trail_difficulty_id)
+	references trail_difficulty(trail_difficulty_id)
 );
 
 create table hike (
 hike_id int primary key auto_increment,
 hike_date date not null,
+difficulty varchar (255) null,
 `description` varchar (255) not null,
 hiker_id int not null,
 trail_id int not null,
@@ -31,11 +35,18 @@ constraint fk_hike_trail_id
 	foreign key (trail_id)
 	references trail(trail_id)
 	);
+    
+create table trail_difficulty (
+trail_difficulty_id int primary key auto_increment,
+`description` varchar (255) not null
+);
 
 delimiter //
 create procedure set_known_good_state()
 begin
 
+	delete from trail_difficulty;
+    alter table trail_difficulty auto_increment = 1;
     delete from trail;
     alter table trail auto_increment = 1;
 	delete from hike;
@@ -44,17 +55,27 @@ begin
     alter table hiker auto_increment = 1;
 
     
-    insert into hiker(hiker_id, first_name, last_name, age, email) values
+    insert into hiker
+		(hiker_id, first_name, last_name, age, email) 
+    values
         (1, 'John', 'Smith', 25, 'JohnSmith@gmail.com');
         
-	insert into hike (hike_id, hike_date, hike_difficulty, hiker_id, trail_id)
-		values
-	(1, '01/11/2011', 1, 1);
+	insert into hike 
+		(hike_id, hike_date, hike_difficulty, hiker_id, trail_id)
+	values
+		(1, '01/11/2011', 1, 1);
         
 	insert into trail
 		(trail_id, trail_name, trail_distance, trail_difficulty)
 	values
 		(1,'The Mountain', 1 , 'Easy');
+        
+	insert into trail_difficulty
+		(trail_difficulty_id, `description`)
+	values
+        (1, 'Easy');
+        
+		
         
 end //
 -- 4. Change the statement terminator back to the original.
