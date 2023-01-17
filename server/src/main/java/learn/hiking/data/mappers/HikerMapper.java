@@ -16,7 +16,6 @@ public class HikerMapper implements RowMapper<Hiker> {
         hiker.setLastName(resultSet.getString("last_name"));
         hiker.setAge(resultSet.getInt("age"));
         hiker.setEmail(resultSet.getString("email"));
-        hiker.setTrailId(resultSet.getInt("trail_id"));
 
         return hiker;
     }
