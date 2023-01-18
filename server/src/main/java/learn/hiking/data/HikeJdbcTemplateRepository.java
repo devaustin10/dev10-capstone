@@ -11,6 +11,7 @@ import learn.hiking.models.Hike;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 /*
@@ -49,10 +50,11 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
 
     @Override
     public Hike add(Hike hike) {
-        final String sql = "insert into hike (hike_date, hike_difficulty, `description`, hiker_id, trail_id) from hike values (?,?,?,?);";
+        final String sql = "insert into hike (hike_date, hike_difficulty, `description`, hiker_id, trail_id) "
+                + " values (?,?,?,?,?);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = this.jdbcTemplate.update((connection) -> {
-            PreparedStatement ps = connection.prepareStatement("insert into hike (hike_date, hike_difficulty, `description` hiker_id, trail_id) from hike values (?,?,?,?,?);", 1);
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, String.valueOf(hike.getHikeDate()));
             ps.setString(2, hike.getHikeDifficulty());
             ps.setString(3, hike.getDescription());
