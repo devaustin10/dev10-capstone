@@ -78,9 +78,11 @@ class HikeJdbcTemplateRepositoryTest {
     private Hike makeHike() {
         //  (hike_id, hike_date, hike_difficulty, hiker_id, trail_id)
         Hike hike = new Hike();
-        hike.setDescription("Test");
-        hike.setHikeDifficulty("TestEasy");
         hike.setHikeDate(LocalDate.of(1985, 8, 15));
+        hike.setHikeDifficulty("TestEasy");
+        hike.setDescription("Test");
+        hike.setHikerId(1);
+        hike.setTrailId(1);
         return hike;
     }
 

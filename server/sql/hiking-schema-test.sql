@@ -90,9 +90,9 @@ set sql_safe_updates = 0;
         (1,'The Mountain', 1, 'Dallas', 'Texas', 1);    
 
     insert into hike 
-        (hike_id, hike_date, hike_difficulty, hiker_id, trail_id)
+        (hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id)
     values
-        (1, '2011-01-11', 'Easy', 1, 1);
+        (1, '2011-01-11', 'Easy', 'Easy Trail', 1, 1);
 
 
        set sql_safe_updates = 1;
@@ -100,8 +100,6 @@ set sql_safe_updates = 0;
 end //
 -- 4. Change the statement terminator back to the original.
 delimiter ;
-
- 
 
 call set_known_good_state();
 call set_known_good_state();
