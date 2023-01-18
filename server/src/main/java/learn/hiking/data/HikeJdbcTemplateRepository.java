@@ -1,6 +1,7 @@
 package learn.hiking.data;
 
 import learn.hiking.data.mappers.HikeMapper;
+import learn.hiking.data.mappers.TrailMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -41,12 +42,9 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
     @Transactional //if RTE => roles back change it made
     public Hike findById(int hikeId) {
         final String sql = "select hike_id, hike_date, hike_difficulty,`description`, hiker_id, trail_id from hike where hike_id = ?;";
-        Hike hike = (Hike)this.jdbcTemplate.query("select hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id from hike where hike_id = ?;",
-                new HikeMapper(), new Object[]{hikeId}).stream().findFirst().orElse((Hike) null);
-        if (hike != null) {
-            this.add(hike);
-        }
-        return null;
+        return jdbcTemplate.query(sql, new HikeMapper(), hikeId).stream()
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

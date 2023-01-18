@@ -30,13 +30,12 @@ public class TrailDifficultyJdbcTemplateRepository implements TrailDifficultyRep
 
   @Override
     public TrailDifficulty findById(int trailDifficultyId){
-      final String sql = "select trail_difficulty_id,`description` from trail_difficulty where trail_difficulty_id = ?;";
-      TrailDifficulty trail = (TrailDifficulty) this.jdbcTemplate.query("select trail_id, trail_name, trail_distance, trail_difficulty_id, city, state from trail where trail_id = ?;",
-              new TrailDifficultyMapper(), new Object[]{trailDifficultyId}).stream().findFirst().orElse((TrailDifficulty) null);
-      if (trail != null) {
-            //this.add(trail);
-          //unfinished
-      }
-      return null;
+      final String sql = "select trail_difficulty_id,`description` " +
+              "from trail_difficulty " +
+              "where trail_difficulty_id = ?;";
+
+      return jdbcTemplate.query(sql, new TrailDifficultyMapper(), trailDifficultyId).stream()
+              .findFirst()
+              .orElse(null);
     }
 }

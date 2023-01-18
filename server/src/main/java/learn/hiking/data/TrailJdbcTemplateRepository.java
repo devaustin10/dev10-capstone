@@ -1,5 +1,6 @@
 package learn.hiking.data;
 
+import learn.hiking.data.mappers.TrailDifficultyMapper;
 import learn.hiking.data.mappers.TrailMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -36,12 +37,9 @@ public class TrailJdbcTemplateRepository implements TrailRepository {
     @Override
     public Trail findById(int trailId) {
         final String sql = "select trail_id, trail_name, trail_distance, trail_difficulty_id, city, state from trail where trail_id = ?;";
-        Trail trail = (Trail)this.jdbcTemplate.query("select trail_id, trail_name, trail_distance, trail_difficulty_id, city, state from trail where trail_id = ?;",
-                new TrailMapper(), new Object[]{trailId}).stream().findFirst().orElse((Trail) null);
-        if (trail != null) {
-            this.add(trail);
-        }
-        return null;
+        return jdbcTemplate.query(sql, new TrailMapper(), trailId).stream()
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
