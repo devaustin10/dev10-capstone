@@ -15,9 +15,9 @@ create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
 trail_distance int not null, -- might need to change to decimal later
-trail_difficulty_id int not null,
 city varchar (250) not null,
 state varchar (250) not null,
+trail_difficulty_id int not null,
 
 constraint fk_trail_trail_difficulty_id
 	foreign key (trail_difficulty_id)
@@ -74,9 +74,9 @@ begin
         (1, 'Easy');    
         
 	insert into trail
-		(trail_id, trail_name, trail_distance)
+		(trail_id, trail_name, trail_distance, city, state, trail_difficulty_id)
 	values
-		(1,'The Mountain', 1);
+		(1,'The Mountain', 1, 'Dallas', 'Texas', 1);
         
 end //
 -- 4. Change the statement terminator back to the original.
