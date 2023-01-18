@@ -6,7 +6,6 @@ public class Hiker {
         private String lastName;
         private int age;
         private String email;
-        private int trailId;
 
         public Hiker() {
         }
@@ -50,11 +49,4 @@ public class Hiker {
         public void setEmail(String email) {
             this.email = email;
         }
-
-        public int getTrailId() {
-        return trailId;
-    }
-        public void setTrailId(int trailId) {
-        this.trailId = trailId;
-    }
 }

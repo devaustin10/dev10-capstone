@@ -2,6 +2,7 @@ package learn.hiking.data;
 
 import learn.hiking.data.mappers.HikeMapper;
 import learn.hiking.data.mappers.HikerMapper;
+import learn.hiking.data.mappers.TrailMapper;
 import learn.hiking.models.Hike;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -34,12 +35,9 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
     @Transactional
     public Hiker findById(int hikerId) {
         final String sql = "select hiker_id, first_name, last_name, age, email, from hiker where hiker_id = ?;";
-        Hiker hiker = (Hiker) this.jdbcTemplate.query("select hiker_id, first_name, last_name, age, hiker_id, email from hiker where hiker_id = ?;",
-                new HikerMapper(), new Object[]{hikerId}).stream().findFirst().orElse((Hiker) null);
-        if (hiker != null) {
-            this.add(hiker);
-        }
-        return null;
+        return jdbcTemplate.query(sql, new HikerMapper(), hikerId).stream()
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

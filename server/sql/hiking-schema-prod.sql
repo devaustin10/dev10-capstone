@@ -10,11 +10,16 @@ last_name varchar(250) not null,
 age int null,
 email varchar(250) not null
 ); 
-    
+
+ create table trail_difficulty (
+trail_difficulty_id int primary key auto_increment,
+`description` varchar (255) not null
+);   
+
 create table trail (
 trail_id int primary key auto_increment,
 trail_name varchar (250) not null,
-trail_distance int not null, -- might need to change to decimal later
+trail_distance decimal not null, 
 trail_difficulty_id int not null,
 city varchar (250) not null,
 state varchar (250) not null,
@@ -39,9 +44,6 @@ constraint fk_hike_trail_id
 	references trail(trail_id)
 	);
     
-create table trail_difficulty (
-trail_difficulty_id int primary key auto_increment,
-`description` varchar (255) not null
-);
+
 
 
