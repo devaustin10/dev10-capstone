@@ -46,8 +46,8 @@ class HikerJdbcTemplateRepositoryTest {
     void shouldFindHiker() {
         Hiker easy = repository.findById(1);
         assertEquals(1, easy.getHikerId());
-        assertEquals("John", easy.getFirstName());
-        assertEquals("Smith", easy.getLastName());
+        assertEquals("Jane", easy.getFirstName());
+        assertEquals("Doe", easy.getLastName());
     }
 
     @Test

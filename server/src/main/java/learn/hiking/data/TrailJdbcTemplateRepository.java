@@ -84,11 +84,14 @@ public class TrailJdbcTemplateRepository implements TrailRepository {
                 trail.getTrailDistance(),
                 trail.getTrailDifficultyId(),
                 trail.getCity(),
-                trail.getState()) > 0;
+                trail.getState(),
+                trail.getTrailId()) > 0;
     }
 
     @Override
+    @Transactional
     public boolean deleteById(int trailId) {
+        jdbcTemplate.update("delete from hike where trail_id = ?;", trailId);
         return jdbcTemplate.update("delete from trail where trail_id = ?;", trailId) > 0;
     }
 }
