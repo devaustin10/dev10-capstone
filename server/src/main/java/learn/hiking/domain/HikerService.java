@@ -52,7 +52,7 @@ public class HikerService {
         return this.repository.deleteById(hikerId);
     }
 
-    private Result<Hike> validate(Hiker hiker) {
+    private Result<Hiker> validate(Hiker hiker) {
         Result<Hiker> result = new Result<>();
         if (hiker == null) {
             result.addMessage("hiker cannot be null", ResultType.INVALID);
@@ -66,6 +66,9 @@ public class HikerService {
             if (Validations.isNullOrBlank((hiker.getEmail()))) {
                 result.addMessage("hiker must have valid email", ResultType.INVALID);
             }
+            if (hiker.getAge() < 8 || hiker.getAge() > 100) {
+                result.addMessage("hiker age must be greater than 8 and less than 100", ResultType.INVALID);
+            } //age is currently optional
         }
 
         return result;
