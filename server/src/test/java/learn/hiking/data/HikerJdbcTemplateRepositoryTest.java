@@ -8,11 +8,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.swing.*;
+import java.time.LocalDate;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class HikerJdbcTemplateRepositoryTest {
+
+    final static int NEXT_ID = 2;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -26,25 +29,60 @@ class HikerJdbcTemplateRepositoryTest {
     @BeforeEach
     void setUp() { knownGoodState.set();}
 
+    // (hiker_id, first_name, last_name, age, email)
+
     @Test
-    void findAll() {
+    void shouldFindAll() {
+        List<Hiker> hiker = repository.findAll();
+        assertNotNull(hiker);
+
+        // can't predict order
+        // if delete is first, we're down to 0
+        // if add is first, we may go as high as 3
+        assertTrue(hiker.size() >= 0 && hiker.size() <= 3);
     }
 
     @Test
-    void findById() {
+    void shouldFindHiker() {
+        Hiker easy = repository.findById(1);
+        assertEquals(1, easy.getHikerId());
+        assertEquals("John", easy.getFirstName());
+        assertEquals("Smith", easy.getLastName());
     }
 
     @Test
-    void add() {
+    void shouldAdd() {
+        // all fields
+        Hiker hiker = makeHiker();
+        Hiker actual = repository.add(hiker);
+        assertNotNull(actual);
+        assertEquals(NEXT_ID, actual.getHikerId());
+
     }
 
     @Test
-    void update() {
+    void shouldUpdate() {
+        Hiker hiker = makeHiker();
+        hiker.setHikerId(1);
+        assertTrue(repository.update(hiker));
+
+        hiker.setHikerId(10);
+        assertFalse(repository.update(hiker));
     }
 
     @Test
-    void deleteById() {
+    void shouldDelete() {
         assertTrue(repository.deleteById(2));
         assertFalse(repository.deleteById(2));
+    }
+
+    private Hiker makeHiker() {
+        //  (hiker_id, first_name, last_name, age, email)
+        Hiker hiker = new Hiker();
+        hiker.setFirstName("Jane");
+        hiker.setLastName("Doe");
+        hiker.setAge(25);
+        hiker.setEmail("JaneDoe@gmail.com");
+        return hiker;
     }
 }

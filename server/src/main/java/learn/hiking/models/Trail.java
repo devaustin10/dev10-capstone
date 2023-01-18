@@ -3,12 +3,10 @@ package learn.hiking.models;
 public class Trail {
     private int trailId;
     private String trailName;
-    private int trailDistance;
-    private int trailDifficultyId;
     private String city;
     private String state;
-
-
+    private double trailDistance;
+    private int trailDifficultyId;
 
     public Trail() {
     }
@@ -29,11 +27,11 @@ public class Trail {
         this.trailName = trailName;
     }
 
-    public int getTrailDistance() {
+    public double getTrailDistance() {
         return trailDistance;
     }
 
-    public void setTrailDistance(int trailDistance) {
+    public void setTrailDistance(double trailDistance) {
         this.trailDistance = trailDistance;
     }
 

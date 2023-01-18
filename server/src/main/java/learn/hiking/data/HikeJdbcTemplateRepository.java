@@ -74,26 +74,24 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
     public boolean update(Hike hike) {
 
         final String sql = "update hike set "
-                + "hike_id = ?, "
                 + "hike_date = ?, "
                 + "hike_difficulty = ?, "
-                + "`description` = ?, "
+                + "`description` = ? "
                 + "where hike_id = ?;";
 
         return jdbcTemplate.update(sql,
-                hike.getHikeId(),
                 hike.getHikeDate(),
                 hike.getHikeDifficulty(),
                 hike.getDescription(),
-                hike.getHikerId(),
-                hike.getTrailId()) > 0;
+//                hike.getHikerId(),
+//                hike.getTrailId(),
+                hike.getHikeId()) > 0;
     }
 
 
     @Override
     @Transactional
     public boolean deleteById(int hikeId) {
-        this.jdbcTemplate.update("delete from hike where hike_id = ?;", new Object[]{hikeId});
-        return this.jdbcTemplate.update("delete from hike where hike_id = ?;", new Object[]{hikeId}) > 0;
+        return jdbcTemplate.update("delete from hike where hike_id = ?;", hikeId) > 0;
     }
 }

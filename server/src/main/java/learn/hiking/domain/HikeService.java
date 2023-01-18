@@ -9,6 +9,8 @@ import java.util.List;
 
 @Service
 public class HikeService {
+
+    // verify times ->  mockito (advanced mockito learning goal)
     private final HikeRepository repository;
 
     public HikeService(HikeRepository repository) {

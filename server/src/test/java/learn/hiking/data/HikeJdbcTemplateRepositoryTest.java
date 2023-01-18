@@ -62,10 +62,10 @@ class HikeJdbcTemplateRepositoryTest {
     @Test
     void shouldUpdate() {
         Hike hike = makeHike();
-        hike.setHikeId(3);
+        hike.setHikeId(1);
         assertTrue(repository.update(hike));
 
-        hike.setHikerId(10);
+        hike.setHikeId(10);
         assertFalse(repository.update(hike));
     }
 
