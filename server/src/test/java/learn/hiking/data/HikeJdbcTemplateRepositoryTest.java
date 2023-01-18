@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class HikeJdbcTemplateRepositoryTest {
 
-    final static int NEXT_ID = 9;
+    final static int NEXT_ID = 2;
 
     @Autowired
     HikeJdbcTemplateRepository repository;
@@ -57,20 +57,30 @@ class HikeJdbcTemplateRepositoryTest {
         assertNotNull(actual);
         assertEquals(NEXT_ID, actual.getHikeId());
 
-        // null dob
-        hike = makeHike();
-        hike.setHikeDate(null);
-        actual = repository.add(hike);
-        assertNotNull(actual);
-        assertEquals(NEXT_ID + 1, actual.getHikeId());
+    }
+
+    @Test
+    void shouldUpdate() {
+        Hike hike = makeHike();
+        hike.setHikeId(3);
+        assertTrue(repository.update(hike));
+
+        hike.setHikerId(10);
+        assertFalse(repository.update(hike));
+    }
+
+    @Test
+    void shouldDelete() {
+        assertTrue(repository.deleteById(2));
+        assertFalse(repository.deleteById(2));
     }
 
     private Hike makeHike() {
-        Hike agent = new Hike();
-        hike.setFirstName("Test");
-        hike.setLastName("Last Name");
-        hike.setDob(LocalDate.of(1985, 8, 15));
-        hike.setHeightInInches(66);
+        //  (hike_id, hike_date, hike_difficulty, hiker_id, trail_id)
+        Hike hike = new Hike();
+        hike.setDescription("Test");
+        hike.setHikeDifficulty("TestEasy");
+        hike.setHikeDate(LocalDate.of(1985, 8, 15));
         return hike;
     }
 
