@@ -2,10 +2,12 @@ package learn.hiking.domain;
 
 import learn.hiking.data.TrailRepository;
 import learn.hiking.models.Trail;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class TrailService {
     private final TrailRepository repository;
 
