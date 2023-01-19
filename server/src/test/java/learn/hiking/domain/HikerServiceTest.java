@@ -67,10 +67,11 @@ class HikerServiceTest {
 
     @Test
     void shouldNotUpdateWhenInvalidValues() {
-        Hiker hiker = new Hiker(2, "Johnny, "Appleseed", 128, )
+        Hiker hiker = new Hiker(2, "Johnny", "Appleseed", 128, "johnnyappleseed@aol.com");
+        when(repository.update(hiker)).thenReturn(false);
+        Result<Hiker> result = service.update(hiker);
+        assertEquals(ResultType.INVALID, result.getType());
     }
-
-
 
     Hiker makeHiker() {
         Hiker hiker = new Hiker();
