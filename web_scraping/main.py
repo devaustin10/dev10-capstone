@@ -14,7 +14,7 @@ for url in range(0, 51):
         city = trail.find('div', class_='float-xs-right').text.split(',')[-2].strip()
         state = trail.find('div', class_='float-xs-right').text.split(',')[-1].strip()
 
-        # print(f'{name} | {distance} miles | {difficulty} | {city}, {state}')
+        print(f'{name} | {distance} miles | {difficulty} | {city}, {state}')
 
         file = open('trails.csv', 'a', encoding='utf-8')
 
