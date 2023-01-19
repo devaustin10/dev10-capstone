@@ -10,7 +10,15 @@ public class Hiker {
         public Hiker() {
         }
 
-        public int getHikerId() {
+    public Hiker(int hikerId, String firstName, String lastName, int age, String email) {
+        this.hikerId = hikerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+    }
+
+    public int getHikerId() {
             return hikerId;
         }
 

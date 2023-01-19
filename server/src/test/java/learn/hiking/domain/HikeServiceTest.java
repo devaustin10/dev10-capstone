@@ -54,13 +54,40 @@ class HikeServiceTest {
     }
 
     @Test
-    void update() {
+    void shouldUpdate() {
+        Hike hike = new Hike(2,LocalDate.of(2023, 1,12),"Tough","This hike was something else!",1,1);
 
+        when(repository.update(hike)).thenReturn(true);
+        Result<Hike> actual = service.update(hike);
+        assertEquals(ResultType.SUCCESS,actual.getType());
     }
 
     @Test
-    void deleteById() {
+    void shouldNotUpdateMissing() {
+        Hike hike = new Hike(99,LocalDate.of(2023, 1,12),"Easy","I did this hike blindfolded.",1,1);
+
+        when(repository.update(hike)).thenReturn(false);
+        Result<Hike> actual = service.update(hike);
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
+
+//    @Test
+//    void shouldNotUpdateWhenInvalid() {
+//        Hike hike = new Hike(35, LocalDate.of(2023, 1,12), null, "Test Description",1,1);
+//
+//        Result<Hike> actual = service.update(hike);
+//        assertEquals(ResultType.INVALID, actual.getType());
+
+//        agency.setShortName("TEST");
+//        agency.setLongName(" ");
+//        actual = service.update(agency);
+//        assertEquals(ResultType.INVALID, actual.getType());
+//
+//        agency.setAgencyId(0);
+//        agency.setLongName("Long Name Test");
+//        actual = service.update(agency);
+//        assertEquals(ResultType.INVALID, actual.getType());
+//    }
 
     Hike makeHike() {
         Hike hike = new Hike();

@@ -3,10 +3,12 @@ package learn.hiking.domain;
 import learn.hiking.data.HikerRepository;
 import learn.hiking.models.Hike;
 import learn.hiking.models.Hiker;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class HikerService {
     private final HikerRepository repository;
 
