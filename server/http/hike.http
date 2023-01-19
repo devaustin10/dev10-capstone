@@ -8,32 +8,33 @@ GET {{url}}/2 HTTP/1.1
 
 ###
 
-PUT {{url}}/2 HTTP/1.1
+PUT {{url}}/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2NTMwNn0.6KpCdLtEz-GN9iRXD05IMDWeK2s5WaNA6XwMAmPwxM4
 Content-Type: application/json
 
 {
-    "hike_id": 1,
-    "hike_date": "2020-11-20",
-    "hike_difficulty": "Difficult",
-    "description": "",
-    "hiker_id": 1,
-    "trail_id": 41
+    "hikeId": 1,
+    "hikeDate": "2020-11-20",
+    "hikeDifficulty": "Difficult",
+    "description": "Test Update",
+    "hikerId": 3,
+    "trailId": 41
 }
 
 ###
 
 DELETE {{url}}/2 HTTP/1.1
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2NDI0OH0.yP6kgoy5Q6olMEQUzFs4wKtDTzsm7hbcwRa8TpN3Q9U
 
 ###
 POST {{url}} HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2MTU3OX0.UiZGs-qCHevqL1tVxxbqZh7cOuYBkSpcFC-ber6e76U
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2NTY3OH0.-FeJ98yEJstNt7v0K59QN5jWs8F_EjdypE52uuVa3BE
 Content-Type: application/json
 
 {
-    "hike_date": "2021-10-31",
-    "hike_difficulty": "Easy",
+    "hikeDate": "2021-10-31",
+    "hikeDifficulty": "Easy",
     "description": "Great mountains!",
-    "hiker_id": 3,
-    "trail_id": 35
+    "hikerId": 3,
+    "trailId": 35
 }
