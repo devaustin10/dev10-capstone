@@ -2,16 +2,16 @@ package learn.hiking.controllers;
 
 import learn.hiking.models.Hike;
 import learn.hiking.domain.HikeService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import learn.hiking.domain.Result;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-// @RequestMapping("")  - Do we know what URL goes here?
+@RequestMapping("/hike")
 public class HikeController {
 
     private final HikeService service;
@@ -19,7 +19,42 @@ public class HikeController {
     public HikeController(HikeService service) {this.service = service;}
 
     @GetMapping
-    public List<Hike> findAll() {return service.findAll();}
+    public List<Hike> findAll() { return service.findAll(); }
+
+    @GetMapping("/{hikeId}")
+    public Hike findById(@PathVariable int hikeId) { return service.findById(hikeId); }
+
+    @PostMapping
+    public ResponseEntity<Object> add(@RequestBody Hike hike) {
+        Result<Hike> result = service.add(hike);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
+    @PutMapping("/{hikeId}")
+    public ResponseEntity<Object> update(@PathVariable int hikeId, @RequestBody Hike hike) {
+        if (hikeId != hike.getHikeId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<Hike> result = service.update(hike);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
+    }
+
+    @DeleteMapping("/{hikeId}")
+    public ResponseEntity<Void> deleteById(@PathVariable int hikeId) {
+        if (service.deleteById(hikeId)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
     // BugSightingController Pathing Guideline
 }
