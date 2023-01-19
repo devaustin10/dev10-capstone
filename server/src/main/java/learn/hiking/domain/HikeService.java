@@ -63,8 +63,10 @@ public class HikeService {
             if (Validations.isNullOrBlank(String.valueOf(hike.getHikerId()))) {
                 result.addMessage("hike must have hikerId", ResultType.INVALID);
             }
-            if (Validations.isNullOrBlank(String.valueOf((hike.getHikeDate()))) || hike.getHikeDate().isAfter(LocalDate.now())) {
-                result.addMessage("hike date cannot be blank or a future date", ResultType.INVALID);
+            if (Validations.isNullOrBlank(String.valueOf(hike.getHikeDate()))) {
+                result.addMessage("hike date cannot be blank", ResultType.INVALID);
+            } else if (hike.getHikeDate().isAfter(LocalDate.now())) {
+                 result.addMessage("hike date cannot be a future date", ResultType.INVALID);
             }
             if (Validations.isNullOrBlank(hike.getDescription())) {
                 result.addMessage("hike description cannot be blank or empty", ResultType.INVALID);
