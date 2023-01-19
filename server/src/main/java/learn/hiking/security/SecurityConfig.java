@@ -32,8 +32,6 @@ public class SecurityConfig {
                 // new...
                 .antMatchers("/create_account").permitAll()
                 .antMatchers("/refresh_token").authenticated()
-//                .antMatchers(HttpMethod.GET,
-//                        "/order").permitAll()
                 .antMatchers(HttpMethod.GET,
                         "/hike", "/hike/*").permitAll()
                 .antMatchers(HttpMethod.POST,
@@ -42,6 +40,28 @@ public class SecurityConfig {
                         "/hike/*").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE,
                         "/hike/*").hasAnyRole("ADMIN")
+
+                // Set up the endpoints for hiker & trail
+
+//                .antMatchers(HttpMethod.GET,
+//                        "/hike", "/hike/*").permitAll()
+//                .antMatchers(HttpMethod.POST,
+//                        "/hike").hasAnyRole("USER", "ADMIN")
+//                .antMatchers(HttpMethod.PUT,
+//                        "/hike/*").hasAnyRole("USER", "ADMIN")
+//                .antMatchers(HttpMethod.DELETE,
+//                        "/hike/*").hasAnyRole("ADMIN")
+//
+//
+//                .antMatchers(HttpMethod.GET,
+//                        "/hike", "/hike/*").permitAll()
+//                .antMatchers(HttpMethod.POST,
+//                        "/hike").hasAnyRole("USER", "ADMIN")
+//                .antMatchers(HttpMethod.PUT,
+//                        "/hike/*").hasAnyRole("USER", "ADMIN")
+//                .antMatchers(HttpMethod.DELETE,
+//                        "/hike/*").hasAnyRole("ADMIN")
+
                 .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(authConfig), converter))

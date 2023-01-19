@@ -27,7 +27,7 @@ public class JwtConverter {
     public String getTokenFromUser(AppUser user) {
 
         String authorities = user.getAuthorities().stream()
-                .map(i -> i.getAuthority())
+                .map(i -> i.getAuthority().substring(5))
                 .collect(Collectors.joining(","));
 
         return Jwts.builder()

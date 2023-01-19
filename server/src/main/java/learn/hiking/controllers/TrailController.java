@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/Trail")
+@RequestMapping("/trail")
 public class TrailController {
 
     private final TrailService service;

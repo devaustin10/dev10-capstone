@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/hike
+@url = http://localhost:8080/hike
 
 GET {{url}} HTTP/1.1
 
@@ -23,9 +23,11 @@ Content-Type: application/json
 ###
 
 DELETE {{url}}/2 HTTP/1.1
+Authorization: Bearer 
 
 ###
 POST {{url}} HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2MTU3OX0.UiZGs-qCHevqL1tVxxbqZh7cOuYBkSpcFC-ber6e76U
 Content-Type: application/json
 
 {

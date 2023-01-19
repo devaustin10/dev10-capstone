@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/TrailDifficulty")
+@RequestMapping("/traildifficulty")
 public class TrailDifficultyController {
     private final TrailDifficultyService service;
 
