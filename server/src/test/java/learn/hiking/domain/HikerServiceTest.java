@@ -65,6 +65,11 @@ class HikerServiceTest {
         assertEquals(ResultType.NOT_FOUND, result.getType());
     }
 
+    @Test
+    void shouldNotUpdateWhenInvalidValues() {
+        Hiker hiker = new Hiker(2, "Johnny, "Appleseed", 128, )
+    }
+
 
 
     Hiker makeHiker() {
