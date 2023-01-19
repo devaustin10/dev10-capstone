@@ -31,6 +31,7 @@ class TrailServiceTest {
     void shouldAddWhenValid() {
         Trail expected = makeTrail();
         Trail arg = makeTrail();
+        arg.setTrailId(0);
 
         when(repository.add(arg)).thenReturn(expected);
         Result<Trail> result = service.add(arg);
@@ -45,7 +46,7 @@ class TrailServiceTest {
         Result<Trail> result = service.add(trail);
         assertEquals(ResultType.INVALID, result.getType());
 
-        trail.setTrailDistance(10);
+        trail.setTrailName(" ");
         assertEquals(ResultType.INVALID, result.getType());
     }
 
@@ -61,34 +62,17 @@ class TrailServiceTest {
 
     @Test
     void shouldNotUpdateMissing() {
-//        Trail trail = new Trail(99,LocalDate.of(2023, 1,12),"Easy","I did this hike blindfolded.",1,1);
-//
-//        when(repository.update(hike)).thenReturn(false);
-//        Result<Hike> actual = service.update(hike);
-//        assertEquals(ResultType.NOT_FOUND, actual.getType());
+        Trail trail = new Trail(1000, "no", "nop", "noo", 5, 1);
+        when(repository.update(trail)).thenReturn(false);
+        Result<Trail> actual = service.update(trail);
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
-//    @Test
-//    void shouldNotUpdateWhenInvalid() {
-//        Hike hike = new Hike(35, LocalDate.of(2023, 1,12), null, "Test Description",1,1);
-//
-//        Result<Hike> actual = service.update(hike);
-//        assertEquals(ResultType.INVALID, actual.getType());
-
-//        agency.setShortName("TEST");
-//        agency.setLongName(" ");
-//        actual = service.update(agency);
-//        assertEquals(ResultType.INVALID, actual.getType());
-//
-//        agency.setAgencyId(0);
-//        agency.setLongName("Long Name Test");
-//        actual = service.update(agency);
-//        assertEquals(ResultType.INVALID, actual.getType());
-//    }
 //(trail_id, trail_name, trail_distance, city, state, trail_difficulty_id)
 
     Trail makeTrail() {
         Trail trail = new Trail();
+        trail.setTrailId(1);
         trail.setTrailName("TestTrail");
         trail.setTrailDistance(1);
         trail.setCity("TestCity");

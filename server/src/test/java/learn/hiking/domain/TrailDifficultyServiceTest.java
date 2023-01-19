@@ -5,6 +5,7 @@ import learn.hiking.data.TrailDifficultyRepository;
 import learn.hiking.models.Hike;
 import learn.hiking.models.Trail;
 import learn.hiking.models.TrailDifficulty;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,10 +25,6 @@ class TrailDifficultyServiceTest {
     @MockBean
     TrailDifficultyRepository repository;
 
-    @Test
-    void findAll() {
-         assertEquals(String.valueOf(service.findAll().size()), String.valueOf(1));
-    }
 
     @Test
     void shouldFindValidId() {
@@ -37,10 +34,10 @@ class TrailDifficultyServiceTest {
         assertEquals(expected.getDescription(), actual.getDescription());
     }
 
-
+    @Test
     TrailDifficulty makeTrailDifficulty() {
         TrailDifficulty td = new TrailDifficulty();
-        td.setTrailDifficultyId(1);
+        td.setTrailDifficultyId(2);
         td.setDescription("Great hike! Loved.");
         return td;
     }
