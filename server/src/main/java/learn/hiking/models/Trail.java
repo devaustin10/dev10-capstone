@@ -8,8 +8,19 @@ public class Trail {
     private double trailDistance;
     private int trailDifficultyId;
 
+    public Trail(int trailId, String trailName, String city, String state, double trailDistance, int trailDifficultyId) {
+        this.trailId = trailId;
+        this.trailName = trailName;
+        this.city = city;
+        this.state = state;
+        this.trailDistance = trailDistance;
+        this.trailDifficultyId = trailDifficultyId;
+    }
+
     public Trail() {
     }
+
+
 
     public int getTrailId() {
         return trailId;

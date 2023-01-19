@@ -32,8 +32,8 @@ public class SecurityConfig {
                 // new...
                 .antMatchers("/create_account").permitAll()
                 .antMatchers("/refresh_token").authenticated()
-                .antMatchers(HttpMethod.GET,
-                        "/order").permitAll()
+//                .antMatchers(HttpMethod.GET,
+//                        "/order").permitAll()
                 .antMatchers(HttpMethod.GET,
                         "/hike", "/hike/*").permitAll()
                 .antMatchers(HttpMethod.POST,
