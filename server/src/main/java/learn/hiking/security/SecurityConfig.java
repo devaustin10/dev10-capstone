@@ -40,27 +40,24 @@ public class SecurityConfig {
                         "/hike/*").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE,
                         "/hike/*").hasAnyRole("ADMIN")
+                
+                .antMatchers(HttpMethod.GET,
+                        "/hiker", "/hiker/*").permitAll()
+                .antMatchers(HttpMethod.POST,
+                        "/hiker").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.PUT,
+                        "/hiker/*").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,
+                        "/hiker/*").hasAnyRole("ADMIN")
 
-                // Set up the endpoints for hiker & trail
-
-//                .antMatchers(HttpMethod.GET,
-//                        "/hike", "/hike/*").permitAll()
-//                .antMatchers(HttpMethod.POST,
-//                        "/hike").hasAnyRole("USER", "ADMIN")
-//                .antMatchers(HttpMethod.PUT,
-//                        "/hike/*").hasAnyRole("USER", "ADMIN")
-//                .antMatchers(HttpMethod.DELETE,
-//                        "/hike/*").hasAnyRole("ADMIN")
-//
-//
-//                .antMatchers(HttpMethod.GET,
-//                        "/hike", "/hike/*").permitAll()
-//                .antMatchers(HttpMethod.POST,
-//                        "/hike").hasAnyRole("USER", "ADMIN")
-//                .antMatchers(HttpMethod.PUT,
-//                        "/hike/*").hasAnyRole("USER", "ADMIN")
-//                .antMatchers(HttpMethod.DELETE,
-//                        "/hike/*").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.GET,
+                        "/trail", "/trail/*").permitAll()
+                .antMatchers(HttpMethod.POST,
+                        "/trail").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,
+                        "/trail/*").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,
+                        "/trail/*").hasAnyRole("ADMIN")
 
                 .antMatchers("/**").denyAll()
                 .and()
