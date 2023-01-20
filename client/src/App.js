@@ -11,7 +11,7 @@ import Error from "./Utilities/Error";
 import Home from "./Utilities/Home";
 import NavBar from "./Utilities/NavBar";
 import NotFound from "./Utilities/NotFound";
-import HikeForm from "./Utilities/HikeForm";
+import HikeForm from "./Hike/HikeForm";
 import Login from "./Utilities/Login";
 import AuthContext from "./Context/AuthContext";
 

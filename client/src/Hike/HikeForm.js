@@ -4,3 +4,12 @@ import AuthContext from "../Context/AuthContext";
 
 // Follow SightingForm.js file from React Security lms lesson
 
+import React from 'react'
+
+function HikeForm() {
+  return (
+    <div>HikeForm</div>
+  )
+}
+
+export default HikeForm;

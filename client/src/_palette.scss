@@ -1,0 +1,23 @@
+//_palette.scss
+// Custom Palette START
+$white: #ffffffff;
+$magnolia: #f1f0ffff;
+$medium-slate-blue: #6c63ffff;
+$independence: #3f3d56ff;
+$space-cadet: #39374eff;
+$honey-yellow: #f6ae2dff;
+$burgundy: #721121ff;
+$rich-black: #023c40ff;
+$rich-black-fogra-39: #02020aff;
+// Custom Palette END
+$theme-colors: (
+    "primary": $medium-slate-blue,
+    "secondary": $independence,
+    "success": $rich-black,
+    "info": $space-cadet,
+    "warning": $honey-yellow,
+    "danger": $burgundy,
+    "light": $magnolia,
+    "dark": $rich-black-fogra-39
+);
+@import "~bootstrap/scss/bootstrap";

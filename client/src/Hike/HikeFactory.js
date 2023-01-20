@@ -59,17 +59,12 @@ function HikeFactory() {
       })
       .catch(err => navigate("/error", { state: { msg: "👎🏾 " + err.msg }}));
     };
-
-    return hikes.map((hike) => (
-      <Hike key={hike.hikeId} hike={hike} 
-        handleDelete={handleDelete} handleEdit={handleEdit}/>
-    ));
-  }
   
     return hikes.map((hikes) => (
       <Hikes key={hikes.hikesId} hikes={hikes} 
         handleDelete={handleDelete} />
     ));
-  }
+
+}
 
 export default HikeFactory;

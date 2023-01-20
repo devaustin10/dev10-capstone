@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../Contexts/AuthContext";
+import AuthContext from "../Context/AuthContext";
 
 // follow Sighting.js guideline in React Security Lesson
 
