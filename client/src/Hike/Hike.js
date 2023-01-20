@@ -28,12 +28,17 @@ function Hike({ hike, hiker, trail, handleDelete }) {
                 <p>{hike.description}</p>
             </figure>
             <footer>
-            </div>
-    {auth.currentUser ? (
-    <Link to ={`/edit/${hike.hikeId}`}>Edit</Link>
-)}
-
+            <div>
+                {auth.currentUser ? (
+                <Link to ={`/edit/${hike.hikeId}`}>Edit</Link>
+                ) : null}
+                {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
+                    <button onClick={() => handleDelete(hike.hikeId)}>Delete</button>
+                ) : null}
+                </div>
+            </footer>
         </div>
-        </footer>
-    )
+    );
 }
+
+export default Hike;

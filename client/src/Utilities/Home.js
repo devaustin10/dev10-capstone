@@ -39,10 +39,4 @@ function Home() {
     });
   };
 
-  return hikes.map((hike) => (
-    <Hike key={hike.hikeId} hike={hike} 
-      handleDelete={handleDelete} canEdit={canEdit} canDelete={canDelete} />
-  ));
-}
-
 export default Home;
