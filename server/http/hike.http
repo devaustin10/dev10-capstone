@@ -9,7 +9,7 @@ GET {{url}}/2 HTTP/1.1
 ###
 
 PUT {{url}}/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2NTMwNn0.6KpCdLtEz-GN9iRXD05IMDWeK2s5WaNA6XwMAmPwxM4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDI0MzI1M30.j63fTBkgv7xTjg3Lbh3ehhiygQ4JVmSaqXcDGc9fAMo
 Content-Type: application/json
 
 {
@@ -24,11 +24,12 @@ Content-Type: application/json
 ###
 
 DELETE {{url}}/2 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2NDI0OH0.yP6kgoy5Q6olMEQUzFs4wKtDTzsm7hbcwRa8TpN3Q9U
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDI0MzI1M30.j63fTBkgv7xTjg3Lbh3ehhiygQ4JVmSaqXcDGc9fAMo
 
 ###
+
 POST {{url}} HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDE2NTY3OH0.-FeJ98yEJstNt7v0K59QN5jWs8F_EjdypE52uuVa3BE
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDI0MzI1M30.j63fTBkgv7xTjg3Lbh3ehhiygQ4JVmSaqXcDGc9fAMo
 Content-Type: application/json
 
 {
