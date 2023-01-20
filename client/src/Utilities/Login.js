@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Error from "./Error";
 // NEW: import AuthContext
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../Context/AuthContext";
 
 export default function Login() {
   const [username, setUsername] = useState("");

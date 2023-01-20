@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Hike from "./Hike";
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../Context/AuthContext";
 
 function Home() {
   const [hikes, setHikes] = useState([]);

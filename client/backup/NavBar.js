@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 // NEW: import the AuthContext
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../Context/AuthContext";
 
 function NavBar() {
   // NEW: grab the value attribute from AuthContext.Provider

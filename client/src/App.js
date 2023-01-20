@@ -1,20 +1,28 @@
 // NEW: Import the useEffect hook
+// npm install bootstrap@5.2.3
+
+
+
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import Confirmation from "./components/Confirmation";
-import Error from "./components/Error";
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
-import NotFound from "./components/NotFound";
-import HikeForm from "./components/HikeForm";
-import Login from "./components/Login";
-import AuthContext from "./context/AuthContext";
+import Confirmation from "./Utilities/Confirmation";
+import Error from "./Utilities/Error";
+import Home from "./Utilities/Home";
+import NavBar from "./Utilities/NavBar";
+import NotFound from "./Utilities/NotFound";
+import HikeForm from "./Utilities/HikeForm";
+import Login from "./Utilities/Login";
+import AuthContext from "./Context/AuthContext";
 
 // NEW: Define a variable for the localStorage token item key
 const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
 
 function App() {
+
+  const [messages, setMessages] = useState([]);
+  const [hikes, setHikes] = useState([]);
+
   const [user, setUser] = useState(null);
   // NEW: Define a state variable to track if 
   // the restore login attempt has completed
