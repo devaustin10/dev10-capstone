@@ -40,7 +40,7 @@ public class SecurityConfig {
                         "/hike/*").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE,
                         "/hike/*").hasAnyRole("ADMIN")
-                
+
                 .antMatchers(HttpMethod.GET,
                         "/hiker", "/hiker/*").permitAll()
                 .antMatchers(HttpMethod.POST,

@@ -21,7 +21,7 @@ public class TrailController {
     @GetMapping
     public List<Trail> findAll() { return service.findAll(); }
 
-    @GetMapping("/{TrailId}")
+    @GetMapping("/{trailId}")
     public Trail findById(@PathVariable int trailId) { return service.findById(trailId); }
 
     @PostMapping
@@ -56,5 +56,4 @@ public class TrailController {
     }
 
 
-    // BugSightingController Pathing Guideline
 }
