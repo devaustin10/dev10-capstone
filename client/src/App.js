@@ -24,32 +24,22 @@ function App() {
 
   const [hikes, setHikes] = useState([]);
 
-  const [user, setUser] = useState(null);
-  // NEW: Define a state variable to track if 
-  // the restore login attempt has completed
-  const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  // NEW: Define a useEffect hook callback function to attempt
-  // to restore the user's token from localStorage
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+
     if (token) {
       login(token);
     }
-    setRestoreLoginAttemptCompleted(true);
   }, []);
 
   const login = (token) => {
-    // NEW: set the token in localStorage
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
-
-    // Decode the token
     const { sub: username, authorities: authoritiesString } = jwtDecode(token);
-  
-    // Split the authorities string into an array of roles
-    const roles = authoritiesString.split(',');
-  
-    // Create the "user" object
+
+    const roles = authoritiesString.split(",");
+
     const user = {
       username,
       roles,
@@ -57,34 +47,24 @@ function App() {
       hasRole(role) {
         return this.roles.includes(role);
       }
-    };
-  
-    // Log the user for debugging purposes
+    }
+
     console.log(user);
-  
-    // Update the user state
-    setUser(user);
-  
-    // Return the user to the caller
+
+    setCurrentUser(user);
+
     return user;
-  };
-  
+  }
+
   const logout = () => {
-    setUser(null);
-    // NEW: remove the token from localStorage
+    setCurrentUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
-  };
+  }
 
   const auth = {
-    user: user ? { ...user } : null,
+    currentUser: currentUser ? {...currentUser} : null,
     login,
     logout
-  };
-
-  // NEW: If we haven't attempted to restore the login yet...
-  // then don't render the App component
-  if (!restoreLoginAttemptCompleted) {
-    return null;
   }
 
   return (
