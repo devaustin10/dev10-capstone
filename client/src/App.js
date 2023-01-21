@@ -20,6 +20,8 @@ const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
 
 function App() {
 
+  const [messages, setMessages] = useState([]);
+
   const [hikes, setHikes] = useState([]);
 
   const [user, setUser] = useState(null);
