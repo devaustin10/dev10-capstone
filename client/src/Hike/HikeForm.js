@@ -1,9 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import AuthContext from "../Context/AuthContext";
+import AuthContext from "../context/AuthContext";
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useForm } from 'react-hook-form';
+
 
 // Follow SightingForm.js file from React Security lms lesson
 
@@ -72,7 +74,7 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
         .catch((error) => {
           // If a currentUser tries to access an hike by an ID that doesn't exist in the database...
           if (error.message === "Unexpected end of JSON input") {
-            navigate("/404");
+            navigate("/HikeForm");
           } else {
             setMessages([
               ...messages,
@@ -223,9 +225,9 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
             <option value="3">Intermediate</option>
             <option value="4">Intermediate/Difficult</option>
             <option value="5">Difficult</option>
-            {...register("hikeDifficulty", {
+            {/* {...register("hikeDifficulty", {
               required: "Must select hike difficulty.",
-            })}
+            })} */}
           </Form.Select>
         </Form.Group>
 
