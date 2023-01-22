@@ -78,4 +78,10 @@ INSTALL LIST
 - npm i sass
 - npm install react-router-dom@6 (has all the hooks)
 - npm install jwt-decode
-- 
+
+
+Updates:
+- changed HikeFactory - commented out old code, modeled rough draft using card bootstrap (similar to how Dex uses the table bootstrap element in FA react-bootstrap)
+- updated Hike - we may no longer need hike, might be able to just use HikeFactory. Currently, they share quite a bit of code.
+- **important** commented out in App the user needing permission to access the add/form page, added new line where permission isn't needed to see if form would load- it does. I think we'll need to adjust the security/ permissions here.
+- updated HikeForm (adjusted input types, added trail dropdown as placeholder, more organized, does not span width of page)

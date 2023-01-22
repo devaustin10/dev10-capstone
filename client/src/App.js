@@ -14,6 +14,7 @@ import NotFound from "./Utilities/NotFound";
 import HikeForm from "./Hike/HikeForm";
 import Login from "./Utilities/Login";
 import AuthContext from "./context/AuthContext";
+import HikeFactory from "./Hike/HikeFactory";
 
 // NEW: Define a variable for the localStorage token item key
 const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
@@ -74,10 +75,12 @@ function App() {
 
         <Routes>
           <Route path="/edit/:id" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} />
-          <Route path="/add" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} />
+          {/* <Route path="/add" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} /> */}
+          <Route path="/add" element={<HikeForm />} />
           <Route path="/confirmation" element={<Confirmation />}/>
           <Route path="/error" element={<Error />}/>
           <Route path="/" element={<Home />}/>
+          {/* <Route path="/" element={<HikeFactory />}/> */}
           <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />
           <Route path="*" element={<NotFound />}/>
         </Routes>

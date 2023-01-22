@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../Context/AuthContext";
+import AuthContext from "../context/AuthContext";
 
 // follow Sighting.js guideline in React Security Lesson
 
-function Hike({ hike, hiker, trail, handleDelete }) {
+function Hike({ hike, hiker, trail }) {
 
     const auth = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     // (hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id)
     return (
@@ -29,11 +30,11 @@ function Hike({ hike, hiker, trail, handleDelete }) {
             </figure>
             <footer>
             <div>
-                {auth.currentUser ? (
-                <Link to ={`/edit/${hike.hikeId}`}>Edit</Link>
-                ) : null}
                 {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
-                    <button onClick={() => handleDelete(hike.hikeId)}>Delete</button>
+                    <>
+                    <button className="btn btn-info" onClick={() => navigate("/hikes/edit/" + hike.hikeId)}>Edit</button>
+                    <button className="btn btn-danger ms-2" onClick={() => navigate("/hikes/delete/" + hike.hikeId)}>Delete</button>
+                    </>
                 ) : null}
                 </div>
             </footer>

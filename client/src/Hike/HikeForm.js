@@ -143,10 +143,11 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
 
   return (
     <>
-      <Form id="hike-form" onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="formLocation">
+      <Form id="hike-form" className="form col-lg-6 offset-lg-3" onSubmit={handleSubmit(onSubmit)}>
+        <br></br>
+        <Form.Group className="mt-6 ms-4" controlId="formLocation">
           <Form.Label>State:</Form.Label>
-          <Form.Select placeholder="State">
+          <Form.Select placeholder="State" >
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -201,9 +202,25 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label className="mt-3" htmlFor="hikeDate">
-            Enter date of hike:"
+        <Form.Group className="mt-3 mb-3 ms-4" controlId="formLocation">
+          <Form.Label>Trail:</Form.Label>
+          <Form.Select placeholder="Trail">
+            <option value="1"></option>
+            <option value="2"></option>
+            <option value="3"></option>
+            <option value="4"></option>
+            <option value="5"></option>
+            <option value="6"></option>
+            <option value="7"></option>
+            <option value="8"></option>
+            <option value="9"></option>
+            <option value="10"></option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mt-3 ms-4">
+          <Form.Label htmlFor="hikeDate">
+            Enter date of hike:
           </Form.Label>
           <Form.Control
             type="date"
@@ -215,8 +232,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label className="mt-3" htmlFor="hikeDifficulty">
+        <Form.Group className="mt-3 ms-4">
+          <Form.Label htmlFor="hikeDifficulty">
             How difficult did you feel this hike was?
           </Form.Label>
           <Form.Select placeholder="Choose how difficult the hike was:">
@@ -231,12 +248,13 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label className="mt-3" htmlFor="hikeDescription">
+        <Form.Group className="mt-3 ms-4">
+          <Form.Label htmlFor="hikeDescription">
             How was your hike?
           </Form.Label>
           <Form.Control
-            type="text"
+            as="textarea"
+            rows={4}
             id="hikeDescription"
             {...register("hikeDescription", {
               required: "Must select a hike description.",
@@ -247,8 +265,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label className="mt-3" htmlFor="hikePhoto">
+        <Form.Group className="mt-3 ms-4">
+          <Form.Label htmlFor="hikePhoto">
             Attach photo of hike:
           </Form.Label>
           <Form.Control
@@ -260,6 +278,7 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
             })}
           />
         </Form.Group>
+        {/* need to add submit button */}
       </Form>
     </>
   );
