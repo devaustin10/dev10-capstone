@@ -12,36 +12,72 @@ function NavBar() {
 
     const auth = useContext(AuthContext);
 
+
     return (
-        <>
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand href="/">
+          <img
+              src="/images/placeholder.svg"
+              width="50%"
+              height="50%"
+              className="d-inline-block align-top ms-2"
+              alt="LogOut Hiking"
+            />
+          </Navbar.Brand>
             <Container>
-                <Navbar.Brand href="#home"> LogOut </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            {auth.currentUser ? (
-                        <LinkContainer to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                            <Nav.Link>
-                                About
-                            </Nav.Link>
-                        </LinkContainer>
-                    ) : null}
-              {auth.currentUser ? (
-                        <Nav.Link href="/hike" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/hikes">All Hikes</NavDropdown.Item>
-                            <NavDropdown.Item href="/myhikes">My Hikes</NavDropdown.Item>
-                            <NavDropdown.Item href="/add">Add Hike</NavDropdown.Item>
-                        </Nav.Link>
-                    ) : null}
-          </Nav>
-        </Navbar.Collapse>
-        </Container>
+              <Nav className="justify-content-end" style={{ width: "100%" }}>
+                <Nav.Link href="about">About</Nav.Link>
+                <NavDropdown title="Hikes" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="hikes">All Hikes</NavDropdown.Item>
+                  <NavDropdown.Item href="friendlist">Friend Hikes
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="milestones">
+                    Milestones
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link href="profile">Profile</Nav.Link>
+              </Nav>
+          </Container>
         </Navbar>
-        </>
-    );
-}
+      );
+    }
+
+
+
+
+
+
+//     return (
+//         <>
+//         <Navbar bg="light">
+//             <Container>
+//                 <Navbar.Brand href="#home"> LogOut </Navbar.Brand>
+//                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//         <Navbar.Collapse id="basic-navbar-nav">
+//           <Nav className="me-auto">
+//             <Nav.Link href="#home">Home</Nav.Link>
+//             {auth.currentUser ? (
+//                         <LinkContainer to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+//                             <Nav.Link>
+//                                 About
+//                             </Nav.Link>
+//                         </LinkContainer>
+//                     ) : null}
+//               {auth.currentUser ? (
+//                         <Nav.Link href="/hike" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} id="basic-nav-dropdown">
+//                             <NavDropdown.Item href="/hikes">All Hikes</NavDropdown.Item>
+//                             <NavDropdown.Item href="/myhikes">My Hikes</NavDropdown.Item>
+//                             <NavDropdown.Item href="/add">Add Hike</NavDropdown.Item>
+//                         </Nav.Link>
+//                     ) : null}
+//           </Nav>
+//         </Navbar.Collapse>
+//         </Container>
+//         </Navbar>
+//         </>
+//     );
+// }
 export default NavBar;
 
 
