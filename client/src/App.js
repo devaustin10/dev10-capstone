@@ -27,12 +27,15 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
 
+  const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
+
+
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
-
     if (token) {
       login(token);
     }
+    setRestoreLoginAttemptCompleted(true);
   }, []);
 
   const login = (token) => {
@@ -66,6 +69,10 @@ function App() {
     currentUser: currentUser ? {...currentUser} : null,
     login,
     logout
+  }
+
+  if (!restoreLoginAttemptCompleted) {
+    return null;
   }
 
   return (
