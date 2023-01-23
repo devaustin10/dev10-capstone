@@ -21,7 +21,6 @@ const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
 
 function App() {
 
-  const [messages, setMessages] = useState([]);
 
   const [hikes, setHikes] = useState([]);
 
@@ -92,11 +91,15 @@ function App() {
           <Route path="/error" element={<Error />}/>          
           <Route path="/" element={<Home />}/>          
           {/* <Route path="/" element={<HikeFactory />}/> */}
-          <Route path="/hike" element={currentUser ? <CardFactory 
+          <Route path="/hikes" element={currentUser ? <CardFactory 
                         hikes={hikes} 
                         setHikes={setHikes} 
-                        messages={messages} 
-                        setMessages={setMessages} 
+
+                        trails={trails} 
+                        setTrails={setTrails} 
+
+                        hikers={hikers} 
+                        setHikers={setHikers} 
           /> : <Navigate to="/login" replace={true} />} />
           <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />          
           <Route path="*" element={<NotFound />}/>        
