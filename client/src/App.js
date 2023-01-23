@@ -75,11 +75,13 @@ function App() {
         <NavBar />        
         <Routes>          
           <Route path="/edit/:id" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} />          
-          {/* <Route path="/add" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} /> */}
-          <Route path="/add" element={<HikeForm />} />          
-          <Route path="/confirmation" element={<Confirmation />}/>          <Route path="/error" element={<Error />}/>          
+          <Route path="/add" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} />
+          {/* <Route path="/add" element={<HikeForm />} />           */}
+          <Route path="/confirmation" element={<Confirmation />}/>          
+          <Route path="/error" element={<Error />}/>          
           <Route path="/" element={<Home />}/>          
           {/* <Route path="/" element={<HikeFactory />}/> */}
+          <Route path="/hike" element={currentUser ? <HikeFactory /> : <Navigate to="/login" replace={true} />} />
           <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />          
           <Route path="*" element={<NotFound />}/>        
         </Routes>      
