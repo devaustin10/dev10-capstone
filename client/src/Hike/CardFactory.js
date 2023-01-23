@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import Hike from "./Hike";
+import Hike from "./Card";
 import AuthContext from '../context/AuthContext';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -71,54 +71,33 @@ function HikeFactory({ hike, trail, hiker, hikes, setHikes, messages, setMessage
     // ));
     
     const auth = useContext(AuthContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
-      getHikes();
-    }, []);
+      fetch("http://localhost:8080/hike")
+        .then((response) => response.json())
+        .then((data) => setHikes(data));
+    }, []); // this will happen only once when the component is loaded
 
-    const getHikes = () => {
-      fetch("http://localhost:8080/hike", {
-        headers: {
-          Authorization: "Bearer " + auth.currentUser.token
-        }
-      })
-      .then(response => parseResponseMessage(response))
-      .then(data => data ? setHikes(data) : null)
-      .catch(error => setMessages([...messages, { id: makeId(), type: "failure", text: error.message }]));
-    }
+    // const showHikes = () => {
+    //   return hikes.map(hike => <Hike key={hike.hikeId} hike={hike} />);
+    // }
 
-    const showHikes = () => {
-      return hikes.map(hike => <Hike key={hike.hikeId} hike={hike} />);
-    }
+    const createCardFactory = () => {
+          let hikeCardArray = hikes.map(hikeObj => {
+              return (<Card key={hikeObj.hikeId} />)
+          });
+          return hikeCardArray;
+  }
 
-    return ( // react bootstrap has built in card import - https://react-bootstrap.github.io/components/cards/
-      <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-      <Card.Body>
-        {showHikes()}
-      </Card.Body>
-      <Card.Body>
-        <Card.Title>{hiker.firstName + " " + hiker.lastName}</Card.Title>
-        <Card.Text>
-          {hike.description}
-        </Card.Text>
-      </Card.Body>
-      <ListGroup className="hike-trail-info">
-        <ListGroup.Item>{trail.trailName}</ListGroup.Item>
-        <ListGroup.Item>{"Difficulty level: " + hike.hikeDifficulty}</ListGroup.Item>
-        <ListGroup.Item>{"Distance: " + trail.trailDistance}</ListGroup.Item>
-      </ListGroup>
-      <Card.Body>
-          {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
-            <>
-            <button className="btn btn-info" onClick={() => navigate("/hike/edit/" + hike.hikeId)}>Edit</button>
-            <button className="btn btn-danger ms-2" onClick={() => navigate("/hike/delete/" + hike.hikeId)}>Delete</button>
-            </>
-             ) : null}
-      </Card.Body>
-    </Card>
-  );
+  return (
+    <>
+        <div className="row mt-4">
+            {createCardFactory()}
+        </div>
+    </>
+);
+
 }
 
 export default HikeFactory;

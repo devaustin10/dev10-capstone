@@ -14,7 +14,7 @@ import NotFound from "./Utilities/NotFound";
 import HikeForm from "./Hike/HikeForm";
 import Login from "./Utilities/Login";
 import AuthContext from "./context/AuthContext";
-import HikeFactory from "./Hike/HikeFactory";
+import CardFactory from "./Hike/CardFactory";
 
 // NEW: Define a variable for the localStorage token item key
 const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
@@ -88,7 +88,12 @@ function App() {
           <Route path="/error" element={<Error />}/>          
           <Route path="/" element={<Home />}/>          
           {/* <Route path="/" element={<HikeFactory />}/> */}
-          <Route path="/hike" element={currentUser ? <HikeFactory /> : <Navigate to="/login" replace={true} />} />
+          <Route path="/hike" element={currentUser ? <CardFactory 
+                        hikes={hikes} 
+                        setHikes={setHikes} 
+                        messages={messages} 
+                        setMessages={setMessages} 
+          /> : <Navigate to="/login" replace={true} />} />
           <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />          
           <Route path="*" element={<NotFound />}/>        
         </Routes>      

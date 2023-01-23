@@ -79,6 +79,7 @@ INSTALL LIST
 - npm install react-router-dom@6 (has all the hooks)
 - npm install react-hook-form
 - npm install jwt-decode
+- npm install -S react-router-bootstrap
 
 
 Updates:
