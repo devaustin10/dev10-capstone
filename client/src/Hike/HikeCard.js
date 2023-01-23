@@ -19,16 +19,19 @@ function Card({ hike }) {
       
     </Card.Body>
     <Card.Body>
-      <Card.Title>{hiker.firstName + " " + hiker.lastName}</Card.Title>
+      <Card.Title>Test</Card.Title>
+      {/* <Card.Title>{hiker.firstName + " " + hiker.lastName}</Card.Title> */}
       <Card.Text>
         {hike.description}
         <p>hi</p>
       </Card.Text>
     </Card.Body>
     <ListGroup className="hike-trail-info">
-      <ListGroup.Item>{trail.trailName}</ListGroup.Item>
+      {/* <ListGroup.Item>{trail.trailName}</ListGroup.Item> */}
+      <ListGroup.Item>Trail Name Test</ListGroup.Item>
       <ListGroup.Item>{"Difficulty level: " + hike.hikeDifficulty}</ListGroup.Item>
-      <ListGroup.Item>{"Distance: " + trail.trailDistance}</ListGroup.Item>
+      {/* <ListGroup.Item>{"Distance: " + trail.trailDistance}</ListGroup.Item> */}
+      <ListGroup.Item>Trail Distance</ListGroup.Item>
     </ListGroup>
     <Card.Body>
         {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (

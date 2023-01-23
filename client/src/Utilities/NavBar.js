@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button';
 
 function NavBar() {
 
@@ -14,6 +15,7 @@ function NavBar() {
 
 
     return (
+      <>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Navbar.Brand href="/">
           <img
@@ -27,6 +29,8 @@ function NavBar() {
             <Container>
               <Nav className="justify-content-end" style={{ width: "100%" }}>
                 <Nav.Link href="about">About</Nav.Link>
+                {auth.currentUser ? (
+                <>
                 <NavDropdown title="Hikes" id="basic-nav-dropdown">
                   <NavDropdown.Item href="hikes">All Hikes</NavDropdown.Item>
                   <NavDropdown.Item eventKey="disabled" href="friendlist">Friend Hikes
@@ -37,9 +41,13 @@ function NavBar() {
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="profile">Profile</Nav.Link>
+                </>  
+                ) : null}
+                {auth.currentUser ? ( <Button className= "ms-2" variant="outline-success">Logout</Button> ) : ( <Button className= "ms-2" variant="outline-success">Login</Button> )}
               </Nav>
           </Container>
         </Navbar>
+        </>
       );
     }
 
