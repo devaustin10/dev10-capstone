@@ -70,23 +70,18 @@ function App() {
 
   return (
     <AuthContext.Provider value={auth}>
-      <Router>
-        <NavBar />
-
-        <Routes>
-          <Route path="/edit/:id" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} />
-          {/* <Route path="/add" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} /> */}
-          <Route path="/add" element={<HikeForm />} />
-          <Route path="/confirmation" element={<Confirmation />}/>
-          <Route path="/error" element={<Error />}/>
-          <Route path="/" element={<Home />}/>
-          {/* <Route path="/" element={<HikeFactory />}/> */}
-          <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />
-          <Route path="*" element={<NotFound />}/>
-        </Routes>
-      </Router>
-    </AuthContext.Provider>
-  );
+      <Router>        
+        <NavBar />        
+        <Routes>          
+          <Route path="/edit/:id" element={user ? <SightingForm /> : <Navigate to="/login" replace={true} />} />          
+          <Route path="/add" element={user ? <SightingForm /> : <Navigate to="/login" replace={true} />} />          
+          <Route path="/confirmation" element={<Confirmation />}/>          <Route path="/error" element={<Error />}/>          
+          <Route path="/" element={<Home />}/>          
+          <Route path="/login" element ={!user ? <Login /> : <Navigate to="/" replace={true} />} />          
+          <Route path="*" element={<NotFound />}/>        
+        </Routes>      
+      </Router>    
+    </AuthContext.Provider>  )
 }
 
 export default App;
