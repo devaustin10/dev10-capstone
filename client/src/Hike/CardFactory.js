@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 //modeled from FA react bootstrap
-function HikeFactory({ hike, trail, hiker, hikes, setHikes, messages, setMessages, makeId, parseResponseMessage}) {
+function HikeFactory({ hike, trail, hiker, hikes, setHikes, trails, setTrails, hikers, setHikers}) {
 
 
     // const auth = useContext(AuthContext);
@@ -74,14 +74,63 @@ function HikeFactory({ hike, trail, hiker, hikes, setHikes, messages, setMessage
     // const navigate = useNavigate();
 
     useEffect(() => {
-      fetch("http://localhost:8080/hike")
-        .then((response) => response.json())
-        .then((data) => setHikes(data));
+        getHikes();
+        getTrails();
+        getHikers();
     }, []); // this will happen only once when the component is loaded
 
     // const showHikes = () => {
     //   return hikes.map(hike => <Hike key={hike.hikeId} hike={hike} />);
     // }
+
+// FETCH
+    // let hikes = [
+    //     {hikeId: 1, trailId: 1, hikerId: 1, difficulty: 3},
+    //     {hikeId: 2, trailId: 6, hikerId: 5, difficulty: 6},
+    //     {hikeId: 3, trailId: 11, hikerId: 2, difficulty: 1}
+    // ]
+
+    const getHikes = () => {
+        fetch("http://localhost:8080/hike")
+        .then((response) => response.json())
+        .then((data) => setHikes(data));
+    }
+    
+    const getTrails = () => {
+        fetch("http://localhost:8080/trail")
+        .then((response) => response.json())
+        .then((data) => setTrails(data));
+    }
+
+    const getHikers = () => {
+        fetch("http://localhost:8080/hiker")
+        .then((response) => response.json())
+        .then((data) => setHikers(data));
+    }
+    
+    // let trails = [
+    //     {trailId: 1, state: "AL", name: "Funzo Trail"},
+    //     {trailId: 6, state: "CA", name: "Hummingbird Trail"},
+    //     {trailId: 11, state: "MD", name: "Patapsco Trail"}
+    // ]
+    // let hikers = [
+    //     {hikerId: 1, name: "Oak"},
+    //     {hikerId: 2, name: "Jess" },
+    //     {hikerId: 5, name: "Austin"}
+    // ]
+    
+    let rebuiltHikesWithTrails = hikes.map(hike => {
+        let foundTrail = trails.filter(trail => trail.trailId === hike.trailId);
+        let foundHiker = hikers.filter(hiker => hiker.hikerId === hike.hikerId);
+        hike["trail"] = foundTrail[0];
+        hike["hiker"] = foundHiker[0];
+        return hike;
+    });
+    //rebuiltHikesWithTrails => what does this return?
+
+    //should we keep createCardFactory, and what should we use for a Card key?
+        //map through rebuiltHikesWithTrails
+        //Card key => make new Id for the hike object that has the trail and hiker arrays?
 
     const createCardFactory = () => {
           let hikeCardArray = hikes.map(hikeObj => {

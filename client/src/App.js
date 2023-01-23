@@ -25,6 +25,10 @@ function App() {
 
   const [hikes, setHikes] = useState([]);
 
+  const [trails, setTrails] = useState([]);
+
+  const [hikers, setHikers] = useState([]);
+
   const [currentUser, setCurrentUser] = useState(null);
 
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
