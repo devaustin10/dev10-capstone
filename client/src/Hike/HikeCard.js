@@ -20,14 +20,16 @@ function HikeCard({ hike }) {
       
     </Card.Body>
     <Card.Body>
-
+      <Card.Title>{hike.hiker?.firstName + " " + hike.hiker?.lastName}</Card.Title>
       <Card.Text>
         {hike.description}
       
       </Card.Text>
     </Card.Body>
     <ListGroup className="hike-trail-info">
-
+      <ListGroup.Item>{hike.trail?.trailName}</ListGroup.Item>
+      <ListGroup.Item>{"Difficulty level: " + hike.hikeDifficulty}</ListGroup.Item>
+      <ListGroup.Item>{"Distance: " + hike.trail?.trailDistance}</ListGroup.Item>
     </ListGroup>
     <Card.Body>
         {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
