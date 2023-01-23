@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 //modeled from FA react bootstrap
 function HikeFactory({ hike, trail, hiker, hikes, setHikes, messages, setMessages, makeId, parseResponseMessage}) {
 
-    // const [hikes, setHikes] = useState([]);
 
     // const auth = useContext(AuthContext);
   
@@ -113,8 +112,8 @@ function HikeFactory({ hike, trail, hiker, hikes, setHikes, messages, setMessage
       <Card.Body>
           {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
             <>
-            <button className="btn btn-info" onClick={() => navigate("/hikes/edit/" + hike.hikeId)}>Edit</button>
-            <button className="btn btn-danger ms-2" onClick={() => navigate("/hikes/delete/" + hike.hikeId)}>Delete</button>
+            <button className="btn btn-info" onClick={() => navigate("/hike/edit/" + hike.hikeId)}>Edit</button>
+            <button className="btn btn-danger ms-2" onClick={() => navigate("/hike/delete/" + hike.hikeId)}>Delete</button>
             </>
              ) : null}
       </Card.Body>
