@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Card } from "react-bootstrap";
 
 
 // follow Sighting.js guideline in React Security Lesson
 
-function Card({ hike }) {
+function HikeCard({ hike }) {
 
     const auth = useContext(AuthContext);
 
@@ -19,16 +20,16 @@ function Card({ hike }) {
       
     </Card.Body>
     <Card.Body>
-      <Card.Title>{hiker.firstName + " " + hiker.lastName}</Card.Title>
+      <Card.Title>{hike.hiker?.firstName + " " + hike.hiker?.lastName}</Card.Title>
       <Card.Text>
         {hike.description}
-        <p>hi</p>
+      
       </Card.Text>
     </Card.Body>
     <ListGroup className="hike-trail-info">
-      <ListGroup.Item>{trail.trailName}</ListGroup.Item>
+      <ListGroup.Item>{hike.trail?.trailName}</ListGroup.Item>
       <ListGroup.Item>{"Difficulty level: " + hike.hikeDifficulty}</ListGroup.Item>
-      <ListGroup.Item>{"Distance: " + trail.trailDistance}</ListGroup.Item>
+      <ListGroup.Item>{"Distance: " + hike.trail?.trailDistance}</ListGroup.Item>
     </ListGroup>
     <Card.Body>
         {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
@@ -42,4 +43,4 @@ function Card({ hike }) {
 );
 }
 
-export default Card;
+export default HikeCard;

@@ -7,23 +7,11 @@ import Form from "react-bootstrap/Form";
 import { useForm } from 'react-hook-form';
 
 
-// Follow SightingForm.js file from React Security lms lesson
 
-// const DEFAULT_HIKE = {
-//   hikeId - Auto-Generated
-//   hikeDate - Date data type - calendar selector
-//   hikeDifficulty - Prompt: "How difficult did you feel this hike was?" - Selection, not text box
-
-//   description - Text area
-
-//   hikerId - Needs to be tied to current currentUser / Except when an ADMIN is editing
-//   Ask for State
-// Pick trail from dropdown filtered by state
-//   trailId - Dropdown Menu to select Trail by Name, which passes appropriate ID to fetch request
-// }
-
-function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
+function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails }) {
   //     {ask for state and trail before difficulty} Date > State > Trail (Selection) > Difficulty > Description > Submit
+
+  const [ stateTrails, setStateTrails ] = useState([]);
 
   const { hikeId } = useParams();
 
@@ -84,6 +72,11 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
         });
     }
   }, []);
+
+  const onChange = (event) => {
+    const matchingTrails = trails.filter(tr => tr.state == event.target.value);
+    setStateTrails(matchingTrails);
+  }
 
   const onSubmit = (hikeData) => {
     let revisedHikeData = { ...hikeData };
@@ -147,7 +140,9 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
         <br></br>
         <Form.Group className="mt-6 ms-4" controlId="formLocation">
           <Form.Label>State:</Form.Label>
-          <Form.Select placeholder="State" >
+          <Form.Select placeholder="State" onChange={onChange}>
+
+            <option value="">Select State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -205,16 +200,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage }) {
         <Form.Group className="mt-3 mb-3 ms-4" controlId="formLocation">
           <Form.Label>Trail:</Form.Label>
           <Form.Select placeholder="Trail">
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
-            <option value="4"></option>
-            <option value="5"></option>
-            <option value="6"></option>
-            <option value="7"></option>
-            <option value="8"></option>
-            <option value="9"></option>
-            <option value="10"></option>
+            {stateTrails.map(tr => (<option key={tr.trailId} value={tr.trailId}>{tr.trailName}</option>))}
+
           </Form.Select>
         </Form.Group>
 

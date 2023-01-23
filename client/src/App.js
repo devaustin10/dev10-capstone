@@ -33,6 +33,25 @@ function App() {
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
 
+
+    const getAllTrails = () => {
+        fetch("http://localhost:8080/trail")
+        .then((response) => response.json())
+        .then((data) => setTrails(data));
+    }
+
+    const getAllHikers = () => {
+        fetch("http://localhost:8080/hiker")
+        .then((response) => response.json())
+        .then((data) => setHikers(data));
+    }
+
+  useEffect(() => {
+    getAllTrails();
+    getAllHikers();
+  }, [])
+
+  
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     if (token) {
@@ -40,6 +59,7 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
+
 
   const login = (token) => {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
@@ -84,8 +104,12 @@ function App() {
        <Router>        
         <NavBar />        
         <Routes>          
-          <Route path="/edit/:id" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} />          
-          <Route path="/add" element={currentUser ? <HikeForm /> : <Navigate to="/login" replace={true} />} />
+          <Route path="/edit/:id" element={currentUser ? <HikeForm 
+                        trails={trails}
+          /> : <Navigate to="/login" replace={true} />} />          
+          <Route path="/add" element={currentUser ? <HikeForm 
+                        trails={trails}
+          /> : <Navigate to="/login" replace={true} />} />
           {/* <Route path="/add" element={<HikeForm />} />           */}
           <Route path="/confirmation" element={<Confirmation />}/>          
           <Route path="/error" element={<Error />}/>          
@@ -94,12 +118,8 @@ function App() {
           <Route path="/hikes" element={currentUser ? <CardFactory 
                         hikes={hikes} 
                         setHikes={setHikes} 
-
                         trails={trails} 
-                        setTrails={setTrails} 
-
                         hikers={hikers} 
-                        setHikers={setHikers} 
           /> : <Navigate to="/login" replace={true} />} />
           <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />          
           <Route path="*" element={<NotFound />}/>        
