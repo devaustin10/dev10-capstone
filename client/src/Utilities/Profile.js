@@ -2,7 +2,7 @@
 
 const Profile = () => {
     return (
-        <div className="profile col-lg-6 offset lg-3">
+        <div className="profile col-lg-6 offset-lg-5">
         <img className="img-fluid mt-5" src={process.env.PUBLIC_URL + "/images/rengoku.png"} alt="Home page" />
             <h1>John Doe</h1>
             <p className="title">CEO & Founder, Example</p>
