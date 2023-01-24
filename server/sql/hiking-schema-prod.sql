@@ -7,8 +7,7 @@ create table hiker (
 hiker_id varchar(250) primary key,
 first_name varchar(250) not null,
 last_name varchar(250) not null,
-age int not null,
-email varchar(250) not null
+age int not null
 ); 
 
  create table trail_difficulty (
@@ -34,7 +33,7 @@ hike_id int primary key auto_increment,
 hike_date date not null,
 hike_difficulty varchar (255) not null,
 `description` varchar (255) not null,
-hiker_id int not null,
+hiker_id varchar (250) not null,
 trail_id int not null,
 constraint fk_hike_hiker_id
 	foreign key (hiker_id)
@@ -578,9 +577,9 @@ INSERT into trail (trail_name, trail_distance, trail_difficulty_id, city, state)
 
 INSERT into hike (hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id)
 	values
-	(1,'2022-08-12','Easy',"Was a beautiful hike. Nothing stood out, though.",3,27),
-	(2,'2022-08-20','Intermediate',"Bees. So many bees. Nice view, but just...bees.",4,159),
-	(3,'2022-08-24','Intermediate',"Gorgeous mountain views!",6,8),
-	(4,'2022-09-21','Difficult',"Very steep!",2,34),
-	(5,'2022-09-24','Intermediate',"Gorgeous foilage.",5,47),
-	(6,'2022-09-27','Easy',"Super flat, clean trail.",1,58);
+	(1,'2022-08-12','Easy',"Was a beautiful hike. Nothing stood out, though.","therealjohnsmith",27),
+	(2,'2022-08-20','Intermediate',"Bees. So many bees. Nice view, but just...bees.","therealjohnsmith",159),
+	(3,'2022-08-24','Intermediate',"Gorgeous mountain views!","therealjohnsmith",8),
+	(4,'2022-09-21','Difficult',"Very steep!","therealjohnsmith",34),
+	(5,'2022-09-24','Intermediate',"Gorgeous foilage.","therealjohnsmith",47),
+	(6,'2022-09-27','Easy',"Super flat, clean trail.","therealjohnsmith",58);
