@@ -36,6 +36,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
 
   useEffect(() => {
     reset({
+      state: "",
+      trail: "",
       hikeDate: "",
       hikeDifficulty: "",
       description: "",
@@ -138,10 +140,9 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
     <>
       <Form id="hike-form" className="form col-lg-6 offset-lg-3" onSubmit={handleSubmit(onSubmit)}>
         <br></br>
-        <Form.Group className="mt-6 ms-4" controlId="formLocation">
+        <Form.Group className="mt-6 ms-4" controlId="state">
           <Form.Label>State:</Form.Label>
-          <Form.Select placeholder="State" onChange={onChange}>
-
+          <Form.Select id="state" onChange={onChange}>
             <option value="">Select State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -195,11 +196,12 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </Form.Select>
+            {/* {...register("state", { required: "Must select a state." })} */}
         </Form.Group>
 
-        <Form.Group className="mt-3 mb-3 ms-4" controlId="formLocation">
+        <Form.Group className="mt-3 mb-3 ms-4" controlId="trail">
           <Form.Label>Trail:</Form.Label>
-          <Form.Select placeholder="Trail">
+          <Form.Select id="trail">
             {stateTrails.map(tr => (<option key={tr.trailId} value={tr.trailId}>{tr.trailName}</option>))}
 
           </Form.Select>
@@ -223,12 +225,12 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
           <Form.Label htmlFor="hikeDifficulty">
             How difficult did you feel this hike was?
           </Form.Label>
-          <Form.Select placeholder="Choose how difficult the hike was:">
-            <option value="1">Easy</option>
-            <option value="2">Easy/Intermediate</option>
-            <option value="3">Intermediate</option>
-            <option value="4">Intermediate/Difficult</option>
-            <option value="5">Difficult</option>
+          <Form.Select placeholder="Choose how difficult the hike was:" onChange={onChange}>
+            <option value="Easy">Easy</option>
+            <option value="Easy/Intermediate">Easy/Intermediate</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Intermediate/Difficult">Intermediate/Difficult</option>
+            <option value="Difficult">Difficult</option>
             {/* {...register("hikeDifficulty", {
               required: "Must select hike difficulty.",
             })} */}
@@ -236,19 +238,19 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         </Form.Group>
 
         <Form.Group className="mt-3 ms-4">
-          <Form.Label htmlFor="hikeDescription">
+          <Form.Label htmlFor="description">
             How was your hike?
           </Form.Label>
           <Form.Control
             as="textarea"
             rows={4}
-            id="hikeDescription"
-            {...register("hikeDescription", {
+            id="description"
+            {...register("description", {
               required: "Must select a hike description.",
             })}
           />
           <Form.Text className="form-error-message">
-            {errors.hikeDescription?.message}
+            {errors.description?.message}
           </Form.Text>
         </Form.Group>
 
@@ -264,8 +266,9 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
               required: "Must select a hike photo.",
             })}
           />
+        <Button variant="primary" className="mt-3 mb-5" type="submit">{hikeId ? "Edit" : "Add"}</Button>
+        <Button variant="secondary" className="mt-3 ms-2 mb-5" type="button" onClick={() => navigate("/hikes")}>Cancel</Button>
         </Form.Group>
-        {/* need to add submit button */}
       </Form>
     </>
   );

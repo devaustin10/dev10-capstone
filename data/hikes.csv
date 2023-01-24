@@ -1,3 +1,7 @@
 hike_date,hike_difficulty,description,hiker_id,trail_id
-2022-08-12,"Easy","Was a beautiful hike. Nothing stood out, though.",3,27
-2022-08-20,"Intermediate","Bees. So many bees. Nice view, but just...bees.",4,159
+8/12/2022,Easy,"Was a beautiful hike. Nothing stood out, though.",3,27
+8/20/2022,Intermediate,"Bees. So many bees. Nice view, but just...bees.",4,159
+8/24/2022,Intermediate,Gorgeous mountain views!,6,8
+9/21/2022,Difficult,Very steep!,2,34
+9/24/2022,Intermediate,Gorgeous foilage.,5,47
+9/27/2022,Easy,"Super flat, clean trail.",1,58
