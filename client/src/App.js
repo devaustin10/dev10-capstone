@@ -1,8 +1,6 @@
 // NEW: Import the useEffect hook
 // npm install bootstrap@5.2.3
 
-
-
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
@@ -16,12 +14,12 @@ import Login from "./Utilities/Login";
 import Profile from "./Utilities/Profile";
 import AuthContext from "./context/AuthContext";
 import CardFactory from "./Hike/CardFactory";
+import About from "./Utilities/About";
 
 // NEW: Define a variable for the localStorage token item key
 const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
 
 function App() {
-
 
   const [hikes, setHikes] = useState([]);
 
@@ -32,8 +30,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
-
-
 
     const getAllTrails = () => {
         fetch("http://localhost:8080/trail")
@@ -52,7 +48,6 @@ function App() {
     getAllHikers();
   }, [])
 
-  
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     if (token) {
@@ -60,7 +55,6 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-
 
   const login = (token) => {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
@@ -115,6 +109,7 @@ function App() {
           <Route path="/confirmation" element={<Confirmation />}/>          
           <Route path="/error" element={<Error />}/>          
           <Route path="/" element={<Home />}/>
+          <Route path="/About" element={<About />}/>
           <Route path="/profile" element={<Profile />}/>          
           {/* <Route path="/" element={<HikeFactory />}/> */}
           <Route path="/hikes" element={currentUser ? <CardFactory 
