@@ -4,7 +4,7 @@ create database hiking;
 use hiking;
 
 create table hiker (
-hiker_id int primary key auto_increment,
+hiker_id varchar(250) primary key,
 first_name varchar(250) not null,
 last_name varchar(250) not null,
 age int not null,
@@ -54,14 +54,14 @@ INSERT into trail_difficulty (trail_difficulty_id, `description`)
     (5,'Difficult'),
     (6,'Very Difficult');
     
-INSERT into hiker (hiker_id, first_name, last_name, age, username)
+INSERT into hiker (first_name, last_name, age, hiker_id)
 	values
-	(1,'John','Smith',27,'therealjohnsmith'),
-	(2,'Alice','Liddell',18,'wonderlander1865'),
-	(3,'Holden','Caulfield',25,'neverinfilm'),
-	(4,'Violet','Baudelaire',23,'veryunf0rtunatevi'),
-	(5,'Atticus','Finch',40,'atticusfinchlaw'),
-	(6,'Philip','Marlowe',35,'bigsleeper893');
+	('John','Smith',27,'therealjohnsmith'),
+	('Alice','Liddell',18,'wonderlander1865'),
+	('Holden','Caulfield',25,'neverinfilm'),
+	('Violet','Baudelaire',23,'veryunf0rtunatevi'),
+	('Atticus','Finch',40,'atticusfinchlaw'),
+	('Philip','Marlowe',35,'bigsleeper893');
     
 INSERT into trail (trail_name, trail_distance, trail_difficulty_id, city, state)
 	values
