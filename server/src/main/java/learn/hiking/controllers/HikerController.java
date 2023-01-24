@@ -25,7 +25,7 @@ public class HikerController {
     }
 
     @GetMapping("/{hikerId}")
-    public Hiker findById(@PathVariable int hikerId) {
+    public Hiker findById(@PathVariable String hikerId) {
         return service.findById(hikerId);
     }
 
@@ -39,7 +39,7 @@ public class HikerController {
     }
 
     @PutMapping("/{hikerId}")
-    public ResponseEntity<Object> update(@PathVariable int hikerId, @RequestBody Hiker hiker) {
+    public ResponseEntity<Object> update(@PathVariable String hikerId, @RequestBody Hiker hiker) {
         if (hikerId != hiker.getHikerId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
@@ -53,7 +53,7 @@ public class HikerController {
         }
 
     @DeleteMapping("/{hikerId}")
-    public ResponseEntity<Void> deleteById(@PathVariable int hikerId) {
+    public ResponseEntity<Void> deleteById(@PathVariable String hikerId) {
         if (service.deleteById(hikerId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

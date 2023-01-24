@@ -1,9 +1,6 @@
 package learn.hiking.data;
 
-import learn.hiking.data.mappers.HikeMapper;
 import learn.hiking.data.mappers.HikerMapper;
-import learn.hiking.data.mappers.TrailMapper;
-import learn.hiking.models.Hike;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -16,6 +13,7 @@ import java.sql.PreparedStatement;
 
 import java.sql.Statement;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class HikerJdbcTemplateRepository implements HikerRepository {
@@ -27,15 +25,15 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
 
     @Override
     public List<Hiker> findAll() {
-        final String sql = "select hiker_id, first_name, last_name, age, email"
+        final String sql = "select hiker_id, first_name, last_name, age"
                 + " from hiker limit 1000;";
         return jdbcTemplate.query(sql, new HikerMapper());
     }
 
     @Override
     @Transactional
-    public Hiker findById(int hikerId) {
-        final String sql = "select hiker_id, first_name, last_name, age, email from hiker where hiker_id = ?;";
+    public Hiker findById(String hikerId) {
+        final String sql = "select hiker_id, first_name, last_name, age from hiker where hiker_id = ?;";
         return jdbcTemplate.query(sql, new HikerMapper(), hikerId).stream()
                 .findFirst()
                 .orElse(null);
@@ -43,20 +41,20 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
 
     @Override
     public Hiker add(Hiker hiker) {
-        final String sql = "insert into hiker (first_name, last_name, age, email)" + " values (?,?,?,?);";
+        final String sql = "insert into hiker (first_name, last_name, age, hiker_id)" + " values (?,?,?,?);";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = this.jdbcTemplate.update((connection) -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, hiker.getFirstName());
             ps.setString(2, hiker.getLastName());
             ps.setString(3, String.valueOf(hiker.getAge()));
-            ps.setString(4, hiker.getEmail());
+            ps.setString(4, hiker.getHikerId());
             return ps;
         }, keyHolder);
         if (rowsAffected <= 0) {
             return null;
         } else {
-            hiker.setHikerId(keyHolder.getKey().intValue());
+            hiker.setHikerId(Objects.requireNonNull(keyHolder.getKey()).toString());
             return hiker;
         }
     }
@@ -67,18 +65,16 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
                 "first_name = ?, " +
                 "last_name = ?, " +
                 "age = ?, " +
-                "email = ? " +
                 "where hiker_id = ?;";
         return jdbcTemplate.update(sql,
                 hiker.getFirstName(),
                 hiker.getLastName(),
                 hiker.getAge(),
-                hiker.getEmail(),
                 hiker.getHikerId()) > 0;
     }
 
     @Override
-    public boolean deleteById(int hikerId) {
+    public boolean deleteById(String hikerId) {
         return jdbcTemplate.update("delete from hiker where hiker_id=?;", hikerId) > 0;
     }
 }

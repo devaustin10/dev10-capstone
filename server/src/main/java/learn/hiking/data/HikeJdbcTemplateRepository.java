@@ -58,7 +58,7 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
             ps.setString(1, String.valueOf(hike.getHikeDate()));
             ps.setString(2, hike.getHikeDifficulty());
             ps.setString(3, hike.getDescription());
-            ps.setString(4, String.valueOf(hike.getHikerId()));
+            ps.setString(4, hike.getHikerId());
             ps.setString(5, String.valueOf(hike.getTrailId()));
             return ps;
         }, keyHolder);

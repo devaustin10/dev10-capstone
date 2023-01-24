@@ -23,8 +23,8 @@ class HikerServiceTest {
     @Test
     void findPaulBlart() {
         Hiker expected = makeHiker();
-        when(repository.findById(1)).thenReturn(expected);
-        Hiker actual = service.findById(1);
+        when(repository.findById("mallCopPB")).thenReturn(expected);
+        Hiker actual = service.findById("mallCopPB");
         assertEquals(expected.getFirstName(), actual.getFirstName());
         assertEquals("Paul", actual.getFirstName());
     }
@@ -33,7 +33,7 @@ class HikerServiceTest {
     void add() {
         Hiker expected = makeHiker();
         Hiker arg = makeHiker();
-        arg.setHikerId(0);
+        arg.setHikerId("TestDude");
 
         when(repository.add(arg)).thenReturn(expected);
         Result<Hiker> result = service.add(arg);
@@ -51,7 +51,7 @@ class HikerServiceTest {
 
     @Test
     void shouldUpdateWhenValid() {
-        Hiker hiker = new Hiker(2, "Johnny", "Appleseed", 28, "johnnyappleseed@aol.com");
+        Hiker hiker = new Hiker("johnnyappleseedofficial", "Johnny", "Appleseed", 128);
         when(repository.update(hiker)).thenReturn(true);
         Result<Hiker> result = service.update(hiker);
         assertEquals(ResultType.SUCCESS, result.getType());
@@ -59,7 +59,7 @@ class HikerServiceTest {
 
     @Test
     void shouldNotUpdateWhenMissing() {
-        Hiker hiker = new Hiker(12, "Mr", "Fredrickson", 89, "i_dont_like_doug_or_Kevin.com");
+        Hiker hiker = new Hiker("kevinanddougHater", "Mr", "Fredrickson", 89);
         when(repository.update(hiker)).thenReturn(false);
         Result<Hiker> result = service.update(hiker);
         assertEquals(ResultType.NOT_FOUND, result.getType());
@@ -67,7 +67,7 @@ class HikerServiceTest {
 
     @Test
     void shouldNotUpdateWhenInvalidValues() {
-        Hiker hiker = new Hiker(2, "Johnny", "Appleseed", 128, "johnnyappleseed@aol.com");
+        Hiker hiker = new Hiker("johnnyappleseedofficial", "Johnny", "Appleseed", 128);
         when(repository.update(hiker)).thenReturn(false);
         Result<Hiker> result = service.update(hiker);
         assertEquals(ResultType.INVALID, result.getType());
@@ -75,11 +75,10 @@ class HikerServiceTest {
 
     Hiker makeHiker() {
         Hiker hiker = new Hiker();
-        hiker.setHikerId(1);
+        hiker.setHikerId("mallCopPB");
         hiker.setFirstName("Paul");
         hiker.setLastName("Blart");
         hiker.setAge(23);
-        hiker.setEmail("paulblart@yahoo.com");
         return hiker;
     }
 }

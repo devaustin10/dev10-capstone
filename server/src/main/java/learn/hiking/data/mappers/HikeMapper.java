@@ -15,7 +15,7 @@ public class HikeMapper implements RowMapper<Hike> {
         hike.setHikeDate(resultSet.getDate("hike_date").toLocalDate());
         hike.setHikeDifficulty(resultSet.getString("hike_difficulty"));
         hike.setDescription(resultSet.getString("description"));
-        hike.setHikerId(resultSet.getInt("hiker_id"));
+        hike.setHikerId(resultSet.getString("hiker_id"));
         hike.setTrailId(resultSet.getInt("trail_id"));
 
         // might not need foreign keys for mappers

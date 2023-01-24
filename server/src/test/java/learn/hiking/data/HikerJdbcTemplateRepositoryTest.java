@@ -44,7 +44,7 @@ class HikerJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindHiker() {
-        Hiker easy = repository.findById(1);
+        Hiker easy = repository.findById("JaneDoe@gmail.com");
         assertEquals(1, easy.getHikerId());
         assertEquals("Jane", easy.getFirstName());
         assertEquals("Doe", easy.getLastName());
@@ -82,7 +82,7 @@ class HikerJdbcTemplateRepositoryTest {
         hiker.setFirstName("Jane");
         hiker.setLastName("Doe");
         hiker.setAge(25);
-        hiker.setEmail("JaneDoe@gmail.com");
+        hiker.setHikerId("JaneDoe@gmail.com");
         return hiker;
     }
 }

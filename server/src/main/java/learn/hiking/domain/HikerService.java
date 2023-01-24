@@ -1,11 +1,9 @@
 package learn.hiking.domain;
 
 import learn.hiking.data.HikerRepository;
-import learn.hiking.models.Hike;
 import learn.hiking.models.Hiker;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,13 +16,13 @@ public class HikerService {
 
     public List<Hiker> findAll() { return repository.findAll();}
 
-    public Hiker findById(int hikerId) { return this.repository.findById(hikerId);}
+    public Hiker findById(String hikerId) { return this.repository.findById(hikerId);}
 
     public Result<Hiker> add(Hiker hiker) {
         Result<Hiker> result = validate(hiker);
         if (!result.isSuccess()) {
             return result;
-        } else if (hiker.getHikerId() != 0) {
+        } else if (hiker.getHikerId() != null) {
             result.addMessage("hikerId cannot be set for add", ResultType.INVALID);
             return result;
         } else {
@@ -38,7 +36,7 @@ public class HikerService {
         Result<Hiker> result = this.validate(hiker);
         if (!result.isSuccess()) {
             return result;
-        } else if (hiker.getHikerId() <= 0) {
+        } else if (hiker.getHikerId() != null) {
             result.addMessage("hikerId must be set for update", ResultType.INVALID);
             return result;
         } else {
@@ -50,7 +48,7 @@ public class HikerService {
         }
     }
 
-    public boolean deleteById(int hikerId) {
+    public boolean deleteById(String hikerId) {
         return this.repository.deleteById(hikerId);
     }
 
@@ -64,9 +62,6 @@ public class HikerService {
             }
             if (Validations.isNullOrBlank(hiker.getLastName())) {
                 result.addMessage("hiker must have valid last name", ResultType.INVALID);
-            }
-            if (Validations.isNullOrBlank((hiker.getEmail()))) {
-                result.addMessage("hiker must have valid email", ResultType.INVALID);
             }
             if (hiker.getAge() < 8 || hiker.getAge() > 100) {
                 result.addMessage("hiker age must be greater than 8 and less than 100", ResultType.INVALID);

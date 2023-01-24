@@ -7,14 +7,14 @@ public class Hike {
     private LocalDate hikeDate;
     private String hikeDifficulty;
     private String description;
-    private int hikerId;
+    private String hikerId;
     private int trailId;
 
     public Hike() {
 
     }
 
-    public Hike(int hikeId, LocalDate hikeDate, String hikeDifficulty, String description, int hikerId, int trailId) {
+    public Hike(int hikeId, LocalDate hikeDate, String hikeDifficulty, String description, String hikerId, int trailId) {
         this.hikeId = hikeId;
         this.hikeDate = hikeDate;
         this.hikeDifficulty = hikeDifficulty;
@@ -55,11 +55,11 @@ public class Hike {
         this.description = description;
     }
 
-    public int getHikerId() {
+    public String getHikerId() {
         return hikerId;
     }
 
-    public void setHikerId(int hikerId) {
+    public void setHikerId(String hikerId) {
         this.hikerId = hikerId;
     }
 

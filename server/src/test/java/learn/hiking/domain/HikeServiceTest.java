@@ -55,7 +55,7 @@ class HikeServiceTest {
 
     @Test
     void shouldUpdate() {
-        Hike hike = new Hike(2,LocalDate.of(2023, 1,12),"Tough","This hike was something else!",1,1);
+        Hike hike = new Hike(2,LocalDate.of(2023, 1,12),"Tough","This hike was something else!","mallCopPB",1);
 
         when(repository.update(hike)).thenReturn(true);
         Result<Hike> actual = service.update(hike);
@@ -64,7 +64,7 @@ class HikeServiceTest {
 
     @Test
     void shouldNotUpdateMissing() {
-        Hike hike = new Hike(99,LocalDate.of(2023, 1,12),"Easy","I did this hike blindfolded.",1,1);
+        Hike hike = new Hike(99,LocalDate.of(2023, 1,12),"Easy","I did this hike blindfolded.","mallCopPB",1);
 
         when(repository.update(hike)).thenReturn(false);
         Result<Hike> actual = service.update(hike);
@@ -95,7 +95,7 @@ class HikeServiceTest {
         hike.setHikeDate(LocalDate.of(2023,01,10));
         hike.setHikeDifficulty("Easy");
         hike.setDescription("Super fun! Lots of mountains.");
-        hike.setHikerId(1);
+        hike.setHikerId("mallCopPB");
         hike.setTrailId(1);
         return hike;
     }
