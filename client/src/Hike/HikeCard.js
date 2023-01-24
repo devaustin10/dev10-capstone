@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Card } from "react-bootstrap";
+import { CardImage } from "./CardImage.js";
 
 
 // follow Sighting.js guideline in React Security Lesson
@@ -15,9 +16,9 @@ function HikeCard({ hike }) {
 
     return ( // react bootstrap has built in card import - https://react-bootstrap.github.io/components/cards/
     <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+    {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
     <Card.Body>
-      
+      {/* <CardImage></CardImage> */}
     </Card.Body>
     <Card.Body>
       <Card.Title>{hike.hiker?.firstName + " " + hike.hiker?.lastName}</Card.Title>
