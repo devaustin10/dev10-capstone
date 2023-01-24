@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Result<T> {
+
     private ActionStatus status = ActionStatus.SUCCESS;
     private ArrayList<String> messages = new ArrayList<>();
     private ResultType type = ResultType.SUCCESS;

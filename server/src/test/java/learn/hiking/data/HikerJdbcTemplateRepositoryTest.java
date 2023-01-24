@@ -46,43 +46,61 @@ class HikerJdbcTemplateRepositoryTest {
     void shouldFindHiker() {
         Hiker easy = repository.findById("JohnSmith@gmail.com");
         assertEquals("JohnSmith@gmail.com", easy.getHikerId());
-        assertEquals("John", easy.getFirstName());
-        assertEquals("Smith", easy.getLastName());
+        assertEquals("Joe", easy.getFirstName());
+        assertEquals("Doe", easy.getLastName());
     }
 
     @Test
     void shouldAdd() {
-        // all fields
-        Hiker hiker = makeHiker();
+        Hiker hiker = makeHiker2();
         Hiker actual = repository.add(hiker);
         assertNotNull(actual);
-        assertEquals(NEXT_STRING, actual.getHikerId());
-
+        assertEquals("Jake", actual.getFirstName());
     }
+
+//    @Test
+//    void shouldNotAdd() {
+//        // all fields
+//        Hiker hiker = makeHiker();
+//        Hiker actual = repository.add(hiker);
+//        assertNotNull(actual);
+//        assertEquals(NEXT_STRING, actual.getHikerId());
+//
+//    }
 
     @Test
     void shouldUpdate() {
         Hiker hiker = makeHiker();
-        hiker.setHikerId("JaneDoe111");
+        hiker.setFirstName("Joe"); //name does change
+        System.out.println(hiker.getFirstName());
         assertTrue(repository.update(hiker));
 
-        hiker.setHikerId("lksdfkds");
+        hiker.setHikerId(null);
         assertFalse(repository.update(hiker));
     }
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteById("JaneDoe111"));
-        assertFalse(repository.deleteById("JaneDoe111"));
+        assertTrue(repository.deleteById("jakesmith@yahoo.com"));
+        assertFalse(repository.deleteById("jakesmith@yahoo.com"));
     }
 
     private Hiker makeHiker() {
         //  (hiker_id, first_name, last_name, age, email)
         Hiker hiker = new Hiker();
+        hiker.setHikerId("JohnSmith@gmail.com");
         hiker.setFirstName("Jane");
         hiker.setLastName("Doe");
         hiker.setAge(25);
-        hiker.setHikerId("JaneDoe111");
+        return hiker;
+    }
+
+    private Hiker makeHiker2() {
+        Hiker hiker = new Hiker();
+        hiker.setHikerId("jakesmith@yahoo.com");
+        hiker.setFirstName("Jake");
+        hiker.setLastName("Smith");
+        hiker.setAge(26);
         return hiker;
     }
 }

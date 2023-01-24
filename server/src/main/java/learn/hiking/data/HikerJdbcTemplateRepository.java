@@ -59,12 +59,15 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
 
     @Override
     public boolean update(Hiker hiker) {
-        final String sql = "update hiker set " +
-                "first_name = ?, " +
-                "last_name = ?, " +
-                "age = ?, " +
-                "where hiker_id = ?;";
+        final String sql = "update hiker set "
+//                + "hiker_id = ?, "
+                + "first_name = ?, "
+                + "last_name = ?, "
+                + "age = ? "
+                + "where hiker_id = ?;";
+
         return jdbcTemplate.update(sql,
+//                hiker.getHikerId(),
                 hiker.getFirstName(),
                 hiker.getLastName(),
                 hiker.getAge(),
@@ -73,6 +76,7 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
 
     @Override
     public boolean deleteById(String hikerId) {
+        jdbcTemplate.update("delete from hike where hiker_id = ?;", hikerId);
         return jdbcTemplate.update("delete from hiker where hiker_id=?;", hikerId) > 0;
     }
 }

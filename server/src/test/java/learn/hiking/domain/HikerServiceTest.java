@@ -30,15 +30,15 @@ class HikerServiceTest {
     }
 
     @Test
-    void add() {
+    void shouldAddWhenValid() {
         Hiker expected = makeHiker();
         Hiker arg = makeHiker();
-        arg.setHikerId("TestDude");
 
         when(repository.add(arg)).thenReturn(expected);
         Result<Hiker> result = service.add(arg);
         assertEquals(ResultType.SUCCESS, result.getType());
         assertEquals(expected, result.getPayload());
+
     }
 
     @Test
@@ -50,8 +50,17 @@ class HikerServiceTest {
     }
 
     @Test
-    void shouldUpdateWhenValid() {
+    void shouldNotUpdateWhenNotAdded() {
         Hiker hiker = new Hiker("johnnyappleseedofficial", "Johnny", "Appleseed", 128);
+        when(repository.update(hiker)).thenReturn(true);
+        Result<Hiker> result = service.update(hiker);
+        assertEquals(ResultType.INVALID, result.getType());
+    }
+
+    @Test
+    void shouldUpdateWhenDataIsValid() {
+        Hiker hiker = makeHiker();
+        hiker.setLastName("Testing");
         when(repository.update(hiker)).thenReturn(true);
         Result<Hiker> result = service.update(hiker);
         assertEquals(ResultType.SUCCESS, result.getType());

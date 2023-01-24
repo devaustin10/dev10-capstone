@@ -22,21 +22,23 @@ public class HikerService {
         Result<Hiker> result = validate(hiker);
         if (!result.isSuccess()) {
             return result;
-        } else if (hiker.getHikerId() != null) {
-            result.addMessage("hikerId cannot be set for add", ResultType.INVALID);
+        } else if (hiker.getHikerId().isEmpty() || hiker.getHikerId().isBlank()) {
+            result.addMessage("hikerId cannot be empty or blank", ResultType.NOT_FOUND);
             return result;
         } else {
             hiker = this.repository.add(hiker);
+            System.out.println(hiker);
             result.setPayload(hiker);
             return result;
         }
     }
 
+
     public Result<Hiker> update(Hiker hiker) {
         Result<Hiker> result = this.validate(hiker);
         if (!result.isSuccess()) {
             return result;
-        } else if (hiker.getHikerId() != null) {
+        } else if (hiker.getHikerId().isEmpty() || hiker.getHikerId().isBlank()) {
             result.addMessage("hikerId must be set for update", ResultType.INVALID);
             return result;
         } else {
