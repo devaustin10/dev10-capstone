@@ -54,7 +54,7 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
         if (rowsAffected <= 0) {
             return null;
         } else {
-            hiker.setHikerId(Objects.requireNonNull(keyHolder.getKey()).toString());
+            hiker.setHikerId((keyHolder.getKey().toString());
             return hiker;
         }
     }

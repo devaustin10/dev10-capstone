@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class HikerJdbcTemplateRepositoryTest {
 
     final static int NEXT_ID = 2;
+    final static String NEXT_STRING = "forrestgump@gmail.com";
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -44,10 +45,10 @@ class HikerJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindHiker() {
-        Hiker easy = repository.findById("JaneDoe@gmail.com");
-        assertEquals(1, easy.getHikerId());
-        assertEquals("Jane", easy.getFirstName());
-        assertEquals("Doe", easy.getLastName());
+        Hiker easy = repository.findById("JohnSmith@gmail.com");
+        assertEquals("JohnSmith@gmail.com", easy.getHikerId());
+        assertEquals("John", easy.getFirstName());
+        assertEquals("Smith", easy.getLastName());
     }
 
     @Test
@@ -63,17 +64,17 @@ class HikerJdbcTemplateRepositoryTest {
     @Test
     void shouldUpdate() {
         Hiker hiker = makeHiker();
-        hiker.setHikerId(1);
+        hiker.setHikerId("JaneDoe111");
         assertTrue(repository.update(hiker));
 
-        hiker.setHikerId(10);
+        hiker.setHikerId("lksdfkds");
         assertFalse(repository.update(hiker));
     }
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteById(2));
-        assertFalse(repository.deleteById(2));
+        assertTrue(repository.deleteById("JaneDoe111"));
+        assertFalse(repository.deleteById("JaneDoe111"));
     }
 
     private Hiker makeHiker() {
@@ -82,7 +83,7 @@ class HikerJdbcTemplateRepositoryTest {
         hiker.setFirstName("Jane");
         hiker.setLastName("Doe");
         hiker.setAge(25);
-        hiker.setHikerId("JaneDoe@gmail.com");
+        hiker.setHikerId("JaneDoe111");
         return hiker;
     }
 }

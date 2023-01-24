@@ -81,7 +81,7 @@ class HikeJdbcTemplateRepositoryTest {
         hike.setHikeDate(LocalDate.of(1985, 8, 15));
         hike.setHikeDifficulty("TestEasy");
         hike.setDescription("Test");
-        hike.setHikerId(1);
+        hike.setHikerId("JohnSmith@gmail.com");
         hike.setTrailId(1);
         return hike;
     }
