@@ -9,6 +9,8 @@ $space-cadet: #39374eff;
 $honey-yellow: #f6ae2dff;
 $burgundy: #721121ff;
 $rich-black: #023c40ff;
+$green-black: #211d25;
+$tan-logo: #d6c7bd;
 $rich-black-fogra-39: #02020aff;
 // Custom Palette END
 .btn-primary {
@@ -16,4 +18,18 @@ $rich-black-fogra-39: #02020aff;
 }
 .btn-primary:hover {
     color: $white;
+}
+//Profile
+.profileName {
+    color:#211d25
+}
+
+.friendRequest {
+    background-color: $rich-black !important;
+    border-color: $rich-black !important;
+}
+
+.directMessage {
+    background-color: $green-black !important;
+    border-color: $green-black !important;
 }
