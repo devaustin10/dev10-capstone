@@ -18,7 +18,7 @@ function HikeDelete({ messages, setMessages, makeId, parseResponseMessage }) {
     }, []);
 
     const getHike = () => {
-        fetch("http://localhost:8080/api/hike/" + hikeId, {
+        fetch("http://localhost:8080/hike/" + hikeId, {
             headers: {
                 Authorization: "Bearer " + auth.currentUser.token
             }
@@ -36,7 +36,7 @@ function HikeDelete({ messages, setMessages, makeId, parseResponseMessage }) {
     }
 
     const handleDelete = () => {
-        fetch("http://localhost:8080/api/hike/" + hikeId, {   
+        fetch("http://localhost:8080/hike/" + hikeId, {   
             method: "DELETE",
             headers: {
                 Authorization: "Bearer " + auth.currentUser.token

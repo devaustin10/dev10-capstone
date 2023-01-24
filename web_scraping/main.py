@@ -19,6 +19,6 @@ for url in range(0, 51):
         file = open('trails.csv', 'a', encoding='utf-8')
 
         try:
-            file.write(f'\n{name},{distance},{difficulty},{city},{state}')
+            file.write(f'\n(\'{name}\',\'{distance}\',\'{difficulty}\',\'{city}\',\'{state}\'),')
         finally:
             file.close()

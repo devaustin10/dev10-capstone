@@ -105,6 +105,9 @@ function App() {
           <Route path="/add" element={currentUser ? <HikeForm 
                         trails={trails}
           /> : <Navigate to="/login" replace={true} />} />
+          <Route path="/delete/:id" element={currentUser ? <HikeForm 
+                        trails={trails}
+          /> : <Navigate to="/login" replace={true} />} /> 
           {/* <Route path="/add" element={<HikeForm />} />           */}
           <Route path="/confirmation" element={<Confirmation />}/>          
           <Route path="/error" element={<Error />}/>          
