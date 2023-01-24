@@ -13,7 +13,6 @@ function NavBar() {
 
     const auth = useContext(AuthContext);
 
-
     return (
       <>
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -43,7 +42,15 @@ function NavBar() {
                 <Nav.Link href="profile">Profile</Nav.Link>
                 </>  
                 ) : null}
-                {auth.currentUser ? ( <Button className= "ms-2" variant="outline-success">Logout</Button> ) : ( <Button className= "ms-2" variant="outline-success">Login</Button> )}
+
+                {auth.currentUser ? ( 
+                <Button className= "ms-2" variant="outline-success" onClick={() => auth.logout()}>
+                  Logout
+                </Button> ) : ( 
+              <Link to="/login">
+                <Button className= "ms-2" variant="outline-success"> Login </Button>
+              </Link> )}
+              
               </Nav>
           </Container>
         </Navbar>
@@ -51,87 +58,4 @@ function NavBar() {
       );
     }
 
-
-
-
-
-
-//     return (
-//         <>
-//         <Navbar bg="light">
-//             <Container>
-//                 <Navbar.Brand href="#home"> LogOut </Navbar.Brand>
-//                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//         <Navbar.Collapse id="basic-navbar-nav">
-//           <Nav className="me-auto">
-//             <Nav.Link href="#home">Home</Nav.Link>
-//             {auth.currentUser ? (
-//                         <LinkContainer to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-//                             <Nav.Link>
-//                                 About
-//                             </Nav.Link>
-//                         </LinkContainer>
-//                     ) : null}
-//               {auth.currentUser ? (
-//                         <Nav.Link href="/hike" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} id="basic-nav-dropdown">
-//                             <NavDropdown.Item href="/hikes">All Hikes</NavDropdown.Item>
-//                             <NavDropdown.Item href="/myhikes">My Hikes</NavDropdown.Item>
-//                             <NavDropdown.Item href="/add">Add Hike</NavDropdown.Item>
-//                         </Nav.Link>
-//                     ) : null}
-//           </Nav>
-//         </Navbar.Collapse>
-//         </Container>
-//         </Navbar>
-//         </>
-//     );
-// }
 export default NavBar;
-
-
-// // NEW: import the useContext hook.
-// import { useContext } from "react";
-// import { Link } from "react-router-dom";
-// // NEW: import the AuthContext
-// import AuthContext from "../Context/AuthContext";
-//
-// function NavBar() {
-//   // NEW: grab the value attribute from AuthContext.Provider
-//   const auth = useContext(AuthContext);
-//
-//   // NEW: If we have an auth.user, render an "Add" link,
-//   // the user's username, and a logout button.
-//   // If we don't have an auth.user, render "Login"
-//   // and "Register" navigation.
-//   return (
-//     <nav>
-//       <ul>
-//         <li>
-//           <Link to="/">Home</Link>
-//         </li>
-//         {auth.user ? (
-//           <li>
-//             <Link to="/add">Add</Link>
-//           </li>
-//         ) : (
-//           <>
-//             <li>
-//               <Link to="/login">Login</Link>
-//             </li>
-//             <li>
-//               <Link to="/register">Register</Link>
-//             </li>
-//           </>
-//         )}
-//       </ul>
-//       {auth.user && (
-//         <div>
-//           Welcome {auth.user.username}!
-//           <button onClick={() => auth.logout()}>Logout</button>
-//         </div>
-//       )}
-//     </nav>
-//   );
-// }
-//
-// export default NavBar;
