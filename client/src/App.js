@@ -13,6 +13,7 @@ import NavBar from "./Utilities/NavBar";
 import NotFound from "./Utilities/NotFound";
 import HikeForm from "./Hike/HikeForm";
 import Login from "./Utilities/Login";
+import Profile from "./Utilities/Profile";
 import AuthContext from "./context/AuthContext";
 import CardFactory from "./Hike/CardFactory";
 
@@ -113,7 +114,8 @@ function App() {
           {/* <Route path="/add" element={<HikeForm />} />           */}
           <Route path="/confirmation" element={<Confirmation />}/>          
           <Route path="/error" element={<Error />}/>          
-          <Route path="/" element={<Home />}/>          
+          <Route path="/" element={<Home />}/>
+          <Route path="/profile" element={<Profile />}/>          
           {/* <Route path="/" element={<HikeFactory />}/> */}
           <Route path="/hikes" element={currentUser ? <CardFactory 
                         hikes={hikes} 
