@@ -255,17 +255,7 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         </Form.Group>
 
         <Form.Group className="mt-3 ms-4">
-          <Form.Label htmlFor="hikePhoto">
-            Attach photo of hike:
-          </Form.Label>
-          <Form.Control
-            type="file"
-            id="hikePhoto"
-            accept=".jpg,.png,.jpeg"
-            {...register("hikePhoto", {
-              required: "Must select a hike photo.",
-            })}
-          />
+        
         <Button variant="primary" className="mt-3 mb-5" type="submit">{hikeId ? "Edit" : "Add"}</Button>
         <Button variant="secondary" className="mt-3 ms-2 mb-5" type="button" onClick={() => navigate("/hikes")}>Cancel</Button>
         </Form.Group>
