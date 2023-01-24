@@ -115,18 +115,18 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         },
         body: JSON.stringify(revisedHikeData),
       })
-        .then((response) => parseResponseMessage(response))
-        .then((hikeData) =>
-          setMessages([
-            ...messages,
-            {
-              id: makeId(),
-              type: "success",
-              text: `Hike ${hikeData.hikeId} was successfully added.`,
-            },
-          ])
+        .then((response) => (response.json()))
+        .then((hikeData) => ("return response",console.log(hikeData))
+          // setMessages([
+          //   ...messages,
+          //   {
+          //     id: makeId(),
+          //     type: "success",
+          //     text: `Hike ${hikeData.hikeId} was successfully added.`,
+          //   },
+          // ])
         )
-        .then(() => navigate("/hikes"))
+        // .then(() => navigate("/hikes"))
         .catch((error) =>
           setMessages([
             ...messages,
@@ -225,15 +225,16 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
           <Form.Label htmlFor="hikeDifficulty">
             How difficult did you feel this hike was?
           </Form.Label>
-          <Form.Select placeholder="Choose how difficult the hike was:" onChange={onChange}>
+          <Form.Select placeholder="Choose how difficult the hike was:"
+            {...register("hikeDifficulty", {
+              required: "Must select hike difficulty.",
+            })}
+            >
             <option value="Easy">Easy</option>
             <option value="Easy/Intermediate">Easy/Intermediate</option>
             <option value="Intermediate">Intermediate</option>
             <option value="Intermediate/Difficult">Intermediate/Difficult</option>
             <option value="Difficult">Difficult</option>
-            {/* {...register("hikeDifficulty", {
-              required: "Must select hike difficulty.",
-            })} */}
           </Form.Select>
         </Form.Group>
 

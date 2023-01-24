@@ -2,7 +2,12 @@
 // npm install bootstrap@5.2.3
 
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import Confirmation from "./Utilities/Confirmation";
 import Error from "./Utilities/Error";
@@ -21,33 +26,44 @@ import Register from "./Utilities/Register";
 const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
 
 function App() {
-
   const [hikes, setHikes] = useState([]);
 
   const [trails, setTrails] = useState([]);
 
   const [hikers, setHikers] = useState([]);
 
+  const [messages, setMessages] = useState([]);
+
   const [currentUser, setCurrentUser] = useState(null);
 
-  const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
+  const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] =
+    useState(false);
 
-    const getAllTrails = () => {
-        fetch("http://localhost:8080/trail")
-        .then((response) => response.json())
-        .then((data) => setTrails(data));
+  const makeId = () => {
+    let id = "";
+    let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    for (var i = 0; i < 12; i++) {
+      id += characters.charAt(Math.floor(Math.random() * 36));
     }
+    return id;
+  };
 
-    const getAllHikers = () => {
-        fetch("http://localhost:8080/hiker")
-        .then((response) => response.json())
-        .then((data) => setHikers(data));
-    }
+  const getAllTrails = () => {
+    fetch("http://localhost:8080/trail")
+      .then((response) => response.json())
+      .then((data) => setTrails(data));
+  };
+
+  const getAllHikers = () => {
+    fetch("http://localhost:8080/hiker")
+      .then((response) => response.json())
+      .then((data) => setHikers(data));
+  };
 
   useEffect(() => {
     getAllTrails();
     getAllHikers();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
@@ -69,64 +85,103 @@ function App() {
       token,
       hasRole(role) {
         return this.roles.includes(role);
-      }
-    }
+      },
+    };
 
     console.log(user);
 
     setCurrentUser(user);
 
     return user;
-  }
+  };
 
   const logout = () => {
     setCurrentUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
-  }
+  };
 
   const auth = {
-    currentUser: currentUser ? {...currentUser} : null,
+    currentUser: currentUser ? { ...currentUser } : null,
     login,
-    logout
-  }
+    logout,
+  };
 
   if (!restoreLoginAttemptCompleted) {
     return null;
   }
 
   return (
-    
-    <AuthContext.Provider value={auth}>      
-       <Router>        
-        <NavBar />        
-        <Routes>          
-          <Route path="/edit/:id" element={currentUser ? <HikeForm 
-                        trails={trails}
-          /> : <Navigate to="/login" replace={true} />} />          
-          <Route path="/add" element={currentUser ? <HikeForm 
-                        trails={trails}
-          /> : <Navigate to="/login" replace={true} />} />
-          <Route path="/delete/:id" element={currentUser ? <HikeForm 
-                        trails={trails}
-          /> : <Navigate to="/login" replace={true} />} /> 
+    <AuthContext.Provider value={auth}>
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route
+            path="/edit/:id"
+            element={
+              currentUser ? (
+                <HikeForm trails={trails} />
+              ) : (
+                <Navigate to="/login" replace={true} />
+              )
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              currentUser ? (
+                <HikeForm
+                  trails={trails}
+                  messages={messages}
+                  setMessages={setMessages}
+                  makeId={makeId}
+                />
+              ) : (
+                <Navigate to="/login" replace={true} />
+              )
+            }
+          />
+          <Route
+            path="/delete/:id"
+            element={
+              currentUser ? (
+                <HikeForm trails={trails} />
+              ) : (
+                <Navigate to="/login" replace={true} />
+              )
+            }
+          />
           {/* <Route path="/add" element={<HikeForm />} />           */}
-          <Route path="/confirmation" element={<Confirmation />}/>          
-          <Route path="/error" element={<Error />}/>          
-          <Route path="/" element={<Home />}/>
-          <Route path="/About" element={<About />}/>
-          <Route path="/profile" element={<Profile />}/>          
+          <Route path="/confirmation" element={<Confirmation />} />
+          <Route path="/error" element={<Error />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/profile" element={<Profile />} />
           {/* <Route path="/" element={<HikeFactory />}/> */}
-          <Route path="/hikes" element={currentUser ? <CardFactory 
-                        hikes={hikes} 
-                        setHikes={setHikes} 
-                        trails={trails} 
-                        hikers={hikers} 
-          /> : <Navigate to="/login" replace={true} />} />
-          <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />     
-          <Route path="/register" element={<Register />}/>  
-          <Route path="*" element={<NotFound />}/>        
-        </Routes>      
-      </Router>    
+          <Route
+            path="/hikes"
+            element={
+              currentUser ? (
+                <CardFactory
+                  hikes={hikes}
+                  setHikes={setHikes}
+                  trails={trails}
+                  hikers={hikers}
+                />
+              ) : (
+                <Navigate to="/login" replace={true} />
+              )
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              !currentUser ? <Login /> : <Navigate to="/" replace={true} />
+            }
+          />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </AuthContext.Provider>
   );
 }
