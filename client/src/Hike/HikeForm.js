@@ -107,6 +107,7 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
           ])
         );
     } else {
+      revisedHikeData.hikerId = auth.currentUser.username;
       console.log("Token: ", auth.currentUser);
       console.log("Hike Data: ", revisedHikeData);
       fetch("http://localhost:8080/hike", {
