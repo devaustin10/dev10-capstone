@@ -37,11 +37,9 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
   useEffect(() => {
     reset({
       state: "",
-      trail: "",
       hikeDate: "",
       hikeDifficulty: "",
       description: "",
-      hikerId: "",
       trailId: "",
     });
   }, [window.location.pathname]);
@@ -75,9 +73,13 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
     }
   }, []);
 
-  const onChange = (event) => {
+  const trailPopulator = (event) => {
     const matchingTrails = trails.filter(tr => tr.state == event.target.value);
     setStateTrails(matchingTrails);
+  }
+
+  const printTrails = () => {
+    
   }
 
   const onSubmit = (hikeData) => {
@@ -142,7 +144,10 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         <br></br>
         <Form.Group className="mt-6 ms-4" controlId="state">
           <Form.Label>State:</Form.Label>
-          <Form.Select id="state" onChange={onChange}>
+          <Form.Select 
+            id="state" 
+            {...register("state", { required: "Must select a state.", onChange: (e) => {trailPopulator(e)}} )} 
+          >
             <option value="">Select State</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -196,15 +201,22 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </Form.Select>
-            {/* {...register("state", { required: "Must select a state." })} */}
+          <Form.Text className="form-error-message">
+            {errors.state?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mt-3 mb-3 ms-4" controlId="trail">
           <Form.Label>Trail:</Form.Label>
-          <Form.Select id="trail">
+          <Form.Select 
+            id="trail"
+            {...register("trailId", { required: "Must select a trail." })} 
+          >
             {stateTrails.map(tr => (<option key={tr.trailId} value={tr.trailId}>{tr.trailName}</option>))}
-
           </Form.Select>
+          <Form.Text className="form-error-message">
+            {errors.trail?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mt-3 ms-4">
@@ -236,6 +248,9 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
             <option value="Intermediate/Difficult">Intermediate/Difficult</option>
             <option value="Difficult">Difficult</option>
           </Form.Select>
+          <Form.Text className="form-error-message">
+            {errors.hikeDifficulty?.message}
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mt-3 ms-4">
