@@ -15,8 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class HikerJdbcTemplateRepositoryTest {
 
-    final static int NEXT_ID = 2;
-    final static String NEXT_STRING = "forrestgump@gmail.com";
+    final static String NEXT_STRING = "JaneDoe111";
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -57,7 +56,7 @@ class HikerJdbcTemplateRepositoryTest {
         Hiker hiker = makeHiker();
         Hiker actual = repository.add(hiker);
         assertNotNull(actual);
-        assertEquals(NEXT_ID, actual.getHikerId());
+        assertEquals(NEXT_STRING, actual.getHikerId());
 
     }
 

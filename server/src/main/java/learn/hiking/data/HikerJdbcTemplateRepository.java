@@ -41,20 +41,18 @@ public class HikerJdbcTemplateRepository implements HikerRepository {
 
     @Override
     public Hiker add(Hiker hiker) {
-        final String sql = "insert into hiker (first_name, last_name, age, hiker_id)" + " values (?,?,?,?);";
-        KeyHolder keyHolder = new GeneratedKeyHolder();
+        final String sql = "insert into hiker (hiker_id, first_name, last_name, age)" + " values (?,?,?,?);";
         int rowsAffected = this.jdbcTemplate.update((connection) -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, hiker.getFirstName());
-            ps.setString(2, hiker.getLastName());
-            ps.setString(3, String.valueOf(hiker.getAge()));
-            ps.setString(4, hiker.getHikerId());
+            ps.setString(1, hiker.getHikerId());
+            ps.setString(2, hiker.getFirstName());
+            ps.setString(3, hiker.getLastName());
+            ps.setString(4, String.valueOf(hiker.getAge()));
             return ps;
-        }, keyHolder);
+        });
         if (rowsAffected <= 0) {
             return null;
         } else {
-            hiker.setHikerId((keyHolder.getKey().toString());
             return hiker;
         }
     }
