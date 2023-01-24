@@ -47,9 +47,15 @@ function NavBar() {
                 <Button className= "ms-2" variant="outline-success" onClick={() => auth.logout()}>
                   Logout
                 </Button> ) : ( 
-              <Link to="/login">
-                <Button className= "ms-2" variant="outline-success"> Login </Button>
-              </Link> )}
+                <Link to="/login">
+                  <Button className= "ms-2" variant="outline-success"> Login </Button>
+                </Link> )}
+
+                {auth.currentUser ? ( 
+                null ) : ( 
+                <Link to="/register">
+                  <Button className= "ms-2" variant="outline-success"> Register </Button>
+                </Link> )}
               
               </Nav>
           </Container>

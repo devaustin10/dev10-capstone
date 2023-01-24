@@ -15,6 +15,7 @@ import Profile from "./Utilities/Profile";
 import AuthContext from "./context/AuthContext";
 import CardFactory from "./Hike/CardFactory";
 import About from "./Utilities/About";
+import Register from "./Utilities/Register";
 
 // NEW: Define a variable for the localStorage token item key
 const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
@@ -121,7 +122,8 @@ function App() {
                         trails={trails} 
                         hikers={hikers} 
           /> : <Navigate to="/login" replace={true} />} />
-          <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />          
+          <Route path="/login" element ={!currentUser ? <Login /> : <Navigate to="/" replace={true} />} />     
+          <Route path="/register" element={<Register />}/>  
           <Route path="*" element={<NotFound />}/>        
         </Routes>      
       </Router>    

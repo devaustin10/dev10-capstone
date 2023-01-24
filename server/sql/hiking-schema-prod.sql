@@ -54,14 +54,14 @@ INSERT into trail_difficulty (trail_difficulty_id, `description`)
     (5,'Difficult'),
     (6,'Very Difficult');
     
-INSERT into hiker (hiker_id, first_name, last_name, age, email)
+INSERT into hiker (hiker_id, first_name, last_name, age, username)
 	values
-	(1,'John','Smith',27,'therealjohnsmith@gmail.com'),
-	(2,'Alice','Liddell',18,'wonderlander1865@yahoo.com'),
-	(3,'Holden','Caulfield',25,'neverinfilm@gmail.com'),
-	(4,'Violet','Baudelaire',23,'veryunf0rtunatevi@protonmail.com'),
-	(5,'Atticus','Finch',40,'atticusfinchlaw@aol.com'),
-	(6,'Philip','Marlowe',35,'bigsleeper893@gmail.com');
+	(1,'John','Smith',27,'therealjohnsmith'),
+	(2,'Alice','Liddell',18,'wonderlander1865'),
+	(3,'Holden','Caulfield',25,'neverinfilm'),
+	(4,'Violet','Baudelaire',23,'veryunf0rtunatevi'),
+	(5,'Atticus','Finch',40,'atticusfinchlaw'),
+	(6,'Philip','Marlowe',35,'bigsleeper893');
     
 INSERT into trail (trail_name, trail_distance, trail_difficulty_id, city, state)
 	values
