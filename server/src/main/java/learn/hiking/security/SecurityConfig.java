@@ -36,28 +36,29 @@ public class SecurityConfig {
                         "/hike", "/hike/*").permitAll()
                 .antMatchers(HttpMethod.POST,
                         "/hike").hasAnyRole("USER", "ADMIN")
+//                        "/hike").permitAll()
                 .antMatchers(HttpMethod.PUT,
-                        "/hike/*").hasAnyRole("USER", "ADMIN")
+                        "/hike/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE,
-                        "/hike/*").hasAnyRole("ADMIN")
+                        "/hike/*").hasAnyAuthority("ADMIN")
 
                 .antMatchers(HttpMethod.GET,
                         "/hiker", "/hiker/*").permitAll()
                 .antMatchers(HttpMethod.POST,
-                        "/hiker").hasAnyRole("USER", "ADMIN")
+                        "/hiker").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT,
-                        "/hiker/*").hasAnyRole("ADMIN")
+                        "/hiker/*").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.DELETE,
-                        "/hiker/*").hasAnyRole("ADMIN")
+                        "/hiker/*").hasAnyAuthority("ADMIN")
 
                 .antMatchers(HttpMethod.GET,
                         "/trail", "/trail/*").permitAll()
                 .antMatchers(HttpMethod.POST,
-                        "/trail").hasAnyRole("ADMIN")
+                        "/trail").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.PUT,
-                        "/trail/*").hasAnyRole("ADMIN")
+                        "/trail/*").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.DELETE,
-                        "/trail/*").hasAnyRole("ADMIN")
+                        "/trail/*").hasAnyAuthority("ADMIN")
 
                 .antMatchers("/**").denyAll()
                 .and()
