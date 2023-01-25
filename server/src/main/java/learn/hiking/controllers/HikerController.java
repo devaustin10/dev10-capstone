@@ -40,7 +40,7 @@ public class HikerController {
 
     @PutMapping("/{hikerId}")
     public ResponseEntity<Object> update(@PathVariable String hikerId, @RequestBody Hiker hiker) {
-        if (hikerId != hiker.getHikerId()) {
+        if (!hikerId.equals(hiker.getHikerId())) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
