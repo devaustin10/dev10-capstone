@@ -1,14 +1,13 @@
+drop database if exists hiking;
+create database hiking;
+
 use hiking;
 
 create table hiker (
 hiker_id varchar(250) primary key,
 first_name varchar(250) not null,
 last_name varchar(250) not null,
-age int not null,
-
-constraint fk_hiker_app_username
-	foreign key (hiker_id)
-	references app_user(username)
+age int not null
 ); 
 
  create table trail_difficulty (
