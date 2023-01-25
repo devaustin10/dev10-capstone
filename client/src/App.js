@@ -145,7 +145,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route
-            path="/edit/:id"
+            path="/hike/edit/:hikeId"
             element={
               currentUser ? (
                 <HikeForm trails={trails} />

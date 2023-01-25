@@ -22,12 +22,12 @@ function CardFactory({ hikes, setHikes, trails, hikers }) {
     }
 
   const rebuildHikesWithTrails = (hikes) => {
-    let hydratedHikes = hikes.map(hike => {
-        let foundTrail = trails.filter(trail => trail.trailId === hike.trailId);
-        let foundHiker = hikers.filter(hiker => hiker.hikerId === hike.hikerId);
-        hike["trail"] = foundTrail[0];
-        hike["hiker"] = foundHiker[0];
-        return hike;
+    let hydratedHikes = hikes.map(hikeObject => {
+        let foundTrail = trails.filter(trail => trail.trailId === hikeObject.trailId);
+        let foundHiker = hikers.filter(hiker => hiker.hikerId === hikeObject.hikerId);
+        hikeObject["trail"] = foundTrail[0];
+        hikeObject["hiker"] = foundHiker[0];
+        return hikeObject;
     });
     setHikes(hydratedHikes);
   }
