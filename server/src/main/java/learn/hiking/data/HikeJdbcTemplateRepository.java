@@ -76,7 +76,8 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
         final String sql = "update hike set "
                 + "hike_date = ?, "
                 + "hike_difficulty = ?, "
-                + "`description` = ? "
+                + "`description` = ?, "
+                + "trail_id = ? "
                 + "where hike_id = ?;";
 
         return jdbcTemplate.update(sql,
@@ -84,7 +85,7 @@ public class HikeJdbcTemplateRepository implements HikeRepository {
                 hike.getHikeDifficulty(),
                 hike.getDescription(),
 //                hike.getHikerId(),
-//                hike.getTrailId(),
+                hike.getTrailId(),
                 hike.getHikeId()) > 0;
     }
 

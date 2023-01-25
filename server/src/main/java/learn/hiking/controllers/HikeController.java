@@ -22,7 +22,9 @@ public class HikeController {
     public List<Hike> findAll() { return service.findAll(); }
 
     @GetMapping("/{hikeId}")
-    public Hike findById(@PathVariable int hikeId) { return service.findById(hikeId); }
+    public Hike findById(@PathVariable int hikeId) {
+        return service.findById(hikeId);
+    }
 
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody Hike hike) {

@@ -51,6 +51,11 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
           Authorization: "Bearer " + auth.currentUser.token,
         },
       })
+
+      //
+      // Replace below code to handle the error message and the success
+      // handle the 200 and 404
+      // Doesn't have JSON input
         .then((response) => parseResponseMessage(response))
         .then((hike) => {
           setValue("hikeDate", hike.hikeDate);
@@ -71,6 +76,13 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
           }
         });
     }
+
+    //
+
+    // HANDLE PRE-POPULATING EDIT FORM AFTER
+
+
+
   }, []);
 
   const trailPopulator = (event) => {
@@ -116,17 +128,17 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         body: JSON.stringify(revisedHikeData),
       })
         .then((response) => (response.json()))
-        .then((hikeData) => ("return response",console.log(hikeData))
-          // setMessages([
-          //   ...messages,
-          //   {
-          //     id: makeId(),
-          //     type: "success",
-          //     text: `Hike ${hikeData.hikeId} was successfully added.`,
-          //   },
-          // ])
+        .then((hikeData) => ("return response",console.log(hikeData)),
+          setMessages([
+            ...messages,
+            {
+              id: makeId(),
+              type: "success",
+              text: `Hike ${hikeData.hikeId} was successfully added.`,
+            },
+          ])
         )
-        // .then(() => navigate("/hikes"))
+        .then(() => navigate("/hikes"))
         .catch((error) =>
           setMessages([
             ...messages,
