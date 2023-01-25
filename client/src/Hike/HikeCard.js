@@ -38,8 +38,8 @@ function HikeCard({ hike }) {
     <Card.Body>
         {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
           <>
-          <button className="btn btn-info ms-5" onClick={() => navigate("/hike/edit/" + hike.hikeId)}>Edit</button>
-          <button className="btn btn-danger ms-2" onClick={() => navigate("/hike/delete/" + hike.hikeId)}>Delete</button>
+          <button className="btn btn-info ms-5" onClick={() => navigate("/edit/" + hike.hikeId)}>Edit</button>
+          <button className="btn btn-danger ms-2" onClick={() => navigate("/delete/" + hike.hikeId)}>Delete</button>
           {/* <button className="btn btn-danger ms-2" onClick={<HikeDelete></HikeDelete>}>Delete</button> */}
           </>
            ) : null}

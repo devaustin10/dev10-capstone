@@ -15,7 +15,7 @@ function NavBar() {
 
     return (
       <>
-        <Navbar sticky="top" className="navhead shadow-lg" bg="dark" variant="dark" expand="lg">
+        <Navbar sticky="top" className="navhead shadow-lg" expand="lg">
           <Navbar.Brand href="/">
           <img
               src="/images/lo_logo.svg"
@@ -34,7 +34,7 @@ function NavBar() {
                   <NavDropdown.Item href="hikes">All Hikes</NavDropdown.Item>
                   <NavDropdown.Item eventKey="disabled" href="friendlist">Friend Hikes
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="hike/add">Add Hike</NavDropdown.Item>
+                  <NavDropdown.Item href="/add">Add Hike</NavDropdown.Item>
                   <NavDropdown.Item href="milestones">
                     Milestones
                   </NavDropdown.Item>
