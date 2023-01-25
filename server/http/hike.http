@@ -9,7 +9,7 @@ GET {{url}}/2 HTTP/1.1
 ###
 
 PUT {{url}}/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDI0MzI1M30.j63fTBkgv7xTjg3Lbh3ehhiygQ4JVmSaqXcDGc9fAMo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidGhlcmVhbGpvaG5zbWl0aCIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjc0NjE0MDc3fQ.L2akYcit8qQlkScOl7xYoL72XUs3i-kKffAKnj7rzC0
 Content-Type: application/json
 
 {
@@ -24,18 +24,17 @@ Content-Type: application/json
 ###
 
 DELETE {{url}}/2 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDI0MzI1M30.j63fTBkgv7xTjg3Lbh3ehhiygQ4JVmSaqXcDGc9fAMo
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidGhlcmVhbGpvaG5zbWl0aCIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjc0NjEyOTAxfQ.HjKISARX7GIxecB1LMqcNEx3PJRbpHxM9x12tSz8h20
 ###
 
 POST {{url}} HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhcHBfdXNlcl9pZCI6MSwiYXV0aG9yaXRpZXMiOiJBRE1JTiIsImV4cCI6MTY3NDI0MzI1M30.j63fTBkgv7xTjg3Lbh3ehhiygQ4JVmSaqXcDGc9fAMo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidGhlcmVhbGpvaG5zbWl0aCIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjc0NjE1OTMyfQ.8omGtFnSJDjXS_BHkSHqZT_-dF9x63rTYRZaewXLOvg
 Content-Type: application/json
 
 {
-    "hikeDate": "2021-10-31",
-    "hikeDifficulty": "Easy",
-    "description": "Great mountains!",
-    "hikerId": 3,
+    "hikeDate": "2021-11-09",
+    "hikeDifficulty": "Intermediate",
+    "description": "birds",
+    "hikerId": "atticusfinchlaw",
     "trailId": 35
 }
