@@ -27,13 +27,6 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
 
   const navigate = useNavigate();
 
-  // this.hikeId = hikeId;
-  // this.hikeDate = hikeDate;
-  // this.hikeDifficulty = hikeDifficulty;
-  // this.description = description;
-  // this.hikerId = hikerId;
-  // this.trailId = trailId;
-
   useEffect(() => {
     reset({
       state: "",
@@ -53,12 +46,18 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
       })
 
       // fix routing after editing and deleteing and adding
-      // make form values pre-populate when editing
+      // make trail and prev state values pre-populate when editing
 
-      //
       // handle the 200 and 404
       // Doesn't have JSON input, make hike controller get request return result types 
-        .then((response) => parseResponseMessage(response))
+        .then(response => {
+          if(response.status === 200) {
+            return response.json();
+          }
+          else {
+            return Promise.reject("Fetching Hikes failed");
+          }
+        })
         .then((hike) => {
           setValue("hikeDate", hike.hikeDate);
           setValue("hikeDifficulty", hike.hikeDifficulty);
@@ -78,13 +77,6 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
           }
         });
     }
-
-    //
-
-    // HANDLE PRE-POPULATING EDIT FORM AFTER
-
-
-
   }, []);
 
   const trailPopulator = (event) => {
