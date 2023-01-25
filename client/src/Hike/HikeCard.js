@@ -4,6 +4,7 @@ import AuthContext from "../context/AuthContext";
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Card } from "react-bootstrap";
 import CardImage from "./CardImage.js";
+import HikeDelete from "./HikeDelete";
 import "../index.scss";
 
 
@@ -37,8 +38,9 @@ function HikeCard({ hike }) {
     <Card.Body>
         {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
           <>
-          <button className="btn btn-info ms-5" onClick={() => navigate("/hikes/edit/" + hike.hikeId)}>Edit</button>
-          <button className="btn btn-danger ms-2" onClick={() => navigate("/hikes/delete/" + hike.hikeId)}>Delete</button>
+          <button className="btn btn-info ms-5" onClick={() => navigate("/hike/edit/" + hike.hikeId)}>Edit</button>
+          <button className="btn btn-danger ms-2" onClick={() => navigate("/hike/delete/" + hike.hikeId)}>Delete</button>
+          {/* <button className="btn btn-danger ms-2" onClick={<HikeDelete></HikeDelete>}>Delete</button> */}
           </>
            ) : null}
     </Card.Body>
