@@ -13,6 +13,7 @@ const Profile = () => {
             And I figured, since I run this far, maybe I'd just run across the great state of Alabama.</p>
             <Button variant="primary" className="friendRequest mt-4">Send Friend Request</Button>
             <Button variant="secondary" className="directMessage mt-4 ms-3">Direct Message</Button>
+            <Button variant="secondary" className="block mt-4 ms-3">Block</Button>
         </div>    
     )
 };
