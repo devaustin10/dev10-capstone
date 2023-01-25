@@ -78,6 +78,7 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
     setStateTrails(matchingTrails);
   }
 
+
   const onSubmit = (hikeData) => {
     let revisedHikeData = { ...hikeData };
 
