@@ -4,11 +4,13 @@ create database hiking;
 use hiking;
 
 create table hiker (
-hiker_id varchar(250) primary key,
-first_name varchar(250) not null,
-last_name varchar(250) not null,
-age int not null
-); 
+    hiker_id varchar(250) primary key,
+    first_name varchar(250) not null,
+    last_name varchar(250) not null,
+    age int not null,
+    username varchar(50) not null,
+    foreign key (username) references app_user(username)
+);
 
  create table trail_difficulty (
 trail_difficulty_id int primary key auto_increment,
