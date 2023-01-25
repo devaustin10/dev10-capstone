@@ -4,25 +4,25 @@ GET {{url}} HTTP/1.1
 
 ###
 
-GET {{url}}/1 HTTP/1.1
+GET {{url}}/therealjohnsmith HTTP/1.1
 
  
 ###
 
-PUT {{url}}/2 HTTP/1.1
+PUT {{url}}/defenderOfTheOceans HTTP/1.1
 Content-Type: application/json
 
 {
-    "hikerId": 1,
+    "hikerId": "defenderOfTheOceans",
     "firstName": "Percy",
     "lastName": "Jackson",
-    "age":29,
-    "email": "defenderOfTheOceans.demigod@aol.com"
+    "age":29
+
 }
 
 ###
 
-DELETE {{url}}/2 HTTP/1.1
+DELETE {{url}}/neverinfilm HTTP/1.1
 
 ###
 
@@ -31,8 +31,10 @@ Authorization: Bearer
 Content-Type: application/json
 
 {
+    "hikerId": "rachelFromFriends",
     "firstName": "Jennifer",
     "lastName": "Aniston",
-    "age": 41,
-    "email": "rachelFromFriends@gmail.com"
+    "age": 41
 }
+
+

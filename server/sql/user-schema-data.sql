@@ -1,3 +1,6 @@
+drop database if exists hiking;
+create database hiking;
+
 use hiking;
 
 drop table if exists app_user_role;
@@ -34,13 +37,22 @@ insert into app_role (`name`) values
     ('ADMIN');
 
 -- passwords are set to "P@ssw0rd!"
-insert into app_user (username, password_hash, enabled)
+insert into app_user (app_user_id, username, password_hash, enabled)
     values
-    ("therealjohnsmith", '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
-    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
-	('wonderlander1865','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa',1);
+    (1,'therealjohnsmith', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
+	(2,'wonderlander1865','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
+    (3,'neverinfilm','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
+    (4,'veryunf0rtunatevi','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
+    (5,'atticusfinchlaw','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
+    (6,'bigsleeper893','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1),
+    (7,'keeponrunning','$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 1);
     
 insert into app_user_role
     values
     (1, 2),
-    (2, 1);
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (5, 1),
+    (6, 1),
+    (7, 2);

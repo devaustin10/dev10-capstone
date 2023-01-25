@@ -16,7 +16,7 @@ POST {{url}}/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "john@smith.com",
+    "username": "therealjohnsmith",
     "password": "P@ssw0rd!"
 }
 
@@ -26,7 +26,7 @@ POST {{url}}/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "sally@jones.com",
+    "username": "wonderlander1865",
     "password": "P@ssw0rd!"
 }
 
@@ -41,7 +41,7 @@ POST {{url}}/create_account HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "bob@jones.com",
+  "username": "schimidtywarbermanjensen",
   "password": "P@ssw0rd!"
 }
 
@@ -76,6 +76,6 @@ POST http://localhost:8080/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "bob@jones.com",
+    "username": "schimidtywarbermanjensen",
     "password": "P@ssw0rd!"
 }

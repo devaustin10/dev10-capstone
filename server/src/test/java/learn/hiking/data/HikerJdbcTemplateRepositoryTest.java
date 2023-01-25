@@ -39,13 +39,13 @@ class HikerJdbcTemplateRepositoryTest {
         // can't predict order
         // if delete is first, we're down to 0
         // if add is first, we may go as high as 3
-        assertTrue(hiker.size() >= 0 && hiker.size() <= 3);
+        assertTrue(hiker.size() >= 0 && hiker.size() <= 7);
     }
 
     @Test
     void shouldFindHiker() {
-        Hiker easy = repository.findById("JohnSmith@gmail.com");
-        assertEquals("JohnSmith@gmail.com", easy.getHikerId());
+        Hiker easy = repository.findById("therealjohnsmith");
+        assertEquals("therealjohnsmith", easy.getHikerId());
         assertEquals("Joe", easy.getFirstName());
         assertEquals("Doe", easy.getLastName());
     }
@@ -81,14 +81,14 @@ class HikerJdbcTemplateRepositoryTest {
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteById("jakesmith@yahoo.com"));
-        assertFalse(repository.deleteById("jakesmith@yahoo.com"));
+        assertTrue(repository.deleteById("jakesmith"));
+        assertFalse(repository.deleteById("jakesmith"));
     }
 
     private Hiker makeHiker() {
         //  (hiker_id, first_name, last_name, age, email)
         Hiker hiker = new Hiker();
-        hiker.setHikerId("JohnSmith@gmail.com");
+        hiker.setHikerId("therealjohnsmith");
         hiker.setFirstName("Jane");
         hiker.setLastName("Doe");
         hiker.setAge(25);
@@ -97,7 +97,7 @@ class HikerJdbcTemplateRepositoryTest {
 
     private Hiker makeHiker2() {
         Hiker hiker = new Hiker();
-        hiker.setHikerId("jakesmith@yahoo.com");
+        hiker.setHikerId("jakesmith");
         hiker.setFirstName("Jake");
         hiker.setLastName("Smith");
         hiker.setAge(26);

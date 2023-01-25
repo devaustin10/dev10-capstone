@@ -17,7 +17,7 @@ Content-Type: application/json
     "hikeDate": "2020-11-20",
     "hikeDifficulty": "Difficult",
     "description": "Test Update",
-    "hikerId": 3,
+    "hikerId": "veryunf0rtunatevi",
     "trailId": 41
 }
 

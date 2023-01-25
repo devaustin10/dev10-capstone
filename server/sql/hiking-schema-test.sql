@@ -70,7 +70,12 @@ set sql_safe_updates = 0;
     insert into hiker
         (first_name, last_name, age, hiker_id) 
     values
-        ('John', 'Smith', 25, 'JohnSmith@gmail.com');
+        ('John','Smith',27,'therealjohnsmith'),
+		('Alice','Liddell',18,'wonderlander1865'),
+		('Holden','Caulfield',25,'neverinfilm'),
+		('Violet','Baudelaire',23,'veryunf0rtunatevi'),
+		('Atticus','Finch',40,'atticusfinchlaw'),
+		('Philip','Marlowe',35,'bigsleeper893');
 
     insert into trail_difficulty
         (trail_difficulty_id, `description`)
@@ -85,7 +90,7 @@ set sql_safe_updates = 0;
     insert into hike 
         (hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id)
     values
-        (1, '2011-01-11', 'Easy', 'Easy Trail', 'JohnSmith@gmail.com', 1);
+        (1, '2011-01-11', 'Easy', 'Easy Trail', 'therealjohnsmith', 1);
 
 
        set sql_safe_updates = 1;

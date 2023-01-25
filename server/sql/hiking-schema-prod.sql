@@ -1,13 +1,14 @@
-drop database if exists hiking;
-
-create database hiking;
 use hiking;
 
 create table hiker (
 hiker_id varchar(250) primary key,
 first_name varchar(250) not null,
 last_name varchar(250) not null,
-age int not null
+age int not null,
+
+constraint fk_hiker_app_username
+	foreign key (hiker_id)
+	references app_user(username)
 ); 
 
  create table trail_difficulty (
@@ -60,7 +61,9 @@ INSERT into hiker (first_name, last_name, age, hiker_id)
 	('Holden','Caulfield',25,'neverinfilm'),
 	('Violet','Baudelaire',23,'veryunf0rtunatevi'),
 	('Atticus','Finch',40,'atticusfinchlaw'),
-	('Philip','Marlowe',35,'bigsleeper893');
+	('Philip','Marlowe',35,'bigsleeper893'),
+    ('Forrest','Gump',37,'keeponrunning');
+    
     
 INSERT into trail (trail_name, trail_distance, trail_difficulty_id, city, state)
 	values
