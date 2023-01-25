@@ -52,10 +52,12 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         },
       })
 
+      // fix routing after editing and deleteing and adding
+      // make form values pre-populate when editing
+
       //
-      // Replace below code to handle the error message and the success
       // handle the 200 and 404
-      // Doesn't have JSON input
+      // Doesn't have JSON input, make hike controller get request return result types 
         .then((response) => parseResponseMessage(response))
         .then((hike) => {
           setValue("hikeDate", hike.hikeDate);
