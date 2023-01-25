@@ -15,13 +15,6 @@ create table app_user (
         references hiker(hiker_id)
 );
 
-create table app_user (
-    app_user_id int primary key auto_increment,
-    username varchar(50) not null unique,
-    password_hash varchar(2048) not null,
-    enabled bit not null default(1)
-);
-
 create table app_role (
     app_role_id int primary key auto_increment,
     `name` varchar(50) not null unique

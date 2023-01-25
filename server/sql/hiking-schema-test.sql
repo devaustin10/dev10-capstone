@@ -1,7 +1,5 @@
 drop database if exists hiking_test;
 
- 
-
 create database hiking_test;
 use hiking_test;
 
