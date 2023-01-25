@@ -1,5 +1,6 @@
 // index.scss
 @use '_palette.scss';
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
 // Custom Palette START
 $white: #ffffffff;
 $magnolia: #f1f0ffff;
@@ -32,4 +33,39 @@ $rich-black-fogra-39: #02020aff;
 .directMessage {
     background-color: $green-black !important;
     border-color: $green-black !important;
+}
+
+.forest{
+    background-image: 
+    url('../public/images/bg_complete.png');
+    background-size: contain;
+    background-attachment: fixed;
+    height: 100vh;
+    
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+
+.nav-link{
+    --bs-nav-link-color: $tan-logo;
+
+}
+
+.navhead{
+font-family: 'Inconsolata', serif;
+color: $tan-logo;
+}
+
+
+.container {   
+    .notfound {
+        width:100vw;
+        height:100vh;
+    }
+}
+
+.fourohfour{
+    display: block;
+    height: 180px;
+    width: 413px;
 }
