@@ -32,7 +32,6 @@ function Register() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                // switch order of the fetches
 
                 // THIS MIGHT NOT BE NEEDED AND MIGHT NEED TO CHANGE TO ALLOW ANYONE TO ADD A HIKER (403 error, permission denied)
                 // Authorization: "Bearer " + auth.currentUser.token, ()
