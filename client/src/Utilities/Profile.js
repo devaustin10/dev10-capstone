@@ -3,7 +3,7 @@ import "../index.scss";
 
 const Profile = () => {
     return (
-        <div className="row mt-4 col-lg-6 offset-lg-3">
+        <div className="profile col-lg-6 offset-lg-5">
         <img className="profilepic img-fluid mt-2" src={process.env.PUBLIC_URL + "/images/forrestgumpprofilepic.svg"} alt="Home page" />
             <h1 className="profileName"><strong>Forrest Gump</strong></h1>
             <p className="title mb-3"><i>Greenbow, Alabama, United States of America</i></p>
