@@ -34,6 +34,23 @@ $rich-black-fogra-39: #02020aff;
     background-color: $green-black !important;
     border-color: $green-black !important;
 }
+.block {
+    background-color: $burgundy !important;
+    border-color: $burgundy !important;
+}
+
+.cardFactory {
+    column-count: 3 !important;
+    column-gap: 10px;
+}
+
+.cardEntity {
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin-bottom: 10px;
+    break-inside: avoid;
+}
 
 .forest{
     background-image: 
@@ -41,7 +58,6 @@ $rich-black-fogra-39: #02020aff;
     background-size: contain;
     background-attachment: fixed;
     height: 100vh;
-    
     overflow-x:hidden;
     overflow-y:hidden;
 }

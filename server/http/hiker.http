@@ -9,12 +9,13 @@ GET {{url}}/therealjohnsmith HTTP/1.1
  
 ###
 
-PUT {{url}}/defenderOfTheOceans HTTP/1.1
+PUT {{url}}/bigsleeper893 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidGhlcmVhbGpvaG5zbWl0aCIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjc0NjEzODUzfQ.LLKrfpMMnVTpeXLJ03leKr_YqKTKORTG2pN8oit20lU
 Content-Type: application/json
 
 {
-    "hikerId": "defenderOfTheOceans",
-    "firstName": "Percy",
+    "hikerId": "bigsleeper893",
+    "firstName": "Gerald",
     "lastName": "Jackson",
     "age":29
 
@@ -23,18 +24,21 @@ Content-Type: application/json
 ###
 
 DELETE {{url}}/neverinfilm HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidGhlcmVhbGpvaG5zbWl0aCIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjc0NjEyOTAxfQ.HjKISARX7GIxecB1LMqcNEx3PJRbpHxM9x12tSz8h20
 
 ###
 
 POST {{url}} HTTP/1.1
-Authorization: Bearer
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoicmFjaGVsRnJvbUZyaWVuZHM1IiwiYXBwX3VzZXJfaWQiOjE0LCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2NzQ2NjU1NjB9.mogcaqtqTad1nnXQ7x6ZFMYvNKP9Vg2FLidL2PEuQyU
+Content-Type: application/json 
 
 {
-    "hikerId": "rachelFromFriends",
+    "hikerId": "rachelFromFriends5",
     "firstName": "Jennifer",
     "lastName": "Aniston",
     "age": 41
+
+    // Need to add to app_user and app user role tables as well as hiker table
 }
 
 

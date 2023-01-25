@@ -21,6 +21,7 @@ import AuthContext from "./context/AuthContext";
 import CardFactory from "./Hike/CardFactory";
 import About from "./Utilities/About";
 import Register from "./Utilities/Register";
+import HikeDelete from "./Hike/HikeDelete";
 
 // NEW: Define a variable for the localStorage token item key
 const LOCAL_STORAGE_TOKEN_KEY = "hikeHikingToken";
@@ -47,6 +48,34 @@ function App() {
     }
     return id;
   };
+
+  const parseResponseMessage = (response, revisedHikeData = "", method = "changed") => {
+    switch (response.status) {
+      case 200: 
+        return response.json();
+
+      case 201: 
+        return response.json();
+
+      case 204:
+        setMessages([...messages, { id: makeId(), type: "success", text: `Hike was successfully ${method}.`}]);
+        return null;
+      
+      case 404:
+        setMessages([...messages, { id: makeId(), type: "failure", text: "Hike could not be found."}]);
+        return null;
+      
+      case 409:
+        setMessages([...messages, { id: makeId(), type: "failure", text: "Hike data does not match. Request could not be completed."}]);
+        return null;
+
+      default:
+        setMessages([...messages, { id: makeId(), type: "failure", text: "Something went wrong. Please try again later."}]);
+        return null;
+    }
+  }
+
+
 
   const getAllTrails = () => {
     fetch("http://localhost:8080/trail")
@@ -126,7 +155,7 @@ function App() {
             }
           />
           <Route
-            path="/add"
+            path="/hike/add"
             element={
               currentUser ? (
                 <HikeForm
@@ -141,15 +170,16 @@ function App() {
             }
           />
           <Route
-            path="/delete/:id"
+            path="/hike/delete/:hikeId"
             element={
-              currentUser ? (
-                <HikeForm trails={trails} />
-              ) : (
-                <Navigate to="/login" replace={true} />
-              )
-            }
-          />
+              currentUser ?
+                <HikeDelete
+                messages={messages}
+                setMessages={setMessages}
+                makeId={makeId}
+                parseResponseMessage={parseResponseMessage}
+                /> : <Navigate to="/hike/delete/:hikeId" replace={true} />
+              } />
           {/* <Route path="/add" element={<HikeForm />} />           */}
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/error" element={<Error />} />

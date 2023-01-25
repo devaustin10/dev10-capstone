@@ -1,3 +1,6 @@
+drop database if exists hiking;
+create database hiking;
+
 use hiking;
 
 drop table if exists app_user_role;
@@ -8,11 +11,11 @@ create table app_user (
     app_user_id int primary key auto_increment,
     username varchar(50) not null unique,
     password_hash varchar(2048) not null,
-    enabled bit not null default(1),
+    enabled bit not null default(1)
     
-    constraint fk_username_hiker_id
-		foreign key (username)
-        references hiker(hiker_id)
+	-- constraint fk_username_hiker_id
+    -- foreign key (username)
+	--  references hiker(hiker_id)
 );
 
 create table app_role (
