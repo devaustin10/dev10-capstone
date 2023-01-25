@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import HikeCard from "./HikeCard";
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -50,6 +51,7 @@ function HikeDelete({ messages, setMessages, makeId, parseResponseMessage }) {
     return (
         <div className="text-center">
             <p className="h4 mb-4">Are you certain you want to delete this hike?</p>
+            {/* <HikeCard></HikeCard> */}
             <Card className="d-inline-block">
                 <Card.Body className="text-start">
                     <p className="mb-0"><b>Trail:</b>{hike.trail?.trailName}</p>

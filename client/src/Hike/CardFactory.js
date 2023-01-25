@@ -35,7 +35,7 @@ function CardFactory({ hikes, setHikes, trails, hikers }) {
   const createCardFactory = () => {
     if (hikes.length > 0) {
       return hikes.map(hikeObj => {
-          return (<HikeCard key={hikeObj.hikeId} hike={hikeObj} />)
+          return (<HikeCard key={hikeObj.hikeId} hike={hikeObj} />) //want to import hikeObj to HikeDelete for display
       });
     }
   }
