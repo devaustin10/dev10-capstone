@@ -29,11 +29,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoid
 ###
 
 POST {{url}} HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidGhlcmVhbGpvaG5zbWl0aCIsImFwcF91c2VyX2lkIjoxLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjc0NjIwOTEwfQ.06p_YDxkKOrKaD8GP-YyJ0H12991zUWj6gsnIAh3lI8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoicmFjaGVsRnJvbUZyaWVuZHM1IiwiYXBwX3VzZXJfaWQiOjE0LCJhdXRob3JpdGllcyI6IlVTRVIiLCJleHAiOjE2NzQ2NjU1NjB9.mogcaqtqTad1nnXQ7x6ZFMYvNKP9Vg2FLidL2PEuQyU
 Content-Type: application/json 
 
 {
-    "hikerId": "rachelFromFriends",
+    "hikerId": "rachelFromFriends5",
     "firstName": "Jennifer",
     "lastName": "Aniston",
     "age": 41
