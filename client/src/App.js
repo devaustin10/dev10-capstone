@@ -145,7 +145,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route
-            path="/hike/edit/:hikeId"
+            path="/edit/:hikeId"
             element={
               currentUser ? (
                 <HikeForm trails={trails} />
@@ -155,7 +155,7 @@ function App() {
             }
           />
           <Route
-            path="/hike/add"
+            path="/add"
             element={
               currentUser ? (
                 <HikeForm
@@ -170,7 +170,7 @@ function App() {
             }
           />
           <Route
-            path="/hike/delete/:hikeId"
+            path="/delete/:hikeId"
             element={
               currentUser ?
                 <HikeDelete
@@ -178,7 +178,7 @@ function App() {
                 setMessages={setMessages}
                 makeId={makeId}
                 parseResponseMessage={parseResponseMessage}
-                /> : <Navigate to="/hike/delete/:hikeId" replace={true} />
+                /> : <Navigate to="/delete/:hikeId" replace={true} />
               } />
           {/* <Route path="/add" element={<HikeForm />} />           */}
           <Route path="/confirmation" element={<Confirmation />} />

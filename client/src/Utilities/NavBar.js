@@ -34,7 +34,7 @@ function NavBar() {
                   <NavDropdown.Item href="hikes">All Hikes</NavDropdown.Item>
                   <NavDropdown.Item eventKey="disabled" href="friendlist">Friend Hikes
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="hike/add">Add Hike</NavDropdown.Item>
+                  <NavDropdown.Item href="/add">Add Hike</NavDropdown.Item>
                   <NavDropdown.Item href="milestones">
                     Milestones
                   </NavDropdown.Item>
