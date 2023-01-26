@@ -1,9 +1,12 @@
+import FourOhFourImage from '../Images/NotFoundImage';
+
 function NotFound() {
     return (
-      <main>
-        <h1>404</h1>
-        <p>Hello, 404 Page 📃</p>
-      </main>
+      <div className="forest">
+      <div className="container notfound justify-content-md-center">
+        <FourOhFourImage />
+      </div>
+      </div>
     );
   }
   

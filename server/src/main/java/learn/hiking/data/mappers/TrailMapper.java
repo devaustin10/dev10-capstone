@@ -13,7 +13,7 @@ public class TrailMapper implements RowMapper<Trail> {
         Trail trail = new Trail();
         trail.setTrailId(resultSet.getInt("trail_id"));
         trail.setTrailName(resultSet.getString("trail_name"));
-        trail.setTrailDistance(resultSet.getInt("trail_distance"));
+        trail.setTrailDistance(resultSet.getDouble("trail_distance"));
         trail.setTrailDifficultyId(resultSet.getInt("trail_difficulty_id"));
         trail.setCity(resultSet.getString("city"));
         trail.setState(resultSet.getString("state"));

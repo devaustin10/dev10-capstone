@@ -9,18 +9,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 
+
 function NavBar() {
 
     const auth = useContext(AuthContext);
 
     return (
       <>
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar sticky="top" className="navhead shadow-lg" expand="lg">
           <Navbar.Brand href="/">
           <img
-              src="/images/placeholder.svg"
-              width="50%"
-              height="50%"
+              src="/images/lo_logo.svg"
+              width="75%"
+              height="75%"
               className="d-inline-block align-top ms-2"
               alt="LogOut Hiking"
             />

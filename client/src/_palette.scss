@@ -9,6 +9,7 @@ $honey-yellow: #f6ae2dff;
 $burgundy: #721121ff;
 $rich-black: #023c40ff;
 $rich-black-fogra-39: #02020aff;
+$warm-black: #211d25;
 // Custom Palette END
 $theme-colors: (
     "primary": $medium-slate-blue,
@@ -18,6 +19,6 @@ $theme-colors: (
     "warning": $honey-yellow,
     "danger": $burgundy,
     "light": $magnolia,
-    "dark": $rich-black-fogra-39
+    "dark": $warm-black
 );
 @import "~bootstrap/scss/bootstrap";
