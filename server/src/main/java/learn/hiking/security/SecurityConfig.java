@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET,
                         "/hike", "/hike/*").permitAll()
                 .antMatchers(HttpMethod.POST,
-                        "/hike").hasAnyRole("USER", "ADMIN")
+                        "/hike").hasAnyAuthority("USER", "ADMIN")
 //                        "/hike").permitAll()
                 .antMatchers(HttpMethod.PUT,
                         "/hike/*").hasAnyAuthority("USER", "ADMIN")
