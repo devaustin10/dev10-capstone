@@ -49,18 +49,19 @@ function HikeDelete({ messages, setMessages, makeId, parseResponseMessage }) {
     }
 
     return (
-        <div className="text-center">
-            <p className="h4 mb-4">Are you certain you want to delete this hike?</p>
+        <div className="text-center forest">
+            <p className="h4 mb-4 welcome"></p>
             {/* <HikeCard></HikeCard> */}
-            <Card className="d-inline-block">
-                <Card.Body className="text-start">
-                    <p className="mb-0"><b>Trail:</b>{hike.trail?.trailName}</p>
+            <Card className="d-inline-block" bg="dark">
+                <Card.Body className="text-start navhead mt-3">
+                <p>Are you certain you want to delete this hike?</p>
+                    {/* <p className="mb-0"><b>Trail:</b>{hike.trail?.trailName}</p>
                     <p className="mb-0"><b>Hike Difficulty:</b> {hike?.hikeDifficulty}</p>
-                    <p className="mb-0"><b>Trail Distance:</b> {hike.trail?.trailDistance} miles</p>
+                    <p className="mb-0"><b>Trail Distance:</b> {hike.trail?.trailDistance} miles</p> */}
                 </Card.Body>
                 <Card.Footer>
-                    <Button variant={"danger"} onClick={handleDelete}>Confirm</Button>
-                    <Button variant={"secondary"} className="ms-2" onClick={() => navigate("/hikes")}>Cancel</Button>
+                    <Button className="navhead" variant={"danger"} onClick={handleDelete}>Confirm</Button>
+                    <Button variant={"success"} className=" navhead ms-2" onClick={() => navigate("/hikes")}>Cancel</Button>
                 </Card.Footer>
             </Card>
         </div>

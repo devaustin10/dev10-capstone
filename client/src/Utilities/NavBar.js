@@ -31,7 +31,7 @@ function NavBar() {
                 <Nav.Link href="about">About</Nav.Link>
                 {auth.currentUser ? (
                 <>
-                <NavDropdown title="Hikes" id="basic-nav-dropdown">
+                <NavDropdown title="Hikes" bg="dark" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/hikes">All Hikes</NavDropdown.Item>
                   <NavDropdown.Item eventKey="disabled" href="friendlist">Friend Hikes
                   </NavDropdown.Item>

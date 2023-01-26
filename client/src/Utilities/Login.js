@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 
 import Error from "./Error";
 // NEW: import AuthContext
@@ -71,7 +72,7 @@ export default function Login() {
           />
         </div>
         <div>
-          <button type="submit">Login</button>
+          <Button className="ms-4 mb-3" type="submit" variant="outline-success">Login</Button>
         </div>
       </form>
       </Card>

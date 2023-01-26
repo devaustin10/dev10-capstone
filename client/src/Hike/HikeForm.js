@@ -148,7 +148,7 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
     <>
     <div className="forest">
       <Card bg="dark">
-      <Form id="hike-form" className="form col-lg-6 offset-lg-3" onSubmit={handleSubmit(onSubmit)}>
+      <Form id="hike-form" className="form col-lg-6 offset-lg-3 navhead" onSubmit={handleSubmit(onSubmit)}>
         <br></br>
         <Form.Group className="mt-6 ms-4" controlId="state">
           <Form.Label>State:</Form.Label>
@@ -280,8 +280,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
 
         <Form.Group className="mt-3 ms-4">
         
-        <Button variant="primary" className="mt-3 mb-5" type="submit">{hikeId ? "Edit" : "Add"}</Button>
-        <Button variant="secondary" className="mt-3 ms-2 mb-5" type="button" onClick={() => navigate("/hikes")}>Cancel</Button>
+        <Button variant="success" className="mt-3 mb-5" type="submit">{hikeId ? "Edit" : "Add"}</Button>
+        <Button variant="danger" className="mt-3 ms-2 mb-5" type="button" onClick={() => navigate("/hikes")}>Cancel</Button>
         </Form.Group>
       </Form>
       </Card>

@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import Button from 'react-bootstrap/Button';
 
 function Register() {
     const [hikerId, setHikerId] = useState("");
@@ -81,7 +82,7 @@ function Register() {
                 <label className="ms-4 mb-3" htmlFor="password">Password</label>
                 <input type="password" id="password" onChange={(event) => setPassword(event.target.value)} /> <br></br>
                 <br />
-                <button type="submit">Register</button>
+                <Button className="ms-4 mb-3" variant="outline-success" type="submit" >Register</Button>
             </form>
             </Card>
             </div>
