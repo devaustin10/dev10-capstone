@@ -2,6 +2,8 @@ import { useEffect, useContext } from 'react';
 import HikeCard from "./HikeCard";
 import AuthContext from '../context/AuthContext';
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import "../index.scss";
 
 
@@ -42,11 +44,13 @@ function CardFactory({ hikes, setHikes, trails, hikers }) {
 
   return (
     <>
-      <Card>
-        <div className="cardFactory row mt-4 col-lg-6 offset-lg-3">
-            {createCardFactory()}
-        </div>
-      </Card>
+    <div className="cardBG cardFactory" >
+      <Container>
+      <Row>
+      {createCardFactory()}
+      </Row>
+      </Container>
+    </div>
     </>
 );
 

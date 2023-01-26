@@ -1,6 +1,12 @@
 // index.scss
 @use '_palette.scss';
 @import url(https://fonts.googleapis.com/css?family=Inconsolata);
+@font-face {
+    font-family: 'Museo Cyrl';
+    src: url('../public/fonts/MuseoCyrl/MuseoCyrl_500.otf')
+    format('opentype');
+}
+
 // Custom Palette START
 $white: #ffffffff;
 $magnolia: #f1f0ffff;
@@ -40,18 +46,40 @@ $rich-black-fogra-39: #02020aff;
     border-color: $burgundy !important;
 }
 
-.cardFactory {
-    column-count: 3 !important;
-    column-gap: 10px;
+
+.cardHeader {
+    font-family: 'Inconsolata', sans-serif;
+    font-size: small;
+    font-weight: 800;
+    color: #979797;
 }
 
-.cardEntity {
-    margin: 0;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    margin-bottom: 10px;
-    break-inside: avoid;
+.cardBody {
+    font-family: 'Inconsolata', sans-serif;
+    font-size: smaller;
+    font-weight: 800;
+    text-overflow: ellipsis;
 }
+
+
+.avatarCircle {
+  height: 3em;
+  width: 3em;
+  background-image:  url('../public/images/lo_avatar.png');
+  background-size: contain;
+  text-align: left;
+  border-radius: 50%;
+}
+
+.cardBG {
+    background-image: 
+    url('../public/images/bg_complete.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+
 
 .forest{
     background-image: 
@@ -83,13 +111,51 @@ background-color: $warm-black;
     height: 100%; 
 }
 
+.about-container {
+    display: flex;
+    align-items: left;
+    margin-top: 9em;
+    justify-content: center;
+    width: 50%; 
+    height: 50%;
+}
+
+.profile-container {
+    display: flex;
+    align-items: left;
+    margin-top: 9em;
+    justify-content: center;
+    width: 100%; 
+    height: 50%;
+}
+
 .fourohfour{
     display: block;
     height: 180px;
     width: 413px;
 }
 
-h1{
-font-family: 'Museo', sans-serif;
+.welcome{
+    color: $tan-logo ;
+    font-family: 'Inconsolata', serif;
+    font-size: medium;
+    justify-content: center;
+}
 
+.welcomesting {
+    font-size: 1.5em;
+}
+
+h1, h2{
+font-family: 'Museo Cyrl', sans-serif;
+color: $tan-logo;
+}
+
+.nameplate {
+    line-height: 40px;
+    margin-left: 10px;
+}
+
+#root{
+    background-color: #302B37;
 }
