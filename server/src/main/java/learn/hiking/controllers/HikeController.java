@@ -22,7 +22,14 @@ public class HikeController {
     public List<Hike> findAll() { return service.findAll(); }
 
     @GetMapping("/{hikeId}")
-    public Hike findById(@PathVariable int hikeId) { return service.findById(hikeId); }
+    public ResponseEntity<Hike> findById(@PathVariable int hikeId) {
+        Hike result = service.findById(hikeId);
+
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody Hike hike) {

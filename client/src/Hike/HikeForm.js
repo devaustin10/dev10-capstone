@@ -17,6 +17,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
 
   const auth = useContext(AuthContext);
 
+
+
   const {
     register,
     handleSubmit,
@@ -26,13 +28,6 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
   } = useForm();
 
   const navigate = useNavigate();
-
-  // this.hikeId = hikeId;
-  // this.hikeDate = hikeDate;
-  // this.hikeDifficulty = hikeDifficulty;
-  // this.description = description;
-  // this.hikerId = hikerId;
-  // this.trailId = trailId;
 
   useEffect(() => {
     reset({
@@ -51,25 +46,35 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
           Authorization: "Bearer " + auth.currentUser.token,
         },
       })
-        .then((response) => parseResponseMessage(response))
+        .then(parseResponseMessage)
         .then((hike) => {
+
+          if(hike) {
           setValue("hikeDate", hike.hikeDate);
           setValue("hikeDifficulty", hike.hikeDifficulty);
           setValue("description", hike.description);
           setValue("hikerId", hike.hikerId);
-          setValue("trailId", hike.trailId);
-        })
+
+          const trailFinder = trails.find(tr => tr.trailId === hike.trailId)?.state;
+          setValue("state", trailFinder);
+
+          const matchingTrails = trails.filter(tr => tr.state == trailFinder);
+          setStateTrails(() => {
+            setValue("trailId", hike.trailId)
+            return matchingTrails
+          });
+        } else {
+          navigate("/HikeForm");
+        }
+      })  
         .catch((error) => {
-          // If a currentUser tries to access an hike by an ID that doesn't exist in the database...
-          if (error.message === "Unexpected end of JSON input") {
-            navigate("/HikeForm");
-          } else {
             setMessages([
               ...messages,
               { id: makeId(), type: "failure", text: error.message },
             ]);
-          }
+          
         });
+      
     }
   }, []);
 
@@ -93,9 +98,11 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         },
         body: JSON.stringify(revisedHikeData),
       })
-        .then((response) =>
-          parseResponseMessage(response, revisedHikeData, "edited")
-        )
+        .then((response) => {
+          debugger 
+          
+          return parseResponseMessage(response, revisedHikeData, "edited") 
+        })  
         .then(() => navigate("/hikes"))
         .catch((error) =>
           setMessages([
@@ -116,17 +123,17 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         body: JSON.stringify(revisedHikeData),
       })
         .then((response) => (response.json()))
-        .then((hikeData) => ("return response",console.log(hikeData))
-          // setMessages([
-          //   ...messages,
-          //   {
-          //     id: makeId(),
-          //     type: "success",
-          //     text: `Hike ${hikeData.hikeId} was successfully added.`,
-          //   },
-          // ])
+        .then((hikeData) => ("return response",console.log(hikeData)),
+          setMessages([
+            ...messages,
+            {
+              id: makeId(),
+              type: "success",
+              text: `Hike ${hikeData.hikeId} was successfully added.`,
+            },
+          ])
         )
-        // .then(() => navigate("/hikes"))
+        .then(() => navigate("/hikes"))
         .catch((error) =>
           setMessages([
             ...messages,
