@@ -7,7 +7,7 @@ class DeleteIco extends Component {
         <Image
           width="20em"
           height="20em"
-          className="rounded mx-auto d-block"
+          className="mx-auto d-block"
           src="/card_icons/trash-alt.svg" 
           fluid
         />

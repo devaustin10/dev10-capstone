@@ -30,25 +30,32 @@ function HikeCard({ hike }) {
           <Row>
           <Col xs={1}><Avatar /></Col>
           <Col><span className="nameplate">{"@" + hike.hikerId}</span></Col>
+          <Col style={{display:'flex', justifyContent:'right'}}><span className="nameplate">{hike.hikeDate}</span></Col>
           </Row>
         </Card.Header>
         
         <CardImage></CardImage>
         
         <Card.Body>
-          <span className="cardBody">{hike.hikeDate} <br></br>
-          {"Trail: " + hike.trail?.trailName} <br></br>
-          {"How did the user find the hike?: " + hike.hikeDifficulty} <br></br>
-          {"Trail Distance: " + hike.trail?.trailDistance + " miles" }
-          <hr></hr>
-          {hike.description} </span>
+          <span className="cardBody">
+            <span className="cardDetails">
+            {"Trail: " + hike.trail?.trailName} <br></br>
+            {"Hike User Rating: " + hike.hikeDifficulty} <br></br>
+            {"Trail Distance: " + hike.trail?.trailDistance + " miles" }
+            </span>
+            <hr></hr>
+            {hike.description} 
+          </span>
         </Card.Body>
 
-        <Card.Footer>
+        <Card.Footer  className="mx-auto d-block">
         {auth.currentUser && auth.currentUser.hasRole("ADMIN") ? (
           <>
-          <button className="btn btn-info ms-5" onClick={() => navigate("/edit/" + hike.hikeId)}><EditIco></EditIco></button>
-          <button className="btn btn-danger ms-2" onClick={() => navigate("/delete/" + hike.hikeId)}><DeleteIco></DeleteIco></button>
+          <Row>
+          <Col style={{display:'flex', justifyContent:'right'}} className="deleteButton" xs={6}></Col>
+          <Col style={{display:'flex', justifyContent:'right'}} className="deleteButton"  xs={3}><button className="btn btn-info" onClick={() => navigate("/edit/" + hike.hikeId)}><EditIco></EditIco></button></Col>
+          <Col style={{display:'flex', justifyContent:'right'}} className="deleteButton" xs={3}><button className="btn btn-danger" onClick={() => navigate("/delete/" + hike.hikeId)}><DeleteIco></DeleteIco></button></Col>
+          </Row>
           </>
            ) : null}
         </Card.Footer>

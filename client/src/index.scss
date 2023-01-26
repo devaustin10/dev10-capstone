@@ -151,11 +151,25 @@ font-family: 'Museo Cyrl', sans-serif;
 color: $tan-logo;
 }
 
+
+#root{
+    background-color: #302B37;
+}
+
 .nameplate {
     line-height: 40px;
     margin-left: 10px;
 }
 
-#root{
-    background-color: #302B37;
+.cardDetails {
+    font-size: smaller;
+}
+
+.otherButton {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.deleteButton {
+    padding-left: 0%;
 }
