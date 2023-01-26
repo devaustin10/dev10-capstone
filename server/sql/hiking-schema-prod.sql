@@ -583,8 +583,14 @@ INSERT into trail (trail_name, trail_distance, trail_difficulty_id, city, state)
 INSERT into hike (hike_id, hike_date, hike_difficulty, `description`, hiker_id, trail_id)
 	values
 	(1,'2022-08-12','Easy',"Was a beautiful hike. Nothing stood out, though.","therealjohnsmith",27),
-	(2,'2022-08-20','Intermediate',"Bees. So many bees. Nice view, but just...bees.","therealjohnsmith",159),
-	(3,'2022-08-24','Intermediate',"Gorgeous mountain views!","therealjohnsmith",8),
-	(4,'2022-09-21','Difficult',"Very steep!","therealjohnsmith",34),
+	(2,'2022-08-20','Intermediate',"Bees. So many bees. Nice view, but just...bees.","neverinfilm",159),
+	(3,'2022-08-24','Intermediate',"Stunning mountain views!","bigsleeper893",8),
+	(4,'2022-09-21','Difficult',"Very steep!","veryunf0rtunatevi",34),
 	(5,'2022-09-24','Intermediate',"Gorgeous foilage.","therealjohnsmith",47),
-	(6,'2022-09-27','Easy',"Super flat, clean trail.","therealjohnsmith",58);
+    (6,'2022-10-11','Difficult',"Saw a butterfly!","keeponrunning",55),
+    (7,'2022-10-13','Easy',"Crowded path, but great views.","bigsleeper893",94),
+    (8,'2022-10-18','Intermediate',"Beautiful hike, beautiful weather!","therealjohnsmith",135),
+    (9,'2022-11-01','Difficult',"Challenging path! Prepare accordingly.","veryunf0rtunatevi",108),
+    (10,'2022-11-10','Easy',"Great family-friendly trail.","bigsleeper893",98),
+    (11,'2022-12-06','Intermediate',"Too many bikers on trail.","neverinfilm",73),
+	(12,'2022-12-27','Easy',"Super flat, clean trail.","therealjohnsmith",58);
