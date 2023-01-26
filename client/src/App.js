@@ -148,7 +148,12 @@ function App() {
             path="/edit/:hikeId"
             element={
               currentUser ? (
-                <HikeForm trails={trails} />
+                <HikeForm trails={trails} 
+                messages={messages}
+                setMessages={setMessages}
+                makeId={makeId}
+                parseResponseMessage={parseResponseMessage}
+              />
               ) : (
                 <Navigate to="/login" replace={true} />
               )
@@ -163,6 +168,7 @@ function App() {
                   messages={messages}
                   setMessages={setMessages}
                   makeId={makeId}
+                  parseResponseMessage={parseResponseMessage}
                 />
               ) : (
                 <Navigate to="/login" replace={true} />
