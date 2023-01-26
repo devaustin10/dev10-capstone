@@ -4,6 +4,7 @@ import AuthContext from "../context/AuthContext";
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Card } from "react-bootstrap";
 import { useForm } from 'react-hook-form';
 
 
@@ -145,6 +146,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
 
   return (
     <>
+    <div className="forest">
+      <Card bg="dark">
       <Form id="hike-form" className="form col-lg-6 offset-lg-3" onSubmit={handleSubmit(onSubmit)}>
         <br></br>
         <Form.Group className="mt-6 ms-4" controlId="state">
@@ -281,6 +284,8 @@ function HikeForm({ messages, setMessages, makeId, parseResponseMessage, trails 
         <Button variant="secondary" className="mt-3 ms-2 mb-5" type="button" onClick={() => navigate("/hikes")}>Cancel</Button>
         </Form.Group>
       </Form>
+      </Card>
+      </div>
     </>
   );
 }

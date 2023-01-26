@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Card } from "react-bootstrap";
 
 import Error from "./Error";
 // NEW: import AuthContext
@@ -45,14 +46,16 @@ export default function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <div className="forest">
+        <Card bg="dark">
+      <h2 className="ms-4 mb-3">Login</h2>
       {errors.map((error, i) => (
         <Error key={i} msg={error} />
       ))}
-      <form onSubmit={handleSubmit}>
+      <form className="navhead" onSubmit={handleSubmit}>
         <div>
           {/* Includes for/id attributes for basic HTML accessibility ♿. */}
-          <label htmlFor="username">Username:</label>
+          <label className="ms-4 mb-3" htmlFor="username">Username:</label>
           <input
             type="text"
             onChange={(event) => setUsername(event.target.value)}
@@ -60,7 +63,7 @@ export default function Login() {
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label className="ms-4 mb-3" htmlFor="password">Password:</label>
           <input
             type="password"
             onChange={(event) => setPassword(event.target.value)}
@@ -71,6 +74,8 @@ export default function Login() {
           <button type="submit">Login</button>
         </div>
       </form>
+      </Card>
+      </div>
     </div>
   );
 }

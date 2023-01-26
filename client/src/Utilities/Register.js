@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 
@@ -56,30 +57,34 @@ function Register() {
 
     return (
         <>
-            <h2>Register</h2>
+        <div className="forest">
 
-            <form onSubmit={handleSubmit}>
+            <Card bg="dark">
+            <h2 className="ms-4" >Register</h2>
+            <form className="navhead" onSubmit={handleSubmit}>
 
-            <label htmlFor="username">Username:</label>
-                <input type="text" id="username" onChange={(event) => setUsername(event.target.value)} />
+            <label className="ms-4 mb-3" htmlFor="username">Username:</label>
+                <input type="text" id="username" onChange={(event) => setUsername(event.target.value)} /> 
 
-                <label htmlFor="hiker-id">Retype Username:</label>
-                <input type="text" id="hiker-id" onChange={(event) => setHikerId(event.target.value)} />
+                <label className="ms-4 mb-3" htmlFor="hiker-id">Retype Username:</label>
+                <input type="text" id="hiker-id" onChange={(event) => setHikerId(event.target.value)} /> <br></br>
 
-                <label htmlFor="first-name">First Name:</label>
-                <input type="text" id="first-name" onChange={(event) => setFirstName(event.target.value)} />
+                <label className="ms-4 mb-3" htmlFor="first-name">First Name:</label>
+                <input type="text" id="first-name" onChange={(event) => setFirstName(event.target.value)} /> 
 
-                <label htmlFor="last-name">Last Name:</label>
-                <input type="text" id="last-name" onChange={(event) => setLastName(event.target.value)} />
+                <label className="ms-4 mb-3" htmlFor="last-name">Last Name:</label>
+                <input type="text" id="last-name" onChange={(event) => setLastName(event.target.value)} /> 
 
-                <label htmlFor="age">Age:</label>
-                <input type="number" id="age" onChange={(event) => setAge(event.target.value)} />
+                <label className="ms-4 mb-3" htmlFor="age">Age:</label>
+                <input type="number mb-3" id="age" onChange={(event) => setAge(event.target.value)} /> <br></br>
 
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" onChange={(event) => setPassword(event.target.value)} />
+                <label className="ms-4 mb-3" htmlFor="password">Password</label>
+                <input type="password" id="password" onChange={(event) => setPassword(event.target.value)} /> <br></br>
                 <br />
                 <button type="submit">Register</button>
             </form>
+            </Card>
+            </div>
         </>
     );
 }
