@@ -5,7 +5,6 @@ Log your daily Hike's in a user-friendly way!
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
