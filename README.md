@@ -14,7 +14,7 @@ Log your daily Hike's in a user-friendly way!
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/devaustin10/nunchuck-scorpion-capstone.git`
+1. Clone the repository: `git clone https://github.com/devaustin10/logout-hiking-journal.git`
 2. Navigate to server and run backend: `cd server`
 3. Load in User & Trails Schema in sql folder: (mySQL server)
 4. Navigate to the project directory: `cd client`
